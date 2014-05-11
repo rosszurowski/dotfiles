@@ -30,6 +30,20 @@ After that's done, change the default shell with:
 chsh -s /usr/local/bin/bash
 ```
 
+Finally, just symlink the dotfiles that you want to your home directory like so:
+
+```
+ln -s ./.profile ~/.profile
+```
+
+### Sensible OS X Defaults
+
+When setting up a new Mac, you may want to set some sensible OS X defaults:
+
+```
+. ./.osx
+```
+
 ### Other utilities
 
 ##### RVM

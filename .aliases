@@ -6,7 +6,6 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # List files improvements
-alias ls="command ls -G"
 alias lsh="ls -af"
 alias lsa="ls -alh"
 alias sla="ls -alh"
