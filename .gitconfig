@@ -1,0 +1,43 @@
+[user]
+	name = Ross Zurowski
+	email = ross.zurowski@gmail.com
+
+[alias]
+	count	= !git shortlog -sn
+	lg = "log --graph --pretty=format:'%Cred%h%Creset %an: %s -%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+	st = status
+	co = checkout
+	com = commit
+	br = branch
+	aa = add --all
+	showfiles = show --oneline --name-only
+	df = diff --oneline --name-only
+	ignore = !git update-index --assume-unchanged
+	unignore = !git update-index --no-assume-unchanged
+	ignored = !git ls-files -v | grep ^[a-z]
+	
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+	
+[core]
+	excludesfile = ~/.gitignore
+	editor = nano
+	pager = less -R -F
+	
+[apply]
+	whitespace = nowarn
+	
+[mergetool]
+	keepBackup = false
+	
+[difftool]
+	prompt = false
+	
+[help]
+	autocorrect = 1
+	
+[push]
+	default = tracking
