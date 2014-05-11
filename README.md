@@ -75,3 +75,8 @@ brew install php55 --with-fpm --without-apache --with-imap
 ```
 
 You'll probably have to play around with getting those guys to run on startup
+
+
+## Thanks
+
+This was based almost entirely on [Mathias' dotfiles repo](https://github.com/mathiasbynens/dotfiles). Look there if you need help with this stuff.
