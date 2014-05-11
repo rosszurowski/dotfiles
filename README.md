@@ -4,18 +4,27 @@ These files contain all the preferences for Mac OS X, Bash, and Git that you're 
 
 ### Installation
 
-First off, you'll want to install the XCode Developer Tools and [Homebrew](http://brew.sh/) if you don't already have them. To get it, just run:
+First off, you'll want to install the XCode Developer Tools if you don't already have them. To get it, just run:
 
 ```
-# First, the developer tools
 xcode-select --install
-# Then Homebrew
+```
+
+Next up, [Homebrew](http://brew.sh/):
+
+```
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```
 
-Next up, [download this repo as a zip](https://github.com/rosszurowski/dotfiles/archive/master.zip) and 
+Then, [download this repo as a zip](https://github.com/rosszurowski/dotfiles/archive/master.zip) and run the contained `Brewfile` with:
 
-You'll want to update your Bash version, which can be done by adding `/usr/local/bin/bash` to `/etc/shells`, and then change the default shell with:
+```
+brew bundle Brewfile
+```
+
+You'll want to update your Bash to the latest version (which was installed by that Brewfile), by adding `/usr/local/bin/bash` to `/etc/shells`.
+
+After that's done, change the default shell with:
 
 ```
 chsh -s /usr/local/bin/bash
