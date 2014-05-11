@@ -6,19 +6,19 @@ These files contain all the preferences for Mac OS X, Bash, and Git that you're 
 
 First off, you'll want to install the XCode Developer Tools if you don't already have them. To get it, just run:
 
-```
+```bash
 xcode-select --install
 ```
 
 Next up, [Homebrew](http://brew.sh/):
 
-```
+```bash
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```
 
 Then, [download this repo as a zip](https://github.com/rosszurowski/dotfiles/archive/master.zip) and run the contained `Brewfile` with:
 
-```
+```bash
 brew bundle Brewfile
 ```
 
@@ -26,13 +26,13 @@ You'll want to update your Bash to the latest version (which was installed by th
 
 After that's done, change the default shell with:
 
-```
+```bash
 chsh -s /usr/local/bin/bash
 ```
 
 Finally, just symlink the dotfiles that you want to your home directory like so:
 
-```
+```bash
 ln -s ./.profile ~/.profile
 ```
 
@@ -40,7 +40,7 @@ ln -s ./.profile ~/.profile
 
 When setting up a new Mac, you may want to set some sensible OS X defaults:
 
-```
+```bash
 . ./.osx
 ```
 
@@ -50,7 +50,7 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 For managing Ruby versions:
 
-```
+```bash
 \curl -sSL https://get.rvm.io | bash -s stable
 ```
 
@@ -58,13 +58,13 @@ For managing Ruby versions:
 
 For running basic Ruby servers:
 
-```
+```bash
 curl get.pow.cx | sh
 ```
 
 If you find that Pow is getting in the way of another web server (Apache, Nginx, etc.), create a `.powconfig` file and add the following to it:
 
-```
+```bash
 export POW_DST_PORT=19999
 ```
 If you want to redirect a localhost to a Pow server, just reverse proxy it.
@@ -73,7 +73,7 @@ If you want to redirect a localhost to a Pow server, just reverse proxy it.
 
 For web development:
 
-```
+```bash
 brew tap josegonzalez/php
 brew tap homebrew/dupes
 
