@@ -62,6 +62,13 @@ For running basic Ruby servers:
 curl get.pow.cx | sh
 ```
 
+If you find that Pow is getting in the way of another web server (Apache, Nginx, etc.), create a `.powconfig` file and add the following to it:
+
+```
+export POW_DST_PORT=19999
+```
+If you want to redirect a localhost to a Pow server, just reverse proxy it.
+
 #### Nginx
 
 For web development:
