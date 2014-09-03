@@ -26,6 +26,7 @@
 	excludesfile = ~/.gitignore
 	editor = nano
 	pager = less -R -F
+	autocrlf = input
 	
 [apply]
 	whitespace = nowarn
