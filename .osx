@@ -91,8 +91,8 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0.5
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Use icon view in all Finder windows by default
-# Four-letter codes for the other view modes: `Nlsv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "icnv"
+# Four-letter codes for the other view modes: `icnv` `Nlsv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Remove Dropbox’s green checkmark icons in Finder
 file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
@@ -163,8 +163,8 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 ##### Restart affected applications
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
+	"Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
+	"Terminal" "Transmission" "iCal"; do
 	killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
