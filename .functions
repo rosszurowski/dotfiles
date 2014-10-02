@@ -4,7 +4,7 @@
 # Usage: httpload [url] [clients] [seconds]
 httpload() {
   if [ $# -eq 0 ]; then
-	echo "Usage: httpload [url] [clients] [seconds]"
+	echo -e "Usage: httpload \e[2m[url] [clients] [seconds]\e[0m"
 	return;
   fi
   STAMP=`date +"%s"`;
@@ -13,7 +13,27 @@ httpload() {
   rm -f /var/tmp/$STAMP.http_load_temp_file
 }
 
-
+# HTML5 Video Encoding
+# Converts an input mp4 video into either a web-optimized .mp4 or a .webm file.
+# The preset bitrates are a max rate and target rate of 5M, and min rate of 4M.
+# Requires ffmpeg (`brew install ffmpeg --with-theora --with-libvorbis`)
+# Usage: encode [input] [output]
+encode() {
+  if [ $# -eq 0 ]; then
+    echo -e "Usage: encode \e[2m[input] [output]\e[0m"
+    return;
+  fi
+  OUTPUT_FILE=$(basename "$2")
+  OUTPUT_EXTENSION="${OUTPUT_FILE##*.}"
+  # can either be libx264 or libvpx
+  case "$OUTPUT_EXTENSION" in
+    mp4)  CODEC="libx264" ;;
+    webm) CODEC="libvpx" ;;
+    ogv)  CODEC="libtheora" ;;
+    *) echo -e "\e[31mError:\e[0m .mp4 and .webm are the only supported outputs."; return ;;
+  esac
+  ffmpeg -i $1 $2 -c:v $CODEC -b:v 5M -minrate 4M -maxrate 5M
+}
 
 # Git Branch Autocomplete
 # This provides some functions that allow autocompletion of branch names
