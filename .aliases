@@ -6,9 +6,10 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # List files improvements
-alias lsh="ls -af"
-alias lsa="ls -alh"
-alias sla="ls -alh"
+alias ls="ls -CF"
+alias lsh="ls -fA"
+alias lsa="ls -lhA"
+alias sla="ls -lhA"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
