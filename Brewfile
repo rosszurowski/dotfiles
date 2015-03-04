@@ -11,6 +11,8 @@ upgrade
 install bash
 # Install wget
 install wget
+# Update git
+install git
 
 
 # Install useful binaries

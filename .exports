@@ -1,6 +1,8 @@
 export NAME="Ross Zurowski"
 # Make nano the default editor
 export EDITOR="nano"
+# Source file path
+export SOURCE=$HOME/Sites/
 
 # Larger bash history (allow 32³ entries; default is 500)
 export HISTSIZE=32768
@@ -14,3 +16,5 @@ export MANPAGER="less -X"
 
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto"
+
+export GOPATH="/Users/rosszurowski/Sites/go"

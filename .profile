@@ -1,8 +1,6 @@
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:$PATH:/usr/local/mysql/bin"
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-
-export PS1="$ "
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/local/heroku/bin:$PATH:/usr/local/mysql/bin"
+export PS1="\[\033[0;90m\]$ \[\033[0m\]"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.

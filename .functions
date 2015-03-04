@@ -1,3 +1,29 @@
+# MKCD
+# Make and change directory shortcut
+# Usage: mkcd [directory]
+mkcd() {
+  if [ $# -eq 0 ]; then
+    echo -e "Usage: mkcd \e[2m[directory]\e[0m"
+  elif [ -d $1 ]; then
+    echo -e "\e[31mError:\e[0m Directory \`$1\` already exists"
+  else
+    command mkdir $1 && cd $1
+  fi
+}
+
+# TOUCH
+# Improved touch for nested files
+# Usage: 
+touch() {
+  if [ $# -eq 0 ]; then
+  command touch;
+  return; fi;
+  local f
+  for f in "$@"; do
+    command mkdir -p "$(dirname "$f")" && command touch "$f"
+  done
+}
+
 # URL Stress Testing
 # Creates a number of requests for a certain length of time to a specific URL,
 # and requires http_load be installed (`brew install http_load`)

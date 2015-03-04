@@ -10,8 +10,10 @@
 	com = commit
 	br = branch
 	aa = add --all
+	merge = merge --no-ff
 	showfiles = show --oneline --name-only
 	df = diff --oneline --name-only
+	optimize = gc --aggressive --prune=now
 	ignore = !git update-index --assume-unchanged
 	unignore = !git update-index --no-assume-unchanged
 	ignored = !git ls-files -v | grep ^[a-z]
