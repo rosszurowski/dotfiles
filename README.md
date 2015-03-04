@@ -4,36 +4,40 @@ These files contain all the preferences for Mac OS X, Bash, and Git that you're 
 
 ## Installation
 
-First off, you'll want to install the XCode Developer Tools if you don't already have them. To get it, just run:
+#### Using git
 
 ```bash
-xcode-select --install
+git clone https://github.com/rosszurowski/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
-Next up, [Homebrew](http://brew.sh/):
+#### Git-free install
+
+To get started without git, just run:
 
 ```bash
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+mkdir dotfiles && curl -L https://github.com/rosszurowski/dotfiles/tarball/master | tar zx -C dotfiles --strip-components 1 && cd dotfiles && source bootstrap.sh
 ```
 
-Then, [download this repo as a zip](https://github.com/rosszurowski/dotfiles/archive/master.zip) and run the contained `Brewfile` with:
+#### Install Homebrew Formuale
+
+It may be helpful to install some common [Homebrew](http://homebrew.sh) formulae once you've got Homebrew and the dotfiles installed.
 
 ```bash
 brew bundle Brewfile
 ```
 
-You'll want to update your Bash to the latest version (which was installed by that Brewfile), by adding `/usr/local/bin/bash` to `/etc/shells`.
+#### Updating Bash
+
+You'll want to update your Bash to the latest version (which was installed by that Brewfile), by adding it to `/etc/shells`:
+
+```bash
+echo "/usr/local/bin/bash" >> /etc/shells
+```
 
 After that's done, change the default shell with:
 
 ```bash
 chsh -s /usr/local/bin/bash
-```
-
-Finally, just symlink the dotfiles that you want to your home directory like so:
-
-```bash
-ln -s ./.profile ~/.profile
 ```
 
 ## Sensible OS X Defaults
@@ -42,6 +46,18 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 
 ```bash
 . ./.osx
+```
+
+Also, you'll want to install the XCode Developer Tools:
+
+```bash
+xcode-select --install
+```
+
+And [Homebrew](http://homebrew.sh) as well:
+
+```bash
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 ```
 
 ## Other utilities
