@@ -1,18 +1,14 @@
 # Navigation shortcuts
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias -- -="cd -"
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # List files improvements
 alias ls="ls -CF"
 alias lsh="ls -fA"
 alias lsa="ls -lhA"
 alias sla="ls -lhA"
-
-# Mkdir
-alias mkcd="mkdir"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -43,7 +39,6 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 # Usage: `command-one && command-two && notify`
 alias notify="tput bel"
 
-
 # Show/hide hidden files in Finder
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
@@ -54,11 +49,9 @@ alias hist="history"
 alias gti="git"		 # Git spelling correct
 alias q="exit"		 # Exit the terminal
 
-# Preferrable name for Lunchy (https://github.com/eddiezane/lunchy)
-alias launch="lunchy"
-
 # Some directory shortcuts
-alias ysdn="cd ~/Dropbox/YSDN/"
+alias ysdn="cd $YSDN"
+alias src="cd $SOURCE"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"

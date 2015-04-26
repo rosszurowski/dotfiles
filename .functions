@@ -7,7 +7,7 @@ mkcd() {
   elif [ -d $1 ]; then
     echo -e "\e[31mError:\e[0m Directory \`$1\` already exists"
   else
-    command mkdir $1 && cd $1
+    mkdir $1 && cd $1
   fi
 }
 
@@ -30,13 +30,39 @@ touch() {
 # Usage: httpload [url] [clients] [seconds]
 httpload() {
   if [ $# -eq 0 ]; then
-	echo -e "Usage: httpload \e[2m[url] [clients] [seconds]\e[0m"
-	return;
+  	echo -e "Usage: httpload \e[2m[url] [clients] [seconds]\e[0m"
+  	return;
   fi
   STAMP=`date +"%s"`;
   echo "http://$1" > /var/tmp/$STAMP.http_load_temp_file
   http_load -parallel $2 -seconds $3 /var/tmp/$STAMP.http_load_temp_file
   rm -f /var/tmp/$STAMP.http_load_temp_file
+}
+
+# Convert video to GIF
+# --start
+# --end
+# --duration
+# --width
+# --height
+# --frame-rate
+# Adapted from http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
+gif() {
+  if [ $# -eq 0 ]; then
+    echo -e "Usage: gif \e[2m[input] [output] [options...]\e[0m"
+    return;
+  fi
+
+  echo -e "\e[2mStill being implemented...\e[0m"
+  return;
+
+  PALETTE="/tmp/palette.png"
+  FILTERS="fps=18,scale320:-1:flags=lanczos"
+
+  ffmpeg -v warning -i "$1" -vf "$FILTERS,palettegen" -y $PALETTE
+  ffmpeg -v warning -i "$1" -i "$PALETTE" -lavfi "$FILTERS [x]; [x][1:v] paletteuse" -y $2
+  rm -f $PALETTE
+
 }
 
 # HTML5 Video Encoding
@@ -56,7 +82,7 @@ encode() {
     mp4)  CODEC="libx264" ;;
     webm) CODEC="libvpx" ;;
     ogv)  CODEC="libtheora" ;;
-    *) echo -e "\e[31mError:\e[0m .mp4 and .webm are the only supported outputs."; return ;;
+    *) echo -e "\e[31mError:\e[0m mp4, webm, and ogv are the only supported outputs."; return ;;
   esac
   ffmpeg -i "$1" -c:v "$CODEC" -b:v 5M "$2"
 }
