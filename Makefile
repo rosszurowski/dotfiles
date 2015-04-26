@@ -7,8 +7,9 @@ DOTFILES  = .aliases .exports .functions .profile .gitconfig .gitignore
 #
 # Tasks
 #
-install: $(DOTFILES)
-	@rm -f $^
-	@ln -s $^
+install: $(addprefix $(HOME)/,$(DOTFILES))
+	@echo "Done"
 
-.PHONY: install
+$(HOME)/%: %
+	@rm -f $@
+	@ln -fs $< $@
