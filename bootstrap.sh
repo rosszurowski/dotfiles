@@ -56,6 +56,7 @@ applications=(
   dropbox
   firefox
   google-chrome
+  imageoptim
   sketch
 )
 
