@@ -32,8 +32,10 @@ n io latest
 
 # Install useful node modules
 modules=(
+  airpaste
   browserify
   psi
+  mocha
   serve
   standard
 )

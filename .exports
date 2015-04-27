@@ -1,6 +1,7 @@
 export NAME="Ross Zurowski"
 # Make nano the default editor
 export EDITOR="nano"
+
 # Important file paths
 export SOURCE=$HOME/Sites/
 export YSDN=$HOME/Documents/YSDN/
