@@ -3,8 +3,9 @@ export NAME="Ross Zurowski"
 export EDITOR="nano"
 
 # Important file paths
+export DROPBOX=$HOME/Dropbox/
 export SOURCE=$HOME/Sites/
-export YSDN=$HOME/Documents/YSDN/
+export YSDN=$DROPBOX/YSDN/
 export GOPATH=$SOURCE/go
 export PATH=$PATH:$GOPATH/bin
 
