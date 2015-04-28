@@ -1,6 +1,6 @@
 [user]
 	name = Ross Zurowski
-	email = ross.zurowski@gmail.com
+	email = ross@rosszurowski.com
 
 [alias]
 	count	= !git shortlog -sn
