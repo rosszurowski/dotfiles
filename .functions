@@ -1,4 +1,4 @@
-# MKCD
+# mkcd
 # Make and change directory shortcut
 # Usage: mkcd [directory]
 mkcd() {
@@ -11,7 +11,7 @@ mkcd() {
   fi
 }
 
-# TOUCH
+# touch
 # Improved touch for nested files
 # Usage: 
 touch() {
@@ -86,9 +86,3 @@ encode() {
   esac
   ffmpeg -i "$1" -c:v "$CODEC" -b:v 5M "$2"
 }
-
-# Source git completion
-GIT_COMPLETION=/usr/local/etc/bash_completion.d/git-completion.bash
-if test -f $GIT_COMPLETION; then
-  source $GIT_COMPLETION
-fi

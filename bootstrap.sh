@@ -13,8 +13,19 @@ brew update
 # Install and use latest bash
 echo "> Changing shell to latest bash version..."
 brew install bash
-sudo echo '/usr/local/bin/bash' >> /etc/shells
+echo '/usr/local/bin/bash' | sudo tee --append /etc/shells > /dev/null
 chsh -s /usr/local/bin/bash
+
+# Install useful binaries
+binaries=(
+  rename
+  http_load
+  ssh-copy-id
+  wget
+)
+
+echo "> Installing useful binaries..."
+brew install ${binaries[@]}
 
 # Install git
 echo "> Installing git..."
@@ -51,7 +62,7 @@ echo "> Installing brew cask..."
 brew install caskroom/cask/brew-cask
 
 # Install applications
-applications=(
+apps=(
   chocolat
   dropbox
   firefox
@@ -64,7 +75,7 @@ echo "> Installing applications..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
 # Clone this repo into ./dotfiles
-echo "> Cloning dotfiles repo..."
+echo "> Cloning into dotfiles repo..."
 git clone https://github.com/rosszurowski/dotfiles ./dotfiles
 
 # Linking dotfiles

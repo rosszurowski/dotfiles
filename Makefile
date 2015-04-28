@@ -10,6 +10,9 @@ DOTFILES  = .aliases .exports .functions .profile .gitconfig .gitignore
 install: $(addprefix $(HOME)/,$(DOTFILES))
 	@echo "Done"
 
+#
+# Targets
+#
 $(HOME)/%: %
 	@rm -f $@
 	@ln -fs $< $@
