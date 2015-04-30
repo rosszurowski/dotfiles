@@ -24,6 +24,14 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 . ./.osx
 ```
 
+## Moving your dotfiles
+
+If you ever move the dotfiles to another location, you can relink them by changing to the cloned directory and running:
+
+```bash
+make install
+```
+
 ## Thanks
 
 Many ideas in here were taken from [Mathias'](https://github.com/mathiasbynens/dotfiles) and [Evan You's](https://github.com/yyx990803/dotfiles) dotfile repos. Look there if you need help with this stuff.

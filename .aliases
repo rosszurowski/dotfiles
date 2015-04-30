@@ -3,6 +3,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias -- ~="cd ~ && echo $(pwd)"
+alias -- -="cd -"
 
 # List files improvements
 alias ls="ls -CF"
@@ -12,9 +14,6 @@ alias sla="ls -lhA"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
-
-# Get week number
-alias week='date +%V'
 
 # Stopwatch
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
@@ -40,14 +39,20 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 alias notify="tput bel"
 
 # Show/hide hidden files in Finder
-alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
-alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
+alias show="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
+
+# HTTP Request Methods
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$method"="lwp-request -m '$method'"
+done
 
 # Auto-corrections
 alias h="history"	 
 alias hist="history"	 
-alias gti="git"		 # Git spelling correct
-alias q="exit"		 # Exit the terminal
+alias gti="git"
+alias q="exit"
+alias copy="pbcopy"
 
 # Some directory shortcuts
 alias ysdn="cd $YSDN"
