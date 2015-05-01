@@ -30,8 +30,8 @@ touch() {
 # Usage: httpload [url] [clients] [seconds]
 httpload() {
   if [ $# -eq 0 ]; then
-  	echo -e "Usage: httpload \e[2m[url] [clients] [seconds]\e[0m"
-  	return;
+    echo -e "Usage: httpload \e[2m[url] [clients] [seconds]\e[0m"
+    return;
   fi
   STAMP=`date +"%s"`;
   echo "http://$1" > /var/tmp/$STAMP.http_load_temp_file
