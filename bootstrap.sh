@@ -13,7 +13,7 @@ brew update
 # Install and use latest bash
 echo "> Changing shell to latest bash version..."
 brew install bash
-echo '/usr/local/bin/bash' | sudo tee --append /etc/shells > /dev/null
+echo '/usr/local/bin/bash' | sudo tee -a /etc/shells > /dev/null
 chsh -s /usr/local/bin/bash
 
 # Install useful binaries
