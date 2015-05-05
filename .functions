@@ -24,6 +24,18 @@ touch() {
   done
 }
 
+# src
+# Shorthand to navigate files in the source directory.
+# Usage: src folder-name/
+src() {
+  if [ $# -eq 0 ]; then
+    cd "$SOURCE"
+    return;
+  fi
+  cd "$SOURCE/$1"
+}
+complete -o "nospace" -W "$(ls $SOURCE)" src
+
 # URL Stress Testing
 # Creates a number of requests for a certain length of time to a specific URL,
 # and requires http_load be installed (`brew install http_load`)

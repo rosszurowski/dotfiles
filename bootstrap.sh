@@ -40,6 +40,9 @@ brew install node
 npm install -g n
 n latest
 n io latest
+# Some npm defaults
+npm config set init-license "MIT"
+npm config set init-version "0.0.1"
 
 # Install useful node modules
 modules=(
