@@ -9,6 +9,13 @@ for file in ~/.{path,exports,aliases,functions}; do
 done
 unset file
 
+# Load any computer-specific extensions to dotfiles
+# These files should have a .local suffix, and will not be
+# tracked by Git.
+for file in ~/.{profile,path,exports,aliases,functions}.local; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 # Append to the Bash history file, rather than overwriting it
