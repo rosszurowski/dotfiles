@@ -1,24 +1,35 @@
 #
 # Variables
 #
-DIR        = $(dir $(lastword $(MAKEFILE_LIST)))
-FILES      = .aliases .exports .functions .profile .gitconfig .gitignore
-LOCAL_EXT  = .local
+DIR         = $(dir $(lastword $(MAKEFILE_LIST)))
+FILES       = .aliases .exports .functions .profile .gitconfig .gitignore
+DESTINATION = $(HOME)/
+OVERRIDE    = .local
 
-DOTFILES   = $(addprefix $(HOME)/, $(FILES))
+DOTFILES    = $(addprefix $(DESTINATION), $(FILES))
+EXISTING    = $(addprefix $(DESTINATION), $(wildcard .*$(OVERRIDE)))
+LOCALS      = $(addsuffix $(OVERRIDE), $(DOTFILES))
+
+YELLOW = \033[0;33m
+END    = \033[0m
 
 #
 # Tasks
 #
-install: $(DOTFILES)
-	@echo "Done installing"
+install: clean $(DOTFILES) $(EXISTING)
+	@echo "..."
+	@echo "$(YELLOW)Done installing$(END)"
+
+clean:
+	@rm -f $(DOTFILES)
+	@rm -f $(LOCALS)
 
 #
 # Targets
 #
 
 $(HOME)/%: %
-	@rm -f "$@"
-	@rm -f "$@$(LOCAL_EXT)"
 	@ln -fs "$(realpath $<)" "$@"
-	@if [ -f "$<$(LOCAL_EXT)" ]; then ln -fs "$(realpath $<)$(LOCAL_EXT)" "$@$(LOCAL_EXT)"; fi
+
+
+.PHONY: clean
