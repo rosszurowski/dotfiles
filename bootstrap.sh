@@ -18,8 +18,9 @@ chsh -s /usr/local/bin/bash
 
 # Install useful binaries
 binaries=(
-  rename
+  bash-completion
   http_load
+  rename
   ssh-copy-id
   wget
 )
@@ -66,12 +67,12 @@ brew install caskroom/cask/brew-cask
 
 # Install applications
 apps=(
-  chocolat
   dropbox
   firefox
   google-chrome
   imageoptim
   sketch
+  sublime-text3
 )
 
 echo "> Installing applications..."
