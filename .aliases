@@ -23,8 +23,8 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias internal-ip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
+alias ip-list="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
@@ -48,8 +48,8 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # Auto-corrections
-alias h="history"	 
-alias hist="history"	 
+alias h="history"
+alias hist="history"
 alias gti="git"
 alias q="exit"
 alias copy="pbcopy"

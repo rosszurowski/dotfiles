@@ -13,7 +13,6 @@ mkcd() {
 
 # touch
 # Improved touch for nested files
-# Usage: 
 touch() {
   if [ $# -eq 0 ]; then
   command touch;
@@ -49,6 +48,33 @@ httpload() {
   echo "http://$1" > /var/tmp/$STAMP.http_load_temp_file
   http_load -parallel $2 -seconds $3 /var/tmp/$STAMP.http_load_temp_file
   rm -f /var/tmp/$STAMP.http_load_temp_file
+}
+
+# Notational Velocity Linker
+# Creates a Finder link to a note in Notational Velocity. This is useful for
+# providing references back to my notes, which have traditionally been
+# easily forgotten.
+# Usage: nvlink [note]
+nvlink() {
+  if [ $# -eq 0 ]; then
+    echo -e "Usage: nvlink \e[2m[note]\e[0m"
+    return;
+  fi
+  local note=$1
+  local dest="./${note}.webloc"
+  touch "$dest"
+  SetFile -a E "$dest"
+  local uri=`node -pe "encodeURI('${note}')"`
+  cat > "$dest" <<EOL
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>URL</key>
+  <string>nv://find/${uri}</string>
+</dict>
+</plist>
+EOL
 }
 
 # Convert video to GIF
