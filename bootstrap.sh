@@ -22,6 +22,7 @@ binaries=(
   http_load
   rename
   ssh-copy-id
+  visionmedia-watch
   wget
 )
 
