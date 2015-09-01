@@ -10,7 +10,7 @@ PREFIX     ?= $(shell brew --prefix)
 DOTFILES    = $(addprefix $(DESTINATION), $(FILES))
 EXISTING    = $(addprefix $(DESTINATION), $(wildcard .*$(OVERRIDE)))
 LOCALS      = $(addsuffix $(OVERRIDE), $(DOTFILES))
-COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash)
+COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash pass.bash)
 
 YELLOW = \033[0;33m
 END    = \033[0m

@@ -20,6 +20,7 @@ chsh -s /usr/local/bin/bash
 binaries=(
   bash-completion
   http_load
+  pass
   rename
   ssh-copy-id
   visionmedia-watch

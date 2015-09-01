@@ -30,8 +30,8 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null
 done
 
-# Add tab completion for Git and Make
-for file in $(brew --prefix)/etc/bash_completion.d/{git,make}.bash; do
+# Add tab completion for Git, Make, and Pass
+for file in $(brew --prefix)/etc/bash_completion.d/{git,make,pass}.bash; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
