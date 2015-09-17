@@ -50,17 +50,6 @@ httpload() {
   rm -f /var/tmp/$STAMP.http_load_temp_file
 }
 
-# Send OS X Notification
-# Connects with the notification center to trigger an OS-level notification
-# Usage: notify [title] [message]
-notify() {
-  if [ $# -eq 0 ]; then
-    echo -e "Usage: notify \e[2m[message]\e[0m"
-    return;
-  fi
-  osascript -e "display notification \"$2\" with title \"$1\""
-}
-
 # Notational Velocity Linker
 # Creates a Finder link to a note in Notational Velocity. This is useful for
 # providing references back to my notes, which have traditionally been

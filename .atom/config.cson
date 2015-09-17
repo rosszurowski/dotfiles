@@ -1,0 +1,29 @@
+"*":
+  "exception-reporting":
+    userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
+  welcome:
+    showOnStartup: false
+  core:
+    themes: [
+      "spacegray-dark-neue-ui"
+      "spacegray-dark-neue-syntax"
+    ]
+    projectHome: "/User/rosszurowski/Sites/"
+    disabledPackages: [
+      "metrics"
+    ]
+  editor:
+    invisibles: {}
+    backUpBeforeSaving: true
+    fontFamily: "InputMonoNarrow-Light"
+    fontSize: 11
+    showIndentGuide: true
+    softTabs: false
+    lineHeight: 1.9
+    softWrapAtPreferredLineLength: true
+  "one-dark-ui": {}
+  "color-picker":
+    preferredFormat: "HEX"
+  "opened-files": {}
+  "tree-view":
+    hideIgnoredNames: true

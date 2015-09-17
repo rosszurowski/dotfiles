@@ -1,0 +1,16 @@
+
+#
+# Atom keymap structure
+#
+
+'.platform-darwin':
+  'cmd-i': 'tree-view:toggle'
+
+'atom-text-editor':
+  'cmd-shift-i': 'editor:auto-indent'
+
+'atom-workspace atom-text-editor:not([mini])':
+  'cmd-+': 'editor:unfold-current-row'
+  'cmd-=': 'editor:unfold-current-row'
+  'cmd-0': 'editor:unfold-all'
+  'cmd--': 'editor:fold-current-row'

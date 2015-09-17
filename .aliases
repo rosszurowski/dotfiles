@@ -36,7 +36,7 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 # Usage: `command-one && command-two && notify`
-alias alert="tput bel"
+alias notify="tput bel"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
@@ -48,11 +48,12 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # Auto-corrections
-alias h="history"
-alias hist="history"
-alias gti="git"
-alias q="exit"
-alias copy="pbcopy"
+alias h='history'
+alias hist='history'
+alias gti='git'
+alias q='exit'
+alias copy='pbcopy'
+alias paste='pbpaste'
 
 # Some directory shortcuts
 alias ysdn="cd $YSDN"

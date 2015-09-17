@@ -12,13 +12,15 @@ EXISTING    = $(addprefix $(DESTINATION), $(wildcard .*$(OVERRIDE)))
 LOCALS      = $(addsuffix $(OVERRIDE), $(DOTFILES))
 COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash pass.bash)
 
+ATOM        = $(addprefix $(DESTINATION), .atom)
+
 YELLOW = \033[0;33m
 END    = \033[0m
 
 #
 # Tasks
 #
-install: clean $(DOTFILES) $(EXISTING) $(COMPLETIONS)
+install: clean $(DOTFILES) $(EXISTING) $(COMPLETIONS) $(ATOM)
 	@echo "..."
 	@echo "$(YELLOW)Done installing$(END)"
 

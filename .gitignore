@@ -11,5 +11,5 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
-# Ignore dotfile extensions
+# Ignore local dotfile extensions
 .*.local

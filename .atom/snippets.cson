@@ -1,0 +1,140 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+
+'.text.html':
+	'Vanilla Document':
+		'prefix': '@vanilla'
+		'body': """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>${1:Untitled}</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+	<link rel="shortcut icon" type="image/ico" href="favicon.png" />
+	<link rel="stylesheet" media="screen, projection" href="css/styles.css" />
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+	${0}
+</body>
+</html>
+		"""
+
+'.source.js':
+
+	'If':
+		'prefix': 'if'
+		'body': """
+if (${1}) {
+	${0}
+}
+		"""
+
+	'If Else':
+		'prefix': 'ife'
+		'body': """
+if (${1:true}) {
+	${2}
+} else {
+	$0
+}
+		"""
+
+	'Function':
+		'prefix': 'fn'
+		'body': """
+function ${1} (${2}) {
+	${0}
+}
+		"""
+
+	'Anonymous Function':
+		'prefix': 'f'
+		'body': """
+function ($1) {
+	${0}
+}
+		"""
+	'Comment':
+		'prefix': '@comment'
+		'body': """
+/**
+ * ${0}
+ */
+		"""
+
+	'For Loop':
+		'prefix': 'for'
+		'body': """
+for (${1}) {
+	${2}
+}
+		"""
+
+'.source.makefile':
+	'Vanilla Makefile':
+		'prefix': '@vanilla'
+		'body': """
+
+#
+# Binaries
+#
+
+export PATH := ./node_modules/.bin/:\$(PATH)
+BIN := ./node_modules/.bin
+
+#
+# Variables
+#
+
+PORT = 8080
+
+#
+# Tasks
+#
+
+build:
+	@true
+
+develop: install
+	@serve --port \$(PORT)
+
+clean:
+	@rm -rf build
+clean-deps:
+	@rm -rf node_modules
+
+#
+# Shorthands
+#
+
+install: node_modules
+
+#
+# Targets
+#
+
+node_modules: package.json
+	@npm install
+
+#
+# Phony
+#
+
+.PHONY: develop clean clean-deps
+
+		"""

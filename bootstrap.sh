@@ -74,7 +74,7 @@ apps=(
   google-chrome
   imageoptim
   sketch
-  sublime-text3
+  atom
 )
 
 echo "> Installing applications..."
