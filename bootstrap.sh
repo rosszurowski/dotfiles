@@ -7,6 +7,13 @@ if test ! $(which brew); then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+if test ! $(which brew); then
+  echo ""
+  echo "> Homebrew install failed! Try again manually by running"
+  echo "> ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+  echo ""
+fi
+
 # Update homebrew recipes
 brew update
 

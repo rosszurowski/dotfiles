@@ -35,6 +35,9 @@ clean:
 $(HOME)/%: %
 	@ln -fs "$(realpath $<)" "$@"
 
+$(HOME)/.%: %
+	@ln -fs "$(realpath $<)" "$@"
+
 $(PREFIX)/etc/bash_completion.d/%: ./autocomplete/%
 	@mkdir -p "$(dir $@)"
 	@ln -fs "$(realpath $<)" "$@"
