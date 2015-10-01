@@ -3,6 +3,8 @@
   'editorconfig'
   'language-gitignore'
   'language-glsl'
+  'language-liquid'
+  'language-SCSS'
   'language-swift'
   'opened-files'
   'parcel'
