@@ -9,6 +9,9 @@
 'atom-text-editor':
   'cmd-shift-i': 'editor:auto-indent'
 
+'.platform-darwin atom-text-editor':
+  'cmd-e': 'grammar-selector:show'
+
 'atom-workspace atom-text-editor:not([mini])':
   'cmd-+': 'editor:unfold-current-row'
   'cmd-=': 'editor:unfold-current-row'

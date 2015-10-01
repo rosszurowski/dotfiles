@@ -33,36 +33,45 @@
 	'If':
 		'prefix': 'if'
 		'body': """
-if (${1}) {
-	${0}
-}
+			if (${1}) {
+				${0}
+			}
 		"""
 
 	'If Else':
 		'prefix': 'ife'
 		'body': """
-if (${1:true}) {
-	${2}
-} else {
-	$0
-}
+			if (${1:true}) {
+				${2}
+			} else {
+				${0}
+			}
 		"""
+
+	'console.log':
+		'prefix': 'log'
+		'body': 'console.log(${1})${0}'
+
+	'console.warn':
+		'prefix': 'warn'
+		'body': 'console.warn(${1})${0}'
 
 	'Function':
 		'prefix': 'fn'
 		'body': """
-function ${1} (${2}) {
-	${0}
-}
+			function ${1} (${2}) {
+				${0}
+			}
 		"""
 
 	'Anonymous Function':
 		'prefix': 'f'
 		'body': """
-function ($1) {
-	${0}
-}
+			function (${1}) {
+				${0}
+			}
 		"""
+
 	'Comment':
 		'prefix': '@comment'
 		'body': """

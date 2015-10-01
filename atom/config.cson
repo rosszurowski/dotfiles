@@ -11,6 +11,7 @@
     projectHome: "/User/rosszurowski/Sites/"
     disabledPackages: [
       "metrics"
+      "bookmarks"
     ]
   editor:
     invisibles: {}
@@ -27,3 +28,4 @@
   "opened-files": {}
   "tree-view":
     hideIgnoredNames: true
+  "status-bar": {}
