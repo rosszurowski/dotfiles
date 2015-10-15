@@ -12,6 +12,7 @@
     disabledPackages: [
       "metrics"
       "bookmarks"
+      "background-tips"
     ]
   editor:
     invisibles: {}
