@@ -29,3 +29,7 @@
   "tree-view":
     hideIgnoredNames: true
   "status-bar": {}
+  "autocomplete-plus":
+    scopeBlacklist: [
+      ".source.gfm"
+    ]
