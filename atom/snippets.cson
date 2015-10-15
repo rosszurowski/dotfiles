@@ -7,25 +7,33 @@
 	'Vanilla Document':
 		'prefix': '@vanilla'
 		'body': """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>${1:Untitled}</title>
-	<meta charset="utf-8"/>
-	<meta name="description" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<title>${1:Untitled}</title>
+				<meta charset="utf-8"/>
+				<meta name="description" content="" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 
-	<link rel="shortcut icon" type="image/ico" href="favicon.png" />
-	<link rel="stylesheet" media="screen, projection" href="css/styles.css" />
+				<link rel="shortcut icon" type="image/ico" href="favicon.png" />
+				<link rel="stylesheet" media="screen, projection" href="css/styles.css" />
 
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-</head>
-<body>
-	${0}
-</body>
-</html>
+				<!--[if lt IE 9]>
+					<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+				<![endif]-->
+			</head>
+			<body>
+				${0}
+			</body>
+			</html>
+		"""
+
+'.source.css':
+	'font smoothing':
+		'prefix': '-webkit-font-smoothing'
+		'body': """
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
 		"""
 
 '.source.js':
