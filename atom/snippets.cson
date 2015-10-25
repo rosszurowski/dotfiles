@@ -35,6 +35,23 @@
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 		"""
+	'font face':
+		'prefix': '@fontface'
+		'body': """
+			@font-face {
+			  font-family: "${1}";
+			  src: url("${2}.woff2") format("woff2"),
+			       url("${2}.woff") format("woff"),
+			       url("${2}.ttf") format("truetype");
+			}
+		"""
+	'Comment':
+		'prefix': '@comment'
+		'body': """
+/**
+ * ${0}
+ */
+		"""
 
 '.source.js':
 
