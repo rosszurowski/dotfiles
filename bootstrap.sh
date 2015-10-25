@@ -87,6 +87,9 @@ apps=(
 echo "> Installing applications..."
 brew cask install --appdir="/Applications" ${apps[@]}
 
+echo "> Installing services..."
+brew tap homebrew/services
+
 # Clone this repo into ./dotfiles
 echo "> Cloning into dotfiles repo..."
 git clone https://github.com/rosszurowski/dotfiles ./dotfiles
