@@ -47,6 +47,9 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
 
+# Alias hub as git
+alias git='hub'
+
 # Auto-corrections
 alias h='history'
 alias hist='history'

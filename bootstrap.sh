@@ -27,6 +27,7 @@ chsh -s /usr/local/bin/bash
 binaries=(
   bash-completion
   http_load
+  hub
   pass
   rename
   ssh-copy-id
