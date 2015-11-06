@@ -87,19 +87,23 @@ EOL
 # Adapted from http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
 gif() {
   if [ $# -eq 0 ]; then
-    echo -e "Usage: gif \e[2m[input] [output] [options...]\e[0m"
+    echo -e "Usage: gif \e[2m[input] [output]\e[0m"
     return;
   fi
 
-  echo -e "\e[2mStill being implemented...\e[0m"
-  return;
+  FRAME_RATE=18
 
-  PALETTE="/tmp/palette.png"
-  FILTERS="fps=18,scale320:-1:flags=lanczos"
+  ffmpeg -i "$1" -pix_fmt rgb24 -r "$FRAME_RATE" -f gif - | gifsicle --optimize=3 --delay=3 > $2
 
-  ffmpeg -v warning -i "$1" -vf "$FILTERS,palettegen" -y $PALETTE
-  ffmpeg -v warning -i "$1" -i "$PALETTE" -lavfi "$FILTERS [x]; [x][1:v] paletteuse" -y $2
-  rm -f $PALETTE
+  # echo -e "\e[2mStill being implemented...\e[0m"
+  # return;
+  #
+  # PALETTE="/tmp/palette.png"
+  # FILTERS="fps=18,scale320:-1:flags=lanczos"
+  #
+  # ffmpeg -v warning -i "$1" -vf "$FILTERS,palettegen" -y $PALETTE
+  # ffmpeg -v warning -i "$1" -i "$PALETTE" -lavfi "$FILTERS [x]; [x][1:v] paletteuse" -y $2
+  # rm -f $PALETTE
 
 }
 
