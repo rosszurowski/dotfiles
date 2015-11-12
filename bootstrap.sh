@@ -83,6 +83,7 @@ apps=(
   imageoptim
   sketch
   atom
+  drop-to-gif
 )
 
 echo "> Installing applications..."
