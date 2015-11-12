@@ -34,3 +34,7 @@
     scopeBlacklist: [
       ".source.gfm"
     ]
+  tabs:
+    usePreviewTabs: true
+  "markdown-preview":
+    useGitHubStyle: true
