@@ -1,0 +1,20 @@
+
+# Ignore OS X scraps
+.DS_Store
+
+# Ignore design files
+design/
+resources/
+research/
+
+# Ignore npm scraps
+node_modules/
+npm-debug.log
+
+# Ignore build files
+build/
+
+# Ignore licensed fonts
+*.woff
+*.ttf
+*.eot

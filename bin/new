@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Create a new project from a template
+#   Version: 1.0.0
+#   Author: Ross Zurowski <ross@rosszurowski.com>
+#   License: MIT
+
+# print usage information
+usage() {
+cat << EOF
+
+  Usage: new <template> <destination>
+
+  Options:
+    -h, --help  output usage information
+
+  Examples:
+    $ new module async-json-parse
+
+EOF
+}
+
+# assert arguments
+[ $# -ne 1 ] && usage && exit 1
+[ $# -ne 2 ] && usage && exit 1
+
+# switch arguments
+case $1 in
+  -h|--help) usage; exit;;
+esac
+
+# logic
+khaos create -d $HOME/.templates/ "$1" "$2"

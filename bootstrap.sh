@@ -58,9 +58,10 @@ npm config set init-version "0.0.1"
 # Install useful node modules
 modules=(
   airpaste
+  ava
   browserify
   psi
-  mocha
+  khaos
   serve
   standard
 )

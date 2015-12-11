@@ -1,0 +1,20 @@
+{
+  "name": "{{name}}",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "main": "index.js",
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "ava": "^0.7.0"
+  },
+  "repository": "git://github.com/{{repository}}.git",
+  "author": {
+    "name": "Ross Zurowski",
+    "email": "ross@rosszurowski.com",
+    "url": "http://rosszurowski.com"
+  }{{#mit}},
+  "license": "MIT"{{/mit}}
+}

@@ -13,6 +13,7 @@ LOCALS      = $(addsuffix $(OVERRIDE), $(DOTFILES))
 COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash pass.bash)
 
 ATOM        = $(addprefix $(DESTINATION), .atom)
+TEMPLATES   = $(addprefix $(DESTINATION), .templates)
 
 YELLOW = \033[0;33m
 END    = \033[0m
@@ -20,7 +21,7 @@ END    = \033[0m
 #
 # Tasks
 #
-install: clean $(DOTFILES) $(EXISTING) $(COMPLETIONS) $(ATOM)
+install: clean $(DOTFILES) $(EXISTING) $(COMPLETIONS) $(ATOM) $(TEMPLATES)
 	@echo "..."
 	@echo "$(YELLOW)Done installing$(END)"
 

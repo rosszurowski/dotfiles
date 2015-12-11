@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+const chalk = require('chalk')
+const server = require('..')
+const pkg = require('../package')
+const log = console.log.bind(console)
+
+const env = process.env.NODE_ENV || 'development'
+const port = process.env.PORT || 8081
+
+server.listen(port)
+
+log(chalk.green(pkg.name + ' is running...'))
+log(`Listening on https://localhost:${port}`)
+log(`Environment: ${env}`)
+log(chalk.gray('Ctrl+C to shut down'))
+
+process.on('SIGINT', () => {
+	log(chalk.red('Server has shutdown'))
+	log(`Server was running for ${Math.round(process.uptime())} seconds`)
+	process.exit(0)
+})

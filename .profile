@@ -1,5 +1,5 @@
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:$PATH"
+export PATH="/Users/$(whoami)/Sites/dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:$PATH"
 export PS1="\[\033[0;90m\]$ \[\033[0m\]"
 
 # Load the shell dotfiles, and then some:
