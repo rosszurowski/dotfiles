@@ -3,6 +3,11 @@
 # Snippets
 #
 
+'.text':
+	'Shell Pragma':
+		'prefix': '#!'
+		'body': '#!/usr/bin/env ${1:bash}'
+
 '.text.html':
 	'Vanilla Document':
 		'prefix': '@vanilla'
@@ -28,21 +33,39 @@
 			</html>
 		"""
 
+'.source.gitignore':
+	'Vanilla':
+		'prefix': '@vanilla'
+		'body': """
+
+			# Ignore OS X scraps
+			.DS_Store
+
+			# Ignore npm scraps
+			node_modules/
+			npm-debug.log
+
+			# Ignore design files
+			resources/
+			design/
+
+		"""
+
 '.source.css':
 	'font smoothing':
-		'prefix': '-webkit-font-smoothing'
+		'prefix': '@font-smoothing'
 		'body': """
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 		"""
 	'font face':
-		'prefix': '@fontface'
+		'prefix': '@font-face'
 		'body': """
 			@font-face {
-			  font-family: "${1}";
-			  src: url("${2}.woff2") format("woff2"),
-			       url("${2}.woff") format("woff"),
-			       url("${2}.ttf") format("truetype");
+			  font-family: '${1}';
+			  src: url('${2}.woff') format('woff'),
+			       url('${2}.ttf') format('truetype'),
+						 url('${2}.svg#font') format('svg'),;
 			}
 		"""
 	'Comment':
@@ -100,17 +123,23 @@
 	'Comment':
 		'prefix': '@comment'
 		'body': """
-/**
- * ${0}
- */
+			/**
+			 * ${0}
+			 */
 		"""
 
 	'For Loop':
 		'prefix': 'for'
 		'body': """
-for (${1}) {
-	${2}
-}
+			for (${1}) {
+				${2}
+			}
+		"""
+
+	'Import':
+		'prefix': 'import'
+		'body': """
+			import ${1} from '${2}'
 		"""
 
 '.source.makefile':
@@ -138,7 +167,7 @@ PORT = 8080
 build:
 	@true
 
-develop: install
+watch: install
 	@serve --port \$(PORT)
 
 clean:
@@ -165,4 +194,26 @@ node_modules: package.json
 
 .PHONY: develop clean clean-deps
 
+		"""
+
+	'Deploy (Github Pages)':
+		'prefix': '@deploy'
+		'body': """
+			REPO    = rosszurowski/${1:repo}
+			DOMAIN  = rosszurowski.github.io/${1:repo}
+			BRANCH  = $(shell git rev-parse --abbrev-ref HEAD)
+
+			deploy:
+				@echo "Deploying branch \\033[0;33m$(BRANCH)\\033[0m to Github pages..."
+				@make clean
+				@NODE_ENV=production make build
+				@(cd $(BUILD) && \
+					git init -q . && \
+					git add . && \
+					git commit -q -m "Deployment (auto-commit)" && \
+					echo "\\033[0;90m" && \
+					git push "git@github.com:$(REPO).git" HEAD:gh-pages --force && \
+					echo "\\033[0m")
+				@make clean
+				@echo "Deployed to \\033[0;32mhttp://$(DOMAIN)/\\033[0m"
 		"""

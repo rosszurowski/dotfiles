@@ -7,7 +7,10 @@ export EDITOR="nano"
 export DROPBOX=$HOME/Dropbox/
 export SOURCE=$HOME/Sites/
 export YSDN=$DROPBOX/YSDN/
+
+# Language-specific paths
 export GOPATH=$SOURCE/go
+export RBENV_ROOT=/usr/local/var/rbenv
 export PATH=$PATH:$GOPATH/bin
 
 # Larger bash history (allow 32³ entries; default is 500)
