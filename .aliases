@@ -50,6 +50,12 @@ done
 # Alias hub as git
 alias git='hub'
 
+# Alias atom as e (for editor)
+alias e='atom'
+
+# Node
+alias nr='npm run --silent'
+
 # Auto-corrections
 alias h='history'
 alias hist='history'
