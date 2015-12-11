@@ -64,9 +64,5 @@ alias q='exit'
 alias copy='pbcopy'
 alias paste='pbpaste'
 
-# Some directory shortcuts
-alias ysdn="cd $YSDN"
-# the 'src' shortcut is now in .functions to allow for nesting
-
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
