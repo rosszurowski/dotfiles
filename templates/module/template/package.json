@@ -10,11 +10,11 @@
   "devDependencies": {
     "ava": "^0.7.0"
   },
-  "repository": "git://github.com/{{repository}}.git",
+  "repository": "{{repository}}",
   "author": {
     "name": "Ross Zurowski",
     "email": "ross@rosszurowski.com",
     "url": "http://rosszurowski.com"
-  }{{#mit}},
-  "license": "MIT"{{/mit}}
+  },
+  "license": "MIT"
 }

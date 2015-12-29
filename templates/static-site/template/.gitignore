@@ -1,0 +1,13 @@
+
+# Ignore os x scraps
+.DS_Store
+
+# Ignore npm scraps
+node_modules/
+npm-debug.log
+
+# Ignore build files
+build/
+
+# Ignore design files
+design/

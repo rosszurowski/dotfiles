@@ -1,0 +1,67 @@
+#!/usr/bin/env node --harmony
+
+const metalsmith = require('metalsmith')
+const layouts = require('metalsmith-layouts')
+const markdown = require('metalsmith-markdown')
+const typography = require('metalsmith-typography')
+const permalinks = require('metalsmith-permalinks')
+const collections = require('metalsmith-collections')
+const branch = require('metalsmith-branch')
+const rss = require('metalsmith-rss')
+const drafts = require('metalsmith-drafts')
+const prefix = require('metalsmith-prefix')
+
+/**
+ * Site metadata
+ */
+const metadata = {
+	site: {
+		title: '{{title}}',
+		description: '{{description}}',
+		url: '{{domain}}'
+	},
+	env: process.env.NODE_ENV || 'development'
+}
+
+/**
+ * Build configuration
+ */
+const config = {
+	source: '../content',
+	destination: '../build',
+	layouts: '../layouts',
+	prefix: '/process',
+	clean: false,
+	env: process.env.NODE_ENV || 'development'
+}
+
+/**
+ * Prepare metalsmith
+ */
+const site = metalsmith(__dirname)
+	.source(config.source)
+	.destination(config.destination)
+	.clean(config.clean)
+	.metadata(metadata)
+
+/**
+ * Configure build
+ */
+site.use(markdown({
+		smartypants: true,
+		gfm: true
+	}))
+	.use(permalinks(':title'))
+	.use(layouts({
+		engine: 'swig',
+		default: 'page.html',
+		partials: config.layouts,
+		directory: config.layouts
+	}))
+
+/**
+ * Build the site
+ */
+site.build(err => {
+	if (err) throw err
+})
