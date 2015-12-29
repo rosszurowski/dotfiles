@@ -18,11 +18,11 @@
     invisibles: {}
     backUpBeforeSaving: true
     fontFamily: "InputMonoNarrow-Light"
-    fontSize: 11
     showIndentGuide: true
     softTabs: false
     lineHeight: 1.9
     softWrapAtPreferredLineLength: true
+    fontSize: 11
   "one-dark-ui": {}
   "color-picker":
     preferredFormat: "HEX"
