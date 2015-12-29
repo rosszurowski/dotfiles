@@ -59,13 +59,13 @@
 			-moz-osx-font-smoothing: grayscale;
 		"""
 	'font face':
-		'prefix': '@font-face'
+		'prefix': '@fontface'
 		'body': """
 			@font-face {
 			  font-family: '${1}';
 			  src: url('${2}.woff') format('woff'),
 			       url('${2}.ttf') format('truetype'),
-						 url('${2}.svg#font') format('svg'),;
+						 url('${2}.svg#font') format('svg');
 			}
 		"""
 	'Comment':
