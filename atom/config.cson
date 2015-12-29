@@ -56,28 +56,23 @@
     "space-after-colon": " "
     "space-before-combinator": " "
     "space-after-combinator": " "
-    "space-between-declarations": '''
-      
-      
-    '''
+    "space-between-declarations": "\n"
     "space-before-opening-brace": " "
-    "space-after-opening-brace": '''
-      
-      
-    '''
-    "space-after-selector-delimiter": '''
-      
-      
-    '''
+    "space-after-opening-brace": "\n"
+    "space-after-selector-delimiter": "\n"
     "space-before-selector-delimiter": ""
-    "space-before-closing-brace": '''
-      
-      
-    '''
+    "space-before-closing-brace": "\n"
     "strip-spaces": true
     "unitless-zero": true
     "vendor-prefix-align": true
     "sort-order": [
+      "background"
+      "border"
+      "border-radius"
+      "border-top-left-radius"
+      "border-top-right-radius"
+      "border-bottom-left-radius"
+      "border-bottom-right-radius"
       "content"
       "quotes"
       "counter-reset"
@@ -107,9 +102,12 @@
       "overflow-y"
       "flex"
       "flex-direction"
+      "flex-grow"
       "flex-order"
       "flex-pack"
       "flex-align"
+      "align-items"
+      "align-self"
       "justify-content"
       "-webkit-box-sizing"
       "-moz-box-sizing"
