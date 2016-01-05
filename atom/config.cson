@@ -67,6 +67,9 @@
     "vendor-prefix-align": true
     "sort-order": [
       "background"
+      "background-image"
+      "background-position"
+      "background-repeat"
       "border"
       "border-radius"
       "border-top-left-radius"
@@ -77,6 +80,8 @@
       "quotes"
       "counter-reset"
       "counter-increment"
+      "appearance"
+      "outline"
       "position"
       "top"
       "left"
