@@ -59,7 +59,7 @@
 			-moz-osx-font-smoothing: grayscale;
 		"""
 	'font face':
-		'prefix': '@fontface'
+		'prefix': '@font-face'
 		'body': """
 			@font-face {
 			  font-family: '${1}';
