@@ -1,81 +1,55 @@
 "*":
-  "exception-reporting":
-    userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
-  welcome:
-    showOnStartup: false
-  core:
-    themes: [
-      "spacegray-dark-neue-ui"
-      "spacegray-dark-neue-syntax"
+  "autocomplete-plus":
+    scopeBlacklist: [
+      ".source.gfm"
     ]
-    projectHome: "/User/rosszurowski/Sites/"
+  "color-picker":
+    preferredFormat: "HEX"
+  core:
     disabledPackages: [
       "metrics"
       "bookmarks"
       "background-tips"
     ]
-  editor:
-    invisibles: {}
-    backUpBeforeSaving: true
-    fontFamily: "InputMonoNarrow-Light"
-    showIndentGuide: true
-    softTabs: false
-    lineHeight: 1.9
-    softWrapAtPreferredLineLength: true
-    fontSize: 11
-  "one-dark-ui": {}
-  "color-picker":
-    preferredFormat: "HEX"
-  "opened-files": {}
-  "tree-view":
-    hideIgnoredNames: true
-  "status-bar": {}
-  "autocomplete-plus":
-    scopeBlacklist: [
-      ".source.gfm"
+    projectHome: "/User/rosszurowski/Sites/"
+    themes: [
+      "spacegray-dark-neue-ui"
+      "spacegray-dark-neue-syntax"
     ]
-  tabs:
-    usePreviewTabs: true
-  "markdown-preview":
-    useGitHubStyle: true
   csscomb:
+    "always-semicolon": true
+    "block-indent": "\t"
+    "color-case": "lower"
+    "color-shorthand": true
+    "element-case": "lower"
+    "eof-newline": true
     exclude: [
       ".git/**"
       "node_modules/**"
       "bower_components/**"
     ]
-    "always-semicolon": true
-    "color-case": "lower"
-    "block-indent": "\t"
-    "color-shorthand": true
-    "element-case": "lower"
-    "eof-newline": true
     "leading-zero": true
     quotes: "double"
-    "space-before-colon": ""
-    "space-after-colon": " "
-    "space-before-combinator": " "
-    "space-after-combinator": " "
-    "space-between-declarations": "\n"
-    "space-before-opening-brace": " "
-    "space-after-opening-brace": "\n"
-    "space-after-selector-delimiter": "\n"
-    "space-before-selector-delimiter": ""
-    "space-before-closing-brace": "\n"
-    "strip-spaces": true
-    "unitless-zero": true
-    "vendor-prefix-align": true
     "sort-order": [
       "background"
+      "background-color"
       "background-image"
       "background-position"
       "background-repeat"
+      "background-size"
       "border"
+      "border-color"
       "border-radius"
+      "border-top"
+      "border-left"
+      "border-right"
+      "border-bottom"
       "border-top-left-radius"
       "border-top-right-radius"
       "border-bottom-left-radius"
       "border-bottom-right-radius"
+      "border-style"
+      "box-shadow"
       "content"
       "quotes"
       "counter-reset"
@@ -105,12 +79,14 @@
       "overflow"
       "overflow-x"
       "overflow-y"
+      "opacity"
       "flex"
+      "flex-align"
+      "flex-basis"
       "flex-direction"
       "flex-grow"
       "flex-order"
       "flex-pack"
-      "flex-align"
       "align-items"
       "align-self"
       "justify-content"
@@ -149,6 +125,7 @@
       "font-smooth"
       "line-height"
       "letter-spacing"
+      "src"
       "tab-size"
       "text-align"
       "text-decoration"
@@ -160,6 +137,7 @@
       "text-justify"
       "text-outline"
       "text-overflow"
+      "text-rendering"
       "text-transform"
       "text-wrap"
       "vertical-align"
@@ -238,4 +216,42 @@
       "-moz-user-select"
       "-ms-user-select"
       "user-select"
+      "-webkit-font-smoothing"
+      "-moz-osx-font-smoothing"
     ]
+    "space-after-colon": " "
+    "space-after-combinator": " "
+    "space-after-opening-brace": "\n"
+    "space-after-selector-delimiter": "\n"
+    "space-before-closing-brace": "\n"
+    "space-before-colon": ""
+    "space-before-combinator": " "
+    "space-before-opening-brace": " "
+    "space-before-selector-delimiter": ""
+    "space-between-declarations": "\n"
+    "strip-spaces": true
+    "unitless-zero": true
+    "vendor-prefix-align": true
+  editor:
+    backUpBeforeSaving: true
+    fontFamily: "InputMonoNarrow-Light"
+    fontSize: 11
+    invisibles: {}
+    lineHeight: 1.9
+    showIndentGuide: true
+    showInvisibles: false
+    softTabs: false
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
+  "markdown-preview":
+    useGitHubStyle: true
+  "one-dark-ui": {}
+  "opened-files": {}
+  "status-bar": {}
+  tabs:
+    usePreviewTabs: true
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
