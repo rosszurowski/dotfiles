@@ -3,7 +3,6 @@
 # Binaries
 #
 
-export PATH := ./node_modules/.bin:$(PATH)
 BIN := ./node_modules/.bin
 
 #
@@ -28,17 +27,9 @@ BROWSERS  = "last 2 versions"
 build: assets scripts styles
 
 watch: install
-	@make -j3 watch-server watch-css watch-assets
-watch-server:
-	@budo source/js/index.js:assets/bundle.js \
-		--dir build \
-		--port $(PORT) \
-		--live \
-		-- $(TRANSFORM) | garnish
-watch-css:
-	@cssnext --watch source/css/index.css build/assets/bundle.css
-watch-assets:
-	@watch make assets --silent
+	@budo source/js/index.js:assets/bundle.js -d build -H $(HOST) --port $(PORT) -l -- $(TRANSFORMS) & \
+		cssnext --watch source/css/index.css build/assets/bundle.css & \
+		onchange "./**/*.{html,jpg,jpeg,png,gif}" -- make assets & wait
 
 install: node_modules
 
