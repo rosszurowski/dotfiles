@@ -35,6 +35,17 @@ src() {
 }
 complete -o "nospace" -W "$(ls $SOURCE)" src
 
+# DNS Record Lookup
+# Shows all DNS records tied to a given domain
+# Usage: dns [domain name]
+dns() {
+  if [ $# -eq 0 ]; then
+    echo -e "Usage: dns \e[2m[domain name]\e[0m"
+    return;
+  fi
+  dig +nocmd "$1" any +multiline +noall +answer
+}
+
 # URL Stress Testing
 # Creates a number of requests for a certain length of time to a specific URL,
 # and requires http_load be installed (`brew install http_load`)
