@@ -151,7 +151,6 @@
 # Binaries
 #
 
-export PATH := ./node_modules/.bin/:\$(PATH)
 BIN := ./node_modules/.bin
 
 #
@@ -192,7 +191,7 @@ node_modules: package.json
 # Phony
 #
 
-.PHONY: develop clean clean-deps
+.PHONY: watch clean clean-deps
 
 		"""
 
