@@ -3,7 +3,6 @@
 # Binaries
 #
 
-export PATH := ./node_modules/.bin/:$(PATH)
 BIN := ./node_modules/.bin
 
 #
