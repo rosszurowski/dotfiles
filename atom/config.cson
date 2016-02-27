@@ -31,6 +31,9 @@
     "leading-zero": true
     quotes: "double"
     "sort-order": [
+      "$variable"
+      "$include"
+      "$extend"
       "background"
       "background-color"
       "background-image"
