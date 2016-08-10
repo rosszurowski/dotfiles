@@ -3,6 +3,7 @@
     scopeBlacklist: [
       ".source.gfm"
     ]
+  autoprefixer: {}
   "color-picker":
     preferredFormat: "HEX"
   core:
@@ -10,6 +11,7 @@
       "metrics"
       "bookmarks"
       "background-tips"
+      "autoprefixer"
     ]
     projectHome: "/User/rosszurowski/Sites/"
     themes: [
