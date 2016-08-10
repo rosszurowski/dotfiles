@@ -40,5 +40,6 @@ done
 # Add tab completion `killall` with common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
-# Enable rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# Add RVM
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
