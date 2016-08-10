@@ -9,34 +9,152 @@
  * http://lesscss.org
  */
 
+@import "ui-variables";
 
-/*
- * Examples
- * (To see them, uncomment and save)
+@octicons: 'Octicons Regular';
+
+
+/**
+ * Faded indent guide at 80 characters
  */
-
-// style the background color of the tree view
-.tree-view {
-  // background-color: whitesmoke;
-}
-
-// style the background and foreground colors on the atom-text-editor-element itself
-atom-text-editor {
-  // color: white;
-  // background-color: hsl(180, 24%, 12%);
-}
-
-// To style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow .cursor {
-  // border-color: red;
-}
-
 atom-text-editor .indent-guide,
 atom-text-editor::shadow .indent-guide,
 :host .indent-guide {
   opacity: 0.4;
 }
 
+/**
+ * Override default underline of SpaceGrey theme
+ */
 atom-text-editor::shadow .entity.name.tag {
   text-decoration: none;
+}
+
+
+/**
+ * Custom icons
+ */
+.list-item,
+.file,
+.list-group li,
+.tab {
+
+  [data-name]:before {
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+    left: -2px;
+    font-family: @octicons;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    font-size: 1.45em;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+  }
+
+  //
+  // SOURCE
+  //
+
+  // Template files
+  [data-name$='.html']:before,
+  [data-name$='.xml']:before,
+  [data-name$='.php']:before,
+  [data-name$='.jade']:before,
+  [data-name$='.haml']:before,
+  [data-name$='.hamlc']:before,
+  [data-name$='.erb']:before,
+  [data-name$='.twig']:before,
+  [data-name$='.hbs']:before {
+    content: '\f05f';
+  }
+
+  // Executables
+  [data-path*='bin/'].icon-file-text:before,
+  [data-path*='bin/'].title:before,
+  [data-name$='.sh']:before,
+  [data-name$='.bat']:before {
+    content: '\f0c8';
+  }
+
+  //
+  // CONFIG
+  //
+
+  // Lock files (eg. Gemfile.lock)
+  [data-name$='.lock']:before {
+    content: '\f06a';
+  }
+
+  // Table files
+  [data-name$='.csv']:before,
+  [data-name$='.tsv']:before {
+    content: '\f062';
+  }
+
+  // Log files
+  .file-icon-log:before,
+  [data-name$='.log']:before {
+    content: '\f091';
+  }
+
+  // Archives
+  [data-name$='.zip']:before,
+  [data-name$='.rar']:before,
+  [data-name$='.gz']:before {
+    content: '\f0c4';
+  }
+
+  //
+  // DOCS
+  //
+
+  // Markdown files
+  [data-name$='.md']:before,
+  [data-name$='.markdown']:before {
+    content: '\f0c9';
+  }
+
+  //
+  // MEDIA FILES
+  //
+
+  // Fonts files
+  [data-name$='.woff']:before,
+  [data-name$='.woff2']:before,
+  [data-name$='.ttf']:before,
+  [data-name$='.otf']:before,
+  [data-name$='.eot']:before {
+    content: '\f063';
+  }
+
+  // Images files
+  [data-name$='.jpg']:before,
+  [data-name$='.png']:before,
+  [data-name$='.gif']:before,
+  [data-name$='.psd']:before,
+  [data-name$='.svg']:before,
+  [data-name$='.ico']:before {
+    content: '\f012';
+  }
+
+  [data-name$='.psd']:before,
+  [data-name$='.ai']:before,
+  [data-name$='.indd']:before {
+    content: '\f058';
+  }
+
+  [data-name$='.pdf']:before {
+    content: '\f014';
+  }
+
+  [data-name$='.sketch']:before {
+    content: '\f047';
+  }
+
 }
