@@ -157,6 +157,99 @@
 			import ${1} from '${2}'
 		"""
 
+	'Utils: Combine':
+		'prefix': '@combine'
+		'body': """
+			const combine = (...arrays) => [].concat(...arrays)
+		"""
+
+	'Utils: Compact':
+		'prefix': '@compact'
+		'body': """
+			const compact = arr => arr.filter(Boolean)
+		"""
+
+	'Utils: Contains':
+		'prefix': '@contains'
+		'body': """
+			const contains = (() => Array.prototype.includes
+				? (arr, value) => arr.includes(value)
+				: (arr, value) => arr.some(el => el === value)
+			)()
+		"""
+
+	'Utils: Difference':
+		'prefix': '@difference'
+		'body': """
+			const difference = (arr, ...others) => {
+				let combined = [].concat(...others)
+				return arr.filter(el => !combined.some(exclude => el === exclude))
+			}
+		"""
+
+	'Utils: Extend':
+		'prefix': '@extend'
+		'body': """
+		  const extend = Object.assign ? Object.assign : (target, ...sources) => {
+		    sources.forEach(source =>
+		      Object.keys(source).forEach(prop => target[prop] = source[prop])
+		    )
+		    return target
+		  }
+		"""
+
+	'Utils: First':
+		'prefix': '@first'
+		'body': """
+			const first = arr => arr[0]
+		"""
+
+	'Utils: Initial':
+		'prefix': '@initial'
+		'body': """
+			const initial = arr => arr.slice(0, -1)
+		"""
+
+	'Utils: Intersection':
+		'prefix': '@intersection'
+		'body': """
+			const intersection = (...arrays) => {
+				return union(...arrays).filter(toFind =>
+					arrays.every(arr => arr.some(el => el === toFind))
+				)
+			}
+		"""
+
+	'Utils: Merge':
+		'prefix': '@merge'
+		'body': """
+			const merge = (...objects) => extend({}, ...objects)
+ 		"""
+
+	'Utils: Union':
+		'prefix': '@union'
+		'body': """
+			const union = (...arrays) => unique(combine(...arrays))
+ 		"""
+
+	'Utils: Unique':
+		'prefix': '@unique'
+		'body': """
+			const unique = arr => [...Set(arr)]
+		"""
+
+	'Utils: Minimum':
+		'prefix': '@min'
+		'body': """
+			const min = arr => Math.min(...arr)
+		"""
+
+	'Utils: Maximum':
+		'prefix': '@max'
+		'body': """
+			const max = arr => Math.max(...arr)
+		"""
+
 '.source.makefile':
 	'Vanilla Makefile':
 		'prefix': '@vanilla'
