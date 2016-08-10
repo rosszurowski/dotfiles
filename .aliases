@@ -38,6 +38,10 @@ alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Re
 # Usage: `command-one && command-two && notify`
 alias notify="tput bel"
 
+# Keeps the computer awake until the completion of the command
+# Usage: `caffine long-command`
+alias caffeine="caffeinate -i"
+
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
