@@ -324,3 +324,23 @@ node_modules: package.json
 				@make clean
 				@echo "Deployed to \\033[0;32mhttp://$(DOMAIN)/\\033[0m"
 		"""
+
+'.text.html.vue':
+	'Vanilla Vue File':
+		'prefix': '@vanilla'
+		'body': """
+<template>
+</template>
+
+<script>
+
+export default {
+	name: '${1:ComponentName}',
+
+	data () {
+		return {}
+	}
+}
+
+</script>
+			"""
