@@ -75,6 +75,21 @@
  * ${0}
  */
 		"""
+	'Ease: Exponential Out':
+		'prefix': '@ease:expo-out'
+		'body': """
+			cubic-bezier(0.190, 1.000, 0.220, 1.000)
+		"""
+	'Ease: Quartic Out':
+		'prefix': '@ease:quart-out'
+		'body': """
+			cubic-bezier(0.165, 0.840, 0.440, 1.000)
+		"""
+	'Ease: Quintic Out':
+		'prefix': '@ease:quint-out'
+		'body': """
+			cubic-bezier(0.230, 1.000, 0.320, 1.000)
+		"""
 
 '.source.js':
 
