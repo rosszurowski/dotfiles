@@ -181,6 +181,7 @@
       "-ms-transition-property"
       "-o-transition-property"
       "transition-property"
+      "will-change"
       "-webkit-animation"
       "-moz-animation"
       "-ms-animation"
@@ -227,6 +228,7 @@
       "user-select"
       "-webkit-font-smoothing"
       "-moz-osx-font-smoothing"
+      "-webkit-tap-highlight-color"
     ]
     "space-after-colon": " "
     "space-after-combinator": " "
