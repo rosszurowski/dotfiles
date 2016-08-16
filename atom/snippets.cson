@@ -250,6 +250,30 @@
 			const max = arr => Math.max(...arr)
 		"""
 
+	'React: Import':
+		'prefix': '@r:import'
+		'body': """
+			import React from 'react'
+		"""
+
+	'React: Function':
+		'prefix': '@r:fn'
+		'body': """
+			function Element (props) {
+				return <div />
+			}
+		"""
+
+	'React: Component':
+		'prefix': '@r:class'
+		'body': """
+			class Element extends Component {
+				render () {
+					return <div />
+				}
+			}
+		"""
+
 '.source.makefile':
 	'Vanilla Makefile':
 		'prefix': '@vanilla'
