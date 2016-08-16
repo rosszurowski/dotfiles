@@ -31,7 +31,7 @@ for option in autocd globstar; do
 done
 
 # Add tab completion for Git, Make, and Pass
-for file in $(brew --prefix)/etc/bash_completion.d/{git,make,pass}.bash; do
+for file in $(brew --prefix)/etc/bash_completion.d/*.bash; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 
