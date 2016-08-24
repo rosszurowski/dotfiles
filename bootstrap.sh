@@ -64,6 +64,7 @@ modules=(
   khaos
   serve
   standard
+  @rosszurowski/new
 )
 
 echo "> Installing useful node modules..."
