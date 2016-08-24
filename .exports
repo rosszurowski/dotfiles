@@ -5,11 +5,11 @@ export EDITOR="nano"
 
 # Important file paths
 export DROPBOX=$HOME/Dropbox/
-export SOURCE=$HOME/Sites/
+export SRC=$HOME/Sites/
 export YSDN=$DROPBOX/YSDN/
 
 # Language-specific paths
-export GOPATH=$SOURCE/go
+export GOPATH=$SRC/go
 export RBENV_ROOT=/usr/local/var/rbenv
 export PATH=$PATH:$GOPATH/bin
 

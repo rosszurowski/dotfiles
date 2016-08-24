@@ -28,20 +28,20 @@ touch() {
 # Usage: src folder-name/
 src() {
   if [ $# -eq 0 ]; then
-    cd "$SOURCE"
+    cd "$SRC"
     return;
   fi
-  cd "$SOURCE/$1"
+  cd "$SRC/$1"
 }
 _src() {
   local IFS='\n'
   local cur="${COMP_WORDS[COMP_CWORD]}"
-  local root="${SOURCE}"
+  local root="${SRC}"
   local path="${root}${cur}"
   local matches=$(compgen -d -- "$path")
   local results=()
   while read -r match; do
-    results=("${results[@]}" "${match#$SOURCE}/")
+    results=("${results[@]}" "${match#$SRC}/")
   done <<< "$matches"
   COMPREPLY=$results
   return 0
