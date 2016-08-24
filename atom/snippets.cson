@@ -59,7 +59,7 @@
 			-moz-osx-font-smoothing: grayscale;
 		"""
 	'font face':
-		'prefix': '@font-face'
+		'prefix': '@fontface'
 		'body': """
 			@font-face {
 			  font-family: '${1}';
@@ -256,20 +256,38 @@
 			import React from 'react'
 		"""
 
+	'React: Vanilla':
+		'prefix': '@r:vanilla'
+		'body': """
+			import React, { Component } from 'react'
+
+			class ${1:Element} extends Component {
+				render () {
+					return (
+						<${2:div} />
+					)
+				}
+			}
+		"""
+
 	'React: Function':
 		'prefix': '@r:fn'
 		'body': """
-			function Element (props) {
-				return <div />
+			function ${1} (props) {
+				return (
+					<${2:div} />
+				)
 			}
 		"""
 
 	'React: Component':
 		'prefix': '@r:class'
 		'body': """
-			class Element extends Component {
+			class ${1:Element} extends Component {
 				render () {
-					return <div />
+					return (
+						<${2:div} />
+					)
 				}
 			}
 		"""
