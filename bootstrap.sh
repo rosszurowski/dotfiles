@@ -75,6 +75,7 @@ brew install caskroom/cask/brew-cask
 
 # Install applications
 apps=(
+  1password
   atom
   dropbox
   drop-to-gif
