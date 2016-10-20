@@ -28,6 +28,7 @@ binaries=(
   bash-completion
   http_load
   hub
+  go
   pass
   rename
   ssh-copy-id
@@ -68,22 +69,20 @@ modules=(
 echo "> Installing useful node modules..."
 npm install -g ${modules[@]}
 
-# Install go
-brew install go
-
 # Install brew cask
 echo "> Installing brew cask..."
 brew install caskroom/cask/brew-cask
 
 # Install applications
 apps=(
+  atom
   dropbox
+  drop-to-gif
   firefox
   google-chrome
   imageoptim
+  notational-velocity
   sketch
-  atom
-  drop-to-gif
 )
 
 echo "> Installing applications..."
@@ -103,3 +102,4 @@ cd ./dotfiles && make install
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."
 brew cleanup
+brew cask cleanup
