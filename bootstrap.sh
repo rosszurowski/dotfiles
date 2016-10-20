@@ -84,6 +84,7 @@ apps=(
   imageoptim
   notational-velocity
   sketch
+  slack
 )
 
 echo "> Installing applications..."
