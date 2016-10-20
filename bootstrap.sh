@@ -85,10 +85,26 @@ apps=(
   notational-velocity
   sketch
   slack
+  transmission
+  transmit
+  vlc
 )
 
 echo "> Installing applications..."
 brew cask install --appdir="/Applications" ${apps[@]}
+
+# Install quicklook plugins
+qlplugins=(
+  qlcolorcode
+  qlmarkdown
+  qlstephen
+)
+
+echo "> Installing QuickLook plugins..."
+brew cask install ${qlplugins[@]}
+
+qlmanage -r
+qlmanage -r cache
 
 echo "> Installing services..."
 brew tap homebrew/services
