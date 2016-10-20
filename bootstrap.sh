@@ -29,7 +29,7 @@ binaries=(
   http_load
   hub
   go
-  pass
+  postgresql
   rename
   ssh-copy-id
   visionmedia-watch
