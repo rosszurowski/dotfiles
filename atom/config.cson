@@ -251,7 +251,6 @@
     lineHeight: 1.9
     showIndentGuide: true
     showInvisibles: true
-    softTabs: false
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"

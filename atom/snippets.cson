@@ -111,6 +111,24 @@
 			}
 		"""
 
+	'Switch':
+		'prefix': 'switch'
+		'body': """
+			switch (${1:expression}) {
+				case ${2:expression}:
+					${3}
+					break
+			}
+		"""
+
+	'Case':
+		'prefix': 'case'
+		'body': """
+			case ${1:expression}:
+				${2}
+				break
+		"""
+
 	'console.log':
 		'prefix': 'log'
 		'body': 'console.log(${1})${0}'
