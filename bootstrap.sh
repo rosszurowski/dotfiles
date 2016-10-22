@@ -28,7 +28,8 @@ binaries=(
   bash-completion
   http_load
   hub
-  pass
+  go
+  postgresql
   rename
   ssh-copy-id
   visionmedia-watch
@@ -68,26 +69,42 @@ modules=(
 echo "> Installing useful node modules..."
 npm install -g ${modules[@]}
 
-# Install go
-brew install go
-
 # Install brew cask
 echo "> Installing brew cask..."
 brew install caskroom/cask/brew-cask
 
 # Install applications
 apps=(
+  1password
+  atom
   dropbox
+  drop-to-gif
   firefox
   google-chrome
   imageoptim
+  notational-velocity
   sketch
-  atom
-  drop-to-gif
+  slack
+  transmission
+  transmit
+  vlc
 )
 
 echo "> Installing applications..."
 brew cask install --appdir="/Applications" ${apps[@]}
+
+# Install quicklook plugins
+qlplugins=(
+  qlcolorcode
+  qlmarkdown
+  qlstephen
+)
+
+echo "> Installing QuickLook plugins..."
+brew cask install ${qlplugins[@]}
+
+qlmanage -r
+qlmanage -r cache
 
 echo "> Installing services..."
 brew tap homebrew/services
@@ -103,3 +120,4 @@ cd ./dotfiles && make install
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."
 brew cleanup
+brew cask cleanup
