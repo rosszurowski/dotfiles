@@ -85,6 +85,7 @@ apps=(
   google-chrome
   imageoptim
   notational-velocity
+  robofont
   sketch
   slack
   transmission
