@@ -1,4 +1,6 @@
 "*":
+  "autocomplete-modules":
+    webpack: true
   "autocomplete-plus":
     scopeBlacklist: [
       ".source.gfm"
@@ -11,7 +13,6 @@
       "metrics"
       "bookmarks"
       "background-tips"
-      "autoprefixer"
     ]
     projectHome: "/User/rosszurowski/Sites/"
     themes: [
@@ -31,11 +32,12 @@
       "bower_components/**"
     ]
     "leading-zero": true
-    quotes: "double"
+    quotes: "single"
     "sort-order": [
       "$variable"
       "$include"
       "$extend"
+      "composes"
       "background"
       "background-color"
       "background-image"
@@ -71,6 +73,7 @@
       "right"
       "bottom"
       "z-index"
+      "backface-visibility"
       "-webkit-transform"
       "-moz-transform"
       "-ms-transform"
@@ -81,6 +84,7 @@
       "-ms-transform-origin"
       "-o-transform-origin"
       "transform-origin"
+      "transform-style"
       "display"
       "visibility"
       "float"
@@ -146,6 +150,7 @@
       "text-justify"
       "text-outline"
       "text-overflow"
+      "text-shadow"
       "text-rendering"
       "text-transform"
       "text-wrap"
@@ -156,6 +161,7 @@
       "resize"
       "cursor"
       "pointer-events"
+      "touch-action"
       "-webkit-transition"
       "-moz-transition"
       "-ms-transition"
@@ -250,7 +256,6 @@
     lineHeight: 1.9
     showIndentGuide: true
     showInvisibles: true
-    softTabs: false
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
@@ -264,5 +269,8 @@
     usePreviewTabs: true
   "tree-view":
     hideIgnoredNames: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false

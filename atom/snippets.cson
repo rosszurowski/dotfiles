@@ -91,6 +91,11 @@
 			cubic-bezier(0.230, 1.000, 0.320, 1.000)
 		"""
 
+'.source.css.scss':
+	'@import':
+	    'prefix': 'import'
+	    'body': '@import \'$0\';'
+
 '.source.js':
 
 	'If':
@@ -250,18 +255,19 @@
 			const max = arr => Math.max(...arr)
 		"""
 
+'.source.jsx':
 	'React: Import':
-		'prefix': '@r:import'
+		'prefix': '@ri'
 		'body': """
 			import React from 'react'
 		"""
 
 	'React: Vanilla':
-		'prefix': '@r:vanilla'
+		'prefix': '@vanilla'
 		'body': """
 			import React, { Component } from 'react'
 
-			class ${1:Element} extends Component {
+			export default class ${1:Element} extends Component {
 				render () {
 					return (
 						<${2:div} />
@@ -271,7 +277,7 @@
 		"""
 
 	'React: Function':
-		'prefix': '@r:fn'
+		'prefix': '@rfn'
 		'body': """
 			function ${1} (props) {
 				return (
@@ -283,7 +289,7 @@
 	'React: Component':
 		'prefix': '@r:class'
 		'body': """
-			class ${1:Element} extends Component {
+			export default class ${1:Element} extends Component {
 				render () {
 					return (
 						<${2:div} />
