@@ -15,6 +15,7 @@
       "background-tips"
     ]
     projectHome: "/User/rosszurowski/Sites/"
+    telemetryConsent: "limited"
     themes: [
       "spacegray-dark-neue-ui"
       "spacegray-dark-neue-syntax"
@@ -268,6 +269,7 @@
   tabs:
     usePreviewTabs: true
   "tree-view":
+    autoReveal: true
     hideIgnoredNames: true
     squashDirectoryNames: true
   welcome:
