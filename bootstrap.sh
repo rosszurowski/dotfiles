@@ -87,6 +87,7 @@ apps=(
   slack
   transmission
   transmit
+  unrarx
   vlc
 )
 
