@@ -25,6 +25,7 @@ chsh -s /usr/local/bin/bash
 
 # Install useful binaries
 binaries=(
+  awscli
   bash-completion
   http_load
   hub
@@ -109,6 +110,12 @@ qlmanage -r cache
 
 echo "> Installing services..."
 brew tap homebrew/services
+
+echo "> Installing Input typeface..."
+TMPDIR=`mktemp -d`
+curl "http://input.fontbureau.com/build?customize&fontSelection=whole&a=0&g=0&i=serif&l=serif&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do" > $TMPDIR/input.zip
+unzip $TMPDIR/input.zip
+mv $TMPDIR/**/*.ttf ~/Library/Fonts/
 
 # Clone this repo into ./dotfiles
 echo "> Cloning into dotfiles repo..."
