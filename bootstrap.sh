@@ -30,6 +30,7 @@ binaries=(
   http_load
   hub
   go
+  mas
   postgresql
   rename
   ssh-copy-id
@@ -92,8 +93,19 @@ apps=(
   vlc
 )
 
+masapps=(
+  504544917 # Clear
+  975937182 # Fantastical
+  775737590 # iA Writer
+  409183694 # Keynote
+  409203825 # Numbers
+  409201541 # Pages
+  880001334 # Reeder
+)
+
 echo "> Installing applications..."
 brew cask install --appdir="/Applications" ${apps[@]}
+mas install ${masapps[@]}
 
 # Install quicklook plugins
 qlplugins=(
