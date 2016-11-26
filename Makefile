@@ -42,4 +42,7 @@ $(PREFIX)/etc/bash_completion.d/%: ./autocomplete/%
 	@mkdir -p "$(dir $@)"
 	@ln -fs "$(realpath $<)" "$@"
 
+atom/packages.txt: atom/packages
+	@apm list --installed --bare > $@
+
 .PHONY: clean

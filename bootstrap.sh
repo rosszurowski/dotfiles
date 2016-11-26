@@ -127,16 +127,21 @@ brew tap homebrew/services
 echo "> Installing Input typeface..."
 TMPDIR=`mktemp -d`
 curl "http://input.fontbureau.com/build?customize&fontSelection=whole&a=0&g=0&i=serif&l=serif&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do" > $TMPDIR/input.zip
-unzip $TMPDIR/input.zip
+unzip $TMPDIR/input.zip -d $TMPDIR
 mv $TMPDIR/**/*.ttf ~/Library/Fonts/
 
 # Clone this repo into ./dotfiles
+read -p "Choose where to clone the dotfiles repo: " -i "$HOME/Sites/dotfiles" -e CLONE_PATH
 echo "> Cloning into dotfiles repo..."
-git clone https://github.com/rosszurowski/dotfiles ./dotfiles
+mkdir -p $CLONE_PATH
+git clone https://github.com/rosszurowski/dotfiles $CLONE_PATH
+
+echo "> Install Atom packages..."
+apm install --packages-file $CLONE_PATH/atom/packages.txt
 
 # Linking dotfiles
 echo "> Linking dotfiles to $HOME..."
-cd ./dotfiles && make install
+cd $CLONE_PATH && make install
 
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."
