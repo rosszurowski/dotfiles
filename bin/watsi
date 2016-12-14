@@ -1,0 +1,76 @@
+#!/bin/sh
+
+# watsi
+# Utilities for working with the Watsi codebase
+# Usage: watsi [cmd] [args]
+
+watsi () {
+  if [[ $# -eq 1 ]] && [[ "$1" = "open" ]]; then
+    __watsi_open
+  elif [[ $# -eq 1 ]] && [[ "$1" = "edit" ]]; then
+    __watsi_edit
+  elif [[ $# -eq 1 ]] && [[ "$1" = "start" ]]; then
+    __watsi_start
+  elif [[ $# -eq 1 ]] && [[ "$1" = "kill" ]]; then
+    __watsi_kill
+  else
+    __watsi_help
+  fi
+}
+
+__watsi_open () {
+  open $SRC/watsi
+}
+
+__watsi_edit () {
+  cd $SRC/watsi
+  atom .
+}
+
+__watsi_start () {
+  trap __watsi_kill EXIT
+  cd $SRC/watsi
+  foreman start -f Procfile-development
+}
+
+__watsi_kill () {
+  echo "killing..."
+  local mailcatcher=$(lsof -ti tcp:1025)
+  local server=$(lsof -ti tcp:4000)
+  local jasmine=$(lsof -ti tcp:8888)
+
+  if [[ -n ${mailcatcher} ]]; then
+    kill -9 ${mailcatcher}
+  fi
+
+  if [[ -n ${jasmine} ]]; then
+    kill -9 ${jasmine}
+  fi
+
+  if [[ -n ${server} ]]; then
+    kill -9 ${server}
+  fi
+}
+
+__watsi_help () {
+  echo -e ""
+  echo -e "  Usage: watsi \e[2m[cmd] [args]\e[0m"
+  echo -e ""
+  echo "  Commands:"
+  echo ""
+  echo "    open      Open source folder in Finder"
+  echo "    edit      Open source folder editor"
+  echo "    start     Start server"
+  echo "    kill      Kill server"
+  echo ""
+}
+
+__watsi_complete () {
+  COMPREPLY=()
+	local cur="${COMP_WORDS[COMP_CWORD]}"
+  local commands="open edit start kill"
+  COMPREPLY=($(compgen -W "${commands}" -- ${cur}))
+  return 0
+}
+
+complete -o nospace -F __watsi_complete watsi
