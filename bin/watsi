@@ -59,7 +59,7 @@ __watsi_help () {
   echo "  Commands:"
   echo ""
   echo "    open      Open source folder in Finder"
-  echo "    edit      Open source folder editor"
+  echo "    edit      Open source folder in editor"
   echo "    start     Start server"
   echo "    kill      Kill server"
   echo ""
