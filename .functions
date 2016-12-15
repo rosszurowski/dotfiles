@@ -1,6 +1,4 @@
 
-set -e
-
 # mkcd
 # Make and change directory shortcut
 # Usage: mkcd [directory]
