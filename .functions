@@ -170,18 +170,6 @@ watsi () {
     k|kill) __watsi_kill;;
     -h|--help) __watsi_help;;
   esac
-
-  # if [[ $# -eq 1 ]] && [[ "$1" = "open" ]]; then
-  #   __watsi_open
-  # elif [[ $# -eq 1 ]] && [[ "$1" = "edit" ]]; then
-  #   __watsi_edit
-  # elif [[ $# -eq 1 ]] && [[ "$1" = "start" ]]; then
-  #   __watsi_start
-  # elif [[ $# -eq 1 ]] && [[ "$1" = "kill" ]]; then
-  #   __watsi_kill
-  # else
-  #   __watsi_help
-  # fi
 }
 
 __watsi_open () {
