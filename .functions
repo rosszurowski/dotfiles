@@ -194,16 +194,21 @@ __watsi_edit () {
 }
 
 __watsi_start () {
-  trap __watsi_kill EXIT
+  trap __watsi_kill INT TERM
   cd $SRC/watsi
   foreman start -f Procfile-development
 }
 
 __watsi_kill () {
   echo "Shutting down..."
-  local mailcatcher=$(lsof -ti tcp:1025)
+  local smtp=$(lsof -ti tcp:1025)
+  local mailcatcher=$(lsof -ti tcp:1080)
   local server=$(lsof -ti tcp:4000)
   local jasmine=$(lsof -ti tcp:8888)
+
+  if [[ -n ${smtp} ]]; then
+    kill -9 ${smtp}
+  fi
 
   if [[ -n ${mailcatcher} ]]; then
     kill -9 ${mailcatcher}
