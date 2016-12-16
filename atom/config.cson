@@ -270,6 +270,7 @@
     usePreviewTabs: true
   "tree-view":
     autoReveal: true
+    focusOnReveal: false
     hideIgnoredNames: true
     squashDirectoryNames: true
   welcome:
