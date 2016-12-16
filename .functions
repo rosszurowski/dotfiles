@@ -193,6 +193,7 @@ __watsi_kill () {
   local mailcatcher=$(lsof -ti tcp:1080)
   local server=$(lsof -ti tcp:4000)
   local jasmine=$(lsof -ti tcp:8888)
+  local sidekiq=$(lsof -ti tcp:6379)
 
   if [[ -n ${smtp} ]]; then
     kill -9 ${smtp}
@@ -208,6 +209,10 @@ __watsi_kill () {
 
   if [[ -n ${server} ]]; then
     kill -9 ${server}
+  fi
+
+  if [[ -n ${sidekiq} ]]; then
+    kill -9 ${sidekiq}
   fi
 }
 
