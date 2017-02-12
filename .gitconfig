@@ -1,6 +1,7 @@
 [user]
 	name = Ross Zurowski
 	email = ross@rosszurowski.com
+	signingkey = 13C0941A
 
 [alias]
 	count	= !git shortlog -sn
@@ -48,3 +49,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = true
