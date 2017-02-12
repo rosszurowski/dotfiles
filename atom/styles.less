@@ -17,16 +17,23 @@
 /**
  * Faded indent guide at 80 characters
  */
-atom-text-editor .indent-guide,
-atom-text-editor::shadow .indent-guide,
+.indent-guide,
 :host .indent-guide {
   opacity: 0.4;
 }
 
 /**
+ * Color title bar
+ */
+
+.tool-panel {
+  background-color: #15171d;
+}
+
+/**
  * Override default underline of SpaceGrey theme
  */
-atom-text-editor::shadow .entity.name.tag {
+atom-text-editor.editor .syntax--entity.syntax--name.syntax--tag {
   text-decoration: none;
 }
 

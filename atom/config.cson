@@ -20,6 +20,7 @@
       "spacegray-dark-neue-ui"
       "spacegray-dark-neue-syntax"
     ]
+    useCustomTitleBar: true
   csscomb:
     "always-semicolon": true
     "block-indent": "\t"
@@ -260,7 +261,8 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
-  linter: {}
+  linter:
+    showErrorPanel: false
   "markdown-preview":
     useGitHubStyle: true
   "one-dark-ui": {}
