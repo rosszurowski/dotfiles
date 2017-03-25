@@ -2,7 +2,7 @@
 # Variables
 #
 DIR         = $(dir $(lastword $(MAKEFILE_LIST)))
-FILES       = .aliases .exports .functions .profile .gitconfig .gitignore
+FILES       = .aliases .exports .functions .profile .prompt .gitconfig .gitignore .hyper.js .vimrc
 DESTINATION = $(HOME)/
 OVERRIDE    = .local
 PREFIX     ?= $(shell brew --prefix)
@@ -10,9 +10,9 @@ PREFIX     ?= $(shell brew --prefix)
 DOTFILES    = $(addprefix $(DESTINATION), $(FILES))
 EXISTING    = $(addprefix $(DESTINATION), $(wildcard .*$(OVERRIDE)))
 LOCALS      = $(addsuffix $(OVERRIDE), $(DOTFILES))
-COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash pass.bash new.bash)
+COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash new.bash)
 
-ATOM        = $(addprefix $(DESTINATION), .atom)
+ATOM        = $(addprefix $(DESTINATION), .atom .vim)
 
 YELLOW = \033[0;33m
 END    = \033[0m

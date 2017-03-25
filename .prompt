@@ -1,0 +1,53 @@
+
+prompt_symbol="$"
+prompt_multiline_symbol=">"
+prompt_symbol_color="$GRAY"
+
+# User color
+case $(id -u) in
+  0) prompt_user_color="$RED" ;;  # root
+  *) prompt_user_color="$GREEN" ;;
+esac
+
+prompt_set_title () {
+  case "$BASH_COMMAND" in
+  *\033]0*)
+    ;;
+  *)
+    echo -ne "\033]0;"
+    echo -n "${BASH_COMMAND}"
+    echo -ne "\007"
+    ;;
+  esac
+}
+
+prompt () {
+  # Local or SSH session?
+  local remote=
+  [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && remote=1
+
+  # Show username@hostname inside SSH session
+  local user_prompt="$prompt_user_color$USER$NOCOLOR"
+  local host_prompt=
+  [ -n "$remote" ] && host_prompt="$user_prompt@$YELLOW$HOSTNAME$NOCOLOR"
+
+  # Show delimiter if user or host visible
+  local login_delimiter=
+  [ -n "$host_prompt" ] && login_delimiter=":"
+
+  # Format prompt
+  prompt="\[\$prompt_symbol_color\]\$prompt_symbol\[\$NOCOLOR\] "
+
+  PS1="\[\033]0;\w\007\]$prompt"
+  PS2="\[$prompt_symbol_color\]$prompt_multiline_symbol\[$NOCOLOR\] "
+}
+
+
+case "$TERM" in
+xterm*|rxvt*)
+  PROMPT_COMMAND=prompt
+  trap prompt_set_title DEBUG
+  ;;
+*)
+  ;;
+esac

@@ -37,18 +37,15 @@
 	'Vanilla':
 		'prefix': '@vanilla'
 		'body': """
-
 			# Ignore OS X scraps
 			.DS_Store
 
-			# Ignore npm scraps
+			# Ignore npm/yarn scraps
 			node_modules/
 			npm-debug.log
-
-			# Ignore design files
-			resources/
-			design/
-
+			yarn.lock
+			yarn-debug.log
+			yarn-error.log
 		"""
 
 '.source.css':

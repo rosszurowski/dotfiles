@@ -240,20 +240,29 @@
     ]
     "space-after-colon": " "
     "space-after-combinator": " "
-    "space-after-opening-brace": "\n"
-    "space-before-closing-brace": "\n"
+    "space-after-opening-brace": '''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    '''
+    "space-before-closing-brace": '''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    '''
     "space-before-colon": ""
     "space-before-combinator": " "
     "space-before-opening-brace": " "
     "space-before-selector-delimiter": ""
-    "space-between-declarations": "\n"
+    "space-between-declarations": '''
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    '''
     "strip-spaces": true
     "unitless-zero": true
     "vendor-prefix-align": true
   editor:
     backUpBeforeSaving: true
-    fontFamily: "InputMonoNarrow-Light"
-    fontSize: 11
+    fontFamily: "SF Mono"
+    fontSize: 12
     invisibles: {}
     lineHeight: 1.9
     showIndentGuide: true
@@ -261,8 +270,10 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
-  linter:
-    showErrorPanel: false
+  linter: {}
+  "linter-ui-default":
+    decorateOnTreeView: "None"
+    showPanel: true
   "markdown-preview":
     useGitHubStyle: true
   "one-dark-ui": {}

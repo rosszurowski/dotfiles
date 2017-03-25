@@ -1,10 +1,9 @@
 
 export PATH="/Users/$(whoami)/Sites/dotfiles/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:$PATH"
-export PS1="\[\033[0;90m\]$ \[\033[0m\]"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{path,exports,aliases,functions}; do
+for file in ~/.{path,exports,aliases,functions,prompt}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -12,16 +11,22 @@ unset file
 # Load any computer-specific extensions to dotfiles
 # These files should have a .local suffix, and will not be
 # tracked by Git.
-for file in ~/.{profile,path,exports,aliases,functions}.local; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file"
-done
+# for file in ~/.{profile,path,exports,prompt,aliases,functions}.local; do
+# 	[ -r "$file" ] && [ -f "$file" ] && source "$file"
+# done
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
+# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
+shopt -s checkwinsize
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell
+# Save all lines of a multiple-line command in the same history entry (allows easy re-editing of multi-line commands)
+shopt -s cmdhist
+# Do not autocomplete when accidentally pressing Tab on an empty line. (It takes forever and yields "Display all 15 gazillion possibilites?")
+shopt -s no_empty_cmd_completion
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
@@ -43,3 +48,5 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # Add RVM
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+export PATH="$HOME/.yarn/bin:$PATH"

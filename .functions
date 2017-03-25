@@ -102,34 +102,14 @@ nvlink() {
 EOL
 }
 
-# Convert video to GIF
-# --start
-# --end
-# --duration
-# --width
-# --height
-# --frame-rate
-# Adapted from http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
-gif() {
-  if [ $# -eq 0 ]; then
-    echo -e "Usage: gif \e[2m[input] [output]\e[0m"
-    return;
-  fi
-
-  FRAME_RATE=18
-
-  ffmpeg -i "$1" -pix_fmt rgb24 -r "$FRAME_RATE" -f gif - | gifsicle --optimize=3 --delay=3 > $2
-
-  # echo -e "\e[2mStill being implemented...\e[0m"
-  # return;
-  #
-  # PALETTE="/tmp/palette.png"
-  # FILTERS="fps=18,scale320:-1:flags=lanczos"
-  #
-  # ffmpeg -v warning -i "$1" -vf "$FILTERS,palettegen" -y $PALETTE
-  # ffmpeg -v warning -i "$1" -i "$PALETTE" -lavfi "$FILTERS [x]; [x][1:v] paletteuse" -y $2
-  # rm -f $PALETTE
-
+# Compare original and gzipped file size
+# Usage: gz [input]
+function gz() {
+	local origsize=$(wc -c < "$1")
+	local gzipsize=$(gzip -c "$1" | wc -c)
+	local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
+	echo "Original: %d bytes\n" "$origsize"
+	echo "Gzipped: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
 }
 
 # HTML5 Video Encoding
