@@ -83,6 +83,7 @@ apps=(
   drop-to-gif
   firefox
   google-chrome
+  hyper
   imageoptim
   notational-velocity
   robofont
