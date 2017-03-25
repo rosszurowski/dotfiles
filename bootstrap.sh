@@ -36,6 +36,7 @@ binaries=(
   ssh-copy-id
   visionmedia-watch
   wget
+  yarn
 )
 
 echo "> Installing useful binaries..."
@@ -60,12 +61,13 @@ npm config set init-version "0.0.1"
 # Install useful node modules
 modules=(
   ava
-  webpack
-  psi
+  hpm-cli
   khaos
+  psi
   serve
   standard
   @rosszurowski/new
+  webpack
 )
 
 echo "> Installing useful node modules..."
