@@ -10,13 +10,11 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 
-
-
 ##### System Preferences
 
 ### General
 
-# Show scroll bars: Always
+# Show scroll bars: Automatic
 defaults write -g 'AppleShowScrollBars' -string 'Automatic'
 
 
@@ -30,7 +28,8 @@ defaults write com.apple.dock 'mineffect' -string 'scale'
 defaults write com.apple.dock 'minimize-to-application' -bool true
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
-
+# Disable resizing of the dock
+defaults write com.apple.dock size-immutable -bool yes
 
 ### Mission Control
 
