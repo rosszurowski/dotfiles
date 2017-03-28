@@ -27,7 +27,7 @@
 	
 [core]
 	excludesfile = ~/.gitignore
-	editor = nano
+	editor = vi
 	pager = less -R -F
 	autocrlf = input
 	
