@@ -278,6 +278,8 @@
     useGitHubStyle: true
   "one-dark-ui": {}
   "opened-files": {}
+  "prettier-atom":
+    useEslint: true
   "status-bar": {}
   tabs:
     usePreviewTabs: true
