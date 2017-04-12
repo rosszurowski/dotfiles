@@ -177,6 +177,19 @@
 			import ${1} from '${2}'
 		"""
 
+	'Template: Node Main Script':
+		'prefix': '@main'
+		'body': """
+			async function main () {
+				${0}
+			}
+
+			main().catch(err => {
+				console.error(err)
+				process.exit(1)
+			})
+		"""
+
 	'Utils: Combine':
 		'prefix': '@combine'
 		'body': """
