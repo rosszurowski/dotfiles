@@ -18,36 +18,39 @@
 	ignore = !git update-index --assume-unchanged
 	unignore = !git update-index --no-assume-unchanged
 	ignored = !git ls-files -v | grep ^[a-z]
-	
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	ui = true
-	
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = vi
 	pager = less -R -F
 	autocrlf = input
-	
+
 [apply]
 	whitespace = nowarn
-	
+
 [mergetool]
 	keepBackup = false
-	
+
 [difftool]
 	prompt = false
-	
+
 [help]
 	autocorrect = 1
-	
+
 [push]
 	default = simple
+	followTags = true
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
 [commit]
 	gpgsign = true
+[status]
+	showUntrackedFiles = all
