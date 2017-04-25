@@ -1,4 +1,8 @@
 "*":
+  "atom-package-deps":
+    ignored: [
+      "linter-ui-default"
+    ]
   "autocomplete-modules":
     webpack: true
   "autocomplete-plus":
@@ -18,9 +22,9 @@
     telemetryConsent: "limited"
     themes: [
       "spacegray-dark-neue-ui"
-      "spacegray-dark-neue-syntax"
+      "nord-atom-syntax"
     ]
-    useCustomTitleBar: true
+    titleBar: "custom"
   csscomb:
     "always-semicolon": true
     "block-indent": "\t"
@@ -277,18 +281,28 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     panelHeight: 72
-    showPanel: true
   "markdown-preview":
     useGitHubStyle: true
-  "one-dark-ui": {}
+  "nord-atom-syntax":
+    accessibility:
+      commentContrast: 10
+  "nord-atom-ui":
+    darkerFormFocusEffect: true
+  "one-dark-ui":
+    fontSize: 12
   "opened-files": {}
   "prettier-atom":
+    formatOnSaveOptions: {}
+    prettierOptions:
+      jsxBracketSameLine: true
+      singleQuote: true
+      trailingComma: "all"
+    silenceErrors: true
     useEslint: true
   "status-bar": {}
   tabs:
     usePreviewTabs: true
   "tree-view":
-    autoReveal: true
     focusOnReveal: false
     hideIgnoredNames: true
     squashDirectoryNames: true
