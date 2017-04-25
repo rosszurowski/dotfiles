@@ -33,6 +33,7 @@ binaries=(
   mas
   postgresql
   rename
+  trash
   ssh-copy-id
   visionmedia-watch
   wget

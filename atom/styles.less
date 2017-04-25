@@ -23,18 +23,31 @@
 }
 
 /**
- * Color title bar
+ * Spacegray-specific styling
  */
 
 .tool-panel {
   background-color: #15171d;
 }
 
-/**
- * Override default underline of SpaceGrey theme
- */
-atom-text-editor.editor .syntax--entity.syntax--name.syntax--tag {
-  text-decoration: none;
+.tab-bar,
+.tab-bar .tab,
+.tab-bar .tab.active,
+.tab-bar .tab.active:before,
+.tab-bar .tab.active .close-icon {
+  height: 36px;
+  line-height: 36px;
+}
+
+.tab-bar .tab.modified:not(:hover) .close-icon {
+  top: 50%;
+  margin-top: -4px;
+}
+
+atom-text-editor {
+  .syntax--entity.syntax--name.syntax--tag {
+    text-decoration: none;
+  }
 }
 
 /**

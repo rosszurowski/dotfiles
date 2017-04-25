@@ -37,9 +37,6 @@
 	'Vanilla':
 		'prefix': '@vanilla'
 		'body': """
-			# Ignore OS X scraps
-			.DS_Store
-
 			# Ignore npm/yarn scraps
 			node_modules/
 			npm-debug.log
@@ -119,7 +116,7 @@
 			switch (${1:expression}) {
 				case ${2:expression}:
 					${3}
-					break
+					break;
 			}
 		"""
 
@@ -128,16 +125,16 @@
 		'body': """
 			case ${1:expression}:
 				${2}
-				break
+				break;
 		"""
 
 	'console.log':
 		'prefix': 'log'
-		'body': 'console.log(${1})${0}'
+		'body': 'console.log(${1});${0}'
 
 	'console.warn':
 		'prefix': 'warn'
-		'body': 'console.warn(${1})${0}'
+		'body': 'console.warn(${1});${0}'
 
 	'Function':
 		'prefix': 'fn'
@@ -174,7 +171,7 @@
 	'Import':
 		'prefix': 'import'
 		'body': """
-			import ${1} from '${2}'
+			import ${1} from '${2}';
 		"""
 
 	'Template: Node Main Script':
@@ -185,15 +182,15 @@
 			}
 
 			main().catch(err => {
-				console.error(err)
-				process.exit(1)
+				console.error(err);
+				process.exit(1);
 			})
 		"""
 
 	'Utils: Combine':
 		'prefix': '@combine'
 		'body': """
-			const combine = (...arrays) => [].concat(...arrays)
+			const combine = (...arrays) => [].concat(...arrays);
 		"""
 
 	'Utils: Compact':
