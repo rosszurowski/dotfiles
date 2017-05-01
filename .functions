@@ -60,6 +60,21 @@ dns() {
   dig +nocmd "$1" any +multiline +noall +answer
 }
 
+# Base64 Encoder
+# Encodes a file to base64. Pairs well with `pbcopy`
+# Usage: btoa [file]
+btoa() {
+  if [ $# -eq 0 ]; then
+    echo -e "Usage: btoa \e[2m[file]\e[0m"
+    return;
+  fi
+  if [ ! -f $1 ]; then
+    echo -e "\e[31mError:\e[0m Could not find file \`$1\`"
+    return;
+  fi
+  cat $1 | openssl base64 | tr -d '\n'
+}
+
 # URL Stress Testing
 # Creates a number of requests for a certain length of time to a specific URL,
 # and requires http_load be installed (`brew install http_load`)
