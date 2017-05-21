@@ -15,7 +15,7 @@
 
 
 /**
- * Faded indent guide at 80 characters
+ * Fade the first indent guide
  */
 .indent-guide,
 :host .indent-guide {
@@ -23,31 +23,57 @@
 }
 
 /**
- * Spacegray-specific styling
+ *
+ * Style overrides for Nucleus UI theme
+ *
  */
 
-.tool-panel {
-  background-color: #15171d;
+.title-bar {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-.tab-bar,
-.tab-bar .tab,
-.tab-bar .tab.active,
-.tab-bar .tab.active:before,
-.tab-bar .tab.active .close-icon {
-  height: 36px;
-  line-height: 36px;
+.title-bar .title {
+  font-size: 12px;
 }
 
-.tab-bar .tab.modified:not(:hover) .close-icon {
-  top: 50%;
-  margin-top: -4px;
+// Shrink font-size of tree view
+.list-group li:not(.list-nested-item),
+.list-group li.list-nested-item > .list-item,
+.list-tree li:not(.list-nested-item),
+.list-tree li.list-nested-item > .list-item {
+  font-size: 12px;
 }
 
-atom-text-editor {
-  .syntax--entity.syntax--name.syntax--tag {
-    text-decoration: none;
-  }
+// Don't bold selected items
+.list-group li:not(.list-nested-item).selected,
+.list-tree li:not(.list-nested-item).selected,
+.list-group li.list-nested-item.selected > .list-item,
+.list-tree li.list-nested-item.selected > .list-item {
+  font-weight: normal;
+}
+
+.tab-bar .tab {
+  font-size: 12px;
+}
+
+.tab-bar .tab.active .title,
+.tab-bar .tab.active:hover .title {
+  font-weight: normal;
+}
+
+status-bar {
+  background: #3b414e;
+  font-size: 11px; // Increase from 0.8em
+}
+
+.linter-status-count a {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.linter-status-count span.icon::before {
+  font-size: 11px;
 }
 
 /**
@@ -79,11 +105,11 @@ atom-text-editor {
 /**
  * Custom icons
  */
+
 .list-item,
 .file,
 .list-group li,
 .tab {
-
   [data-name]:before {
     margin-right: 5px;
     position: relative;
@@ -201,5 +227,4 @@ atom-text-editor {
   [data-name$='.sketch']:before {
     content: '\f047';
   }
-
 }

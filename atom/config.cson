@@ -21,7 +21,7 @@
     projectHome: "/User/rosszurowski/Sites/"
     telemetryConsent: "limited"
     themes: [
-      "spacegray-dark-neue-ui"
+      "nucleus-dark-ui"
       "nord-atom-syntax"
     ]
     titleBar: "custom"
@@ -301,6 +301,7 @@
     useEslint: true
   "status-bar": {}
   tabs:
+    alwaysShowTabBar: false
     usePreviewTabs: true
   "tree-view":
     focusOnReveal: false
