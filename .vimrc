@@ -1,7 +1,34 @@
+set nocompatible
+set encoding=utf-8 nobomb
+filetype on
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+" ES6 syntax
+Plugin 'othree/yajs.vim'
+
+" HTML5 syntax
+Plugin 'othree/html5.vim'
+
+" Automatic closing of quotes, parenthesis, brackets, etc.
+Plugin 'Raimondi/delimitMate'
+
+Plugin 'arcticicestudio/nord-vim'
+
+" Tab line
+Plugin 'vim-airline/vim-airline'
+
+
+call vundle#end()
+filetype plugin indent on
+
+
 colorscheme nord
 
-" Make Vim more useful
-set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set clipboard=unnamed
 " Enhance command-line completion
@@ -14,8 +41,14 @@ set backspace=indent,eol,start
 set ttyfast
 " Add the g flag to search/replace by default
 set gdefault
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
+
+" Airline config
+" airline config
+set noshowmode
+set laststatus=2
+" let g:airline_powerline_fonts=1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline_skip_empty_sections=1
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
