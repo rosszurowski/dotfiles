@@ -69,6 +69,9 @@
  * ${0}
  */
 		"""
+	'Font Family: San Francisco':
+		'prefix': '@san-francisco'
+		'body': '-apple-system, BlinkMacSystemFont'
 	'Ease: Exponential Out':
 		'prefix': '@ease:expo-out'
 		'body': """
