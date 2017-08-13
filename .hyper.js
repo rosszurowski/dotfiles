@@ -7,9 +7,9 @@ module.exports = {
 
     cursorShape: 'BEAM',
     cursorBlink: false,
-    
+
     css: ``,
-    
+
     termCSS: `
       x-screen a {
         color: #96b5b4;
@@ -42,6 +42,7 @@ module.exports = {
   plugins: [
     // Theme
     'nord-hyper',
+    'hyper-import-sf-mono',
 
     'hypercwd',
     'hyperlinks',
