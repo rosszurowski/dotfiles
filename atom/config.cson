@@ -17,14 +17,15 @@
       "metrics"
       "bookmarks"
       "background-tips"
+      "styleguide"
     ]
     projectHome: "/User/rosszurowski/Sites/"
     telemetryConsent: "limited"
     themes: [
-      "nucleus-dark-ui"
+      "one-dark-ui"
       "nord-atom-syntax"
     ]
-    titleBar: "custom"
+    titleBar: "hidden"
   csscomb:
     "always-semicolon": true
     "block-indent": "\t"
@@ -283,7 +284,10 @@
     executablePath: "./node_modules/.bin/flow"
   "linter-ui-default":
     decorateOnTreeView: "None"
-    panelHeight: 72
+    hidePanelWhenEmpty: true
+    panelHeight: 159
+    showPanel: true
+    statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
   "nord-atom-syntax":
@@ -292,7 +296,8 @@
   "nord-atom-ui":
     darkerFormFocusEffect: true
   "one-dark-ui":
-    fontSize: 12
+    fontSize: 13
+  "one-light-ui": {}
   "opened-files": {}
   "prettier-atom":
     formatOnSaveOptions: {}
@@ -304,12 +309,11 @@
     useEslint: true
   "status-bar": {}
   tabs:
-    alwaysShowTabBar: false
     usePreviewTabs: true
   "tree-view":
     focusOnReveal: false
     hideIgnoredNames: true
-    squashDirectoryNames: true
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
   whitespace:
