@@ -90,41 +90,14 @@ httpload() {
   rm -f /var/tmp/$STAMP.http_load_temp_file
 }
 
-# Notational Velocity Linker
-# Creates a Finder link to a note in Notational Velocity. This is useful for
-# providing references back to my notes, which have traditionally been
-# easily forgotten.
-# Usage: nvlink [note]
-nvlink() {
-  if [ $# -eq 0 ]; then
-    echo -e "Usage: nvlink \e[2m[note]\e[0m"
-    return;
-  fi
-  local note=$1
-  local dest="./${note}.webloc"
-  touch "$dest"
-  SetFile -a E "$dest"
-  local uri=`node -pe "encodeURI('${note}')"`
-  cat > "$dest" <<EOL
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>URL</key>
-  <string>nv://find/${uri}</string>
-</dict>
-</plist>
-EOL
-}
-
 # Compare original and gzipped file size
 # Usage: gz [input]
 function gz() {
 	local origsize=$(wc -c < "$1")
 	local gzipsize=$(gzip -c "$1" | wc -c)
 	local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
-	echo "Original: %d bytes\n" "$origsize"
-	echo "Gzipped: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
+	printf "Original: %d bytes\n" "$origsize"
+	printf "Gzipped:  %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
 }
 
 # HTML5 Video Encoding
