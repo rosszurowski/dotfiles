@@ -67,7 +67,7 @@ modules=(
   psi
   serve
   standard
-  @rosszurowski/new
+  svgo
   webpack
 )
 
