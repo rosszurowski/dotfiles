@@ -5,6 +5,9 @@
 
 '.platform-darwin':
   'cmd-i': 'tree-view:toggle'
+  # Remove the key-binding-resolver pane that always pops up
+  'cmd-.': 'unset!'
+  'cmd-shift-.': 'key-binding-resolver:toggle'
 
 'atom-text-editor':
   'cmd-shift-i': 'editor:auto-indent'
