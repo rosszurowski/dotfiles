@@ -21,6 +21,77 @@ prompt_set_title () {
   esac
 }
 
+fnKeys=('\eOP' '\eOQ' '\eOR' '\eOS' '\e[15~' '\e[17~' '\e[18~' '\e[19~' '\e[20~' '\e[21~' '\e[23~' '\e[24~')
+touchBarState=''
+
+touchbar_echo () {
+  if [ -n "$TMUX" ]
+  then
+    echo -ne "\ePtmux;\e$*\e\\"
+  else
+    echo -ne $*
+  fi
+}
+
+touchbar_git_current_branch () {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+touchbar_clear () {
+  touchbar_echo "\033]1337;PopKeyLabels\a"
+}
+
+touchbar_unbind () {
+  for fnKey in "$fnKeys[@]"; do
+    bind -r "$fnKey"
+  done
+}
+
+touchbar_display () {
+  touchbar_clear
+  touchbar_unbind
+
+  touchBarState=''
+  touchbar_echo "\033]1337;SetKeyLabel=F1=$(echo $(pwd) | awk -F/ '{print $(NF-1)"/"$(NF)}')\a"
+  bind '"\eOP":"ls \n"'
+
+  # Check if the current directory is in a Git repository.
+  command git rev-parse --is-inside-work-tree &>/dev/null || return
+
+  # Check if the current directory is in .git before running git checks.
+  if [[ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]]; then
+    touchbar_echo "\033]1337;SetKeyLabel=F2=⎇ $(touchbar_git_current_branch)\a"
+
+    bind -x '"\eOQ":"touchbar_display_branches"'
+  fi
+}
+
+touchbar_display_branches () {
+  touchbar_clear
+  touchbar_unbind
+
+  touchBarState='git'
+  fnKeysIndex=1
+  for branch in $(git for-each-ref --format='%(refname:short)' refs/heads/); do
+    fnKeysIndex=$((fnKeysIndex + 1))
+    fnKeyCodeIndex=$((fnKeysIndex - 1))
+    keyCode=${fnKeys[$fnKeyCodeIndex]}
+    touchbar_echo "\033]1337;SetKeyLabel=F$fnKeysIndex=$branch\a"
+    bind -x "\"$keyCode\":'touchbar_display && git checkout $branch'"
+  done
+
+  touchbar_echo "\033]1337;SetKeyLabel=F1=Cancel\a"
+  bind -x '"\eOP":"touchbar_display"'
+}
+
+
 prompt () {
   # Local or SSH session?
   local remote=
@@ -34,6 +105,13 @@ prompt () {
   # Show delimiter if user or host visible
   local login_delimiter=
   [ -n "$host_prompt" ] && login_delimiter=":"
+
+  # Set iTerm touchbar function keys
+  if [[ $touchBarState == 'git' ]]; then
+    touchbar_display_branches
+  else
+    touchbar_display
+  fi
 
   # Format prompt
   prompt="\[\$prompt_symbol_color\]\$prompt_symbol\[\$NOCOLOR\] "
