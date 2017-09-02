@@ -286,7 +286,6 @@
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
     panelHeight: 159
-    showPanel: true
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
@@ -313,7 +312,6 @@
   "tree-view":
     focusOnReveal: false
     hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
   whitespace:
