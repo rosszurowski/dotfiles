@@ -1,0 +1,62 @@
+# configuration
+username="rosszurowski"
+export NAME="Ross Zurowski"
+export EMAIL="ross@rosszurowski.com"
+
+# if this ever breaks run "$ brew prefix <toolname>"
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
+export PATH="$PATH:/Users/$username/Sites/dotfiles/bin"
+
+# man pages
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
+
+# start zle
+zmodload zsh/zle
+
+# utf-8 & screen
+export LC_ALL="en_US.UTF-8"
+export TERM=screen-256color
+
+# shortcuts
+export SRC=$HOME/Sites
+export DOTFILES=$SRC/dotfiles
+export ZSH=$DOTFILES/zsh
+
+PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
+
+# source every .zsh file in this repo
+for config_file ($DOTFILES/**/*.zsh) source $config_file
+
+###########################
+#  Plugins
+###########################
+antigen bundle marzocchi/zsh-notify
+antigen bundle zsh-users/fizsh
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+
+# load autosuggest as last
+antigen bundle tarruda/zsh-autosuggestions
+
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit
+source $ZSH/completion.zsh
+
+###############################################################################
+# Default programs
+###############################################################################
+
+if [ -x "$(command -v nvim)" ]; then
+  export EDITOR="nvim"
+else
+  export EDITOR="vim"
+fi
+
+# configure rvm
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# configure yarn bins
+export PATH="$HOME/.yarn/bin:$PATH"

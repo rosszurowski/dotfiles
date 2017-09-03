@@ -1,26 +1,13 @@
 
-# Folder view configuration files
-.DS_Store
-Desktop.ini
-
-# Thumbnail cache files
-._*
-Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
-
-# Ignore local dotfile extensions
-.*.local
-
 # Ignore vim files
+vim/vim.symlink/backups
+vim/vim.symlink/bundle
+vim/vim.symlink/tmp
+vim/vim.symlink/sessions
+vim/vim.symlink/spell
+vim/vim.symlink/view
+vim/vim.symlink/**/*.swp
+vim/vim.symlink/.netrwhist
 
-vim/backups
-vim/bundle
-vim/tmp
-vim/sessions
-vim/spell
-vim/view
-vim/**/*.swp
-vim/.netrwhist
+# Ignore zsh vendor scripts
+zsh/antigen.zsh

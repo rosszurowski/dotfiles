@@ -40,17 +40,23 @@
 [difftool]
 	prompt = false
 
+[github]
+  user = rosszurowski
+
 [help]
 	autocorrect = 1
 
 [push]
 	default = simple
 	followTags = true
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
 [commit]
 	gpgsign = true
+
 [status]
 	showUntrackedFiles = all

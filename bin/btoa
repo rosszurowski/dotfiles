@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+# Base64 Encoder
+# Encodes a file to base64. Pairs well with `pbcopy`
+# Usage: btoa [file]
+
+if [ $# -eq 0 ]; then
+  echo "Usage: btoa \033[2m[file]\033[0m"
+  exit 1
+fi
+
+if [ ! -f $1 ]; then
+  echo "\033[31mError:\033[0m Could not find file \`$1\`"
+  exit 1
+fi
+
+cat $1 | openssl base64 | tr -d '\n'

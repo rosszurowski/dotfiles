@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+#
+# Encode web video with smart default settings
+#
+
+if [ $# -eq 0 ]; then
+  echo "Usage: encode \033[2m[input] [output]\033[0m"
+  exit 1
+fi
+
+OUTPUT_FILE=$(basename "$2")
+OUTPUT_EXTENSION="${OUTPUT_FILE##*.}"
+
+# can either be libx264 or libvpx
+case "$OUTPUT_EXTENSION" in
+  mp4)  CODEC="libx264" ;;
+  webm) CODEC="libvpx" ;;
+  ogv)  CODEC="libtheora" ;;
+  *) echo "\033[31mError:\033[0m mp4, webm, and ogv are the only supported outputs."; exit 1 ;;
+esac
+
+ffmpeg -i "$1" -c:v "$CODEC" -b:v 5M "$2"

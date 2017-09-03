@@ -1,0 +1,8 @@
+#compdef _watsi watsi
+
+_watsi () {
+  compadd open
+  compadd edit
+  compadd start
+  compadd kill
+}

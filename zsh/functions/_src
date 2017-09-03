@@ -1,0 +1,2 @@
+#compdef src
+_files -W $SRC -/

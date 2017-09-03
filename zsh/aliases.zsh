@@ -1,37 +1,25 @@
-# Navigation shortcuts
+# navigation shortcuts
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias -- ~="cd ~ && echo $(pwd)"
-alias -- -="cd -"
 
-# List files improvements
+# `ls` improvements
 alias ls="ls -CF"
 alias lsh="ls -fA"
 alias lsa="ls -lhA"
 alias sla="ls -lhA"
 
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
-# Stopwatch
-alias timer='echo "Timer started. Stop with Ctrl-C." && date && time cat && date'
-
-# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+# get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
-# IP addresses
+# ip addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias internal-ip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
 alias ip-list="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# Flush Directory Service cache
+# flush dns cache
 alias flush="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
-
-# Merge PDF files
-# Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
-alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
 
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
@@ -46,27 +34,12 @@ alias caffeine="caffeinate -i"
 alias show="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
 
-# HTTP Request Methods
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-  alias "$method"="lwp-request -m '$method'"
-done
-
-# Alias hub as git
-alias git='hub'
-
 # Alias atom as e (for editor)
 alias e='atom'
-
-# Node
-alias nr='npm run --silent'
 
 # Auto-corrections
 alias h='history'
 alias hist='history'
-alias gti='git'
-alias q='exit'
-alias copy='pbcopy'
-alias paste='pbpaste'
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
+alias reload!=". ~/.zshrc"
