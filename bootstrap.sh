@@ -83,15 +83,16 @@ apps=(
   1password
   atom
   dropbox
-  drop-to-gif
   firefox
   google-chrome
-  hyper
+  iterm2-beta
   imageoptim
+  kap
   notational-velocity
   robofont
-  sketch
   slack
+  spotify
+  sketch
   transmission
   transmit
   unrarx
