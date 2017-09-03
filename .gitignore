@@ -13,3 +13,14 @@ Thumbs.db
 
 # Ignore local dotfile extensions
 .*.local
+
+# Ignore vim files
+
+vim/backups
+vim/bundle
+vim/tmp
+vim/sessions
+vim/spell
+vim/view
+vim/**/*.swp
+vim/.netrwhist
