@@ -10,7 +10,7 @@ PREFIX     ?= $(shell brew --prefix)
 DOTFILES    = $(addprefix $(DESTINATION), $(FILES))
 EXISTING    = $(addprefix $(DESTINATION), $(wildcard .*$(OVERRIDE)))
 LOCALS      = $(addsuffix $(OVERRIDE), $(DOTFILES))
-COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash new.bash)
+COMPLETIONS = $(addprefix $(PREFIX)/etc/bash_completion.d/, git.bash make.bash)
 
 ATOM        = $(addprefix $(DESTINATION), .atom .vim)
 
