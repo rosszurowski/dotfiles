@@ -53,5 +53,7 @@ module.exports = {
     'hyperterm-1password',
   ],
 
-  localPlugins: []
+  localPlugins: [],
+
+  updateChannel: 'canary'
 };
