@@ -60,7 +60,7 @@ touchbar_display () {
 
   touchBarState=''
   touchbar_echo "\033]1337;SetKeyLabel=F1=$(echo $(pwd) | awk -F/ '{print $(NF-1)"/"$(NF)}')\a"
-  bind '"\eOP":"ls \n"'
+  bind "\"\eOP\":\"ls\n\""
 
   # Check if the current directory is in a Git repository.
   command git rev-parse --is-inside-work-tree &>/dev/null || return
@@ -84,13 +84,12 @@ touchbar_display_branches () {
     fnKeyCodeIndex=$((fnKeysIndex - 1))
     keyCode=${fnKeys[$fnKeyCodeIndex]}
     touchbar_echo "\033]1337;SetKeyLabel=F$fnKeysIndex=$branch\a"
-    bind -x "\"$keyCode\":'touchbar_display && git checkout $branch'"
+    bind -x "\"$keyCode\":'touchbar_display; git checkout $branch'"
   done
 
   touchbar_echo "\033]1337;SetKeyLabel=F1=Cancel\a"
-  bind -x '"\eOP":"touchbar_display"'
+  bind "\"\eOP\":\"touchbar_display\n\""
 }
-
 
 prompt () {
   # Local or SSH session?
