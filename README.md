@@ -1,6 +1,6 @@
 # Dotfiles
 
-These files contain all the preferences for Mac OS X, Bash, and Git that I'm used to. To set up a new computer, there's just a couple things you'll need to do.
+Preferences and config for my dev environment. A bunch of zsh, Git, and OS X scripts and utilities that I'm used to.
 
 ## Installation
 

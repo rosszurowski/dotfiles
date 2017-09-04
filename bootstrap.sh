@@ -17,38 +17,29 @@ fi
 # Update homebrew recipes
 brew update
 
-# Install and use latest bash
-echo "> Changing shell to latest bash version..."
-brew install bash
-echo '/usr/local/bin/bash' | sudo tee -a /etc/shells > /dev/null
-chsh -s /usr/local/bin/bash
+# Install and use latest zsh
+echo "> Changing shell to latest zsh version..."
+brew install zsh
+echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells > /dev/null
+chsh -s /usr/local/bin/zsh
 
 # Install useful binaries
 binaries=(
   awscli
-  bash-completion
-  http_load
   hub
   go
+  git
   mas
   postgresql
   rename
   trash
   ssh-copy-id
-  visionmedia-watch
   wget
   yarn
 )
 
 echo "> Installing useful binaries..."
 brew install ${binaries[@]}
-
-# Install git
-echo "> Installing git..."
-brew install git
-# Some git defaults
-git config --global color.ui true
-git config --global push.default simple
 
 # Install node and iojs
 echo "> Installing node and iojs..."
@@ -61,14 +52,11 @@ npm config set init-version "0.0.1"
 
 # Install useful node modules
 modules=(
-  ava
-  hpm-cli
-  khaos
   psi
   serve
-  standard
   svgo
   webpack
+  xo
 )
 
 echo "> Installing useful node modules..."
@@ -100,9 +88,10 @@ apps=(
 )
 
 masapps=(
-  504544917 # Clear
+  904280696 # Things
   975937182 # Fantastical
   775737590 # iA Writer
+  692867256 # Simplenote
   409183694 # Keynote
   409203825 # Numbers
   409201541 # Pages
@@ -146,7 +135,7 @@ apm install --packages-file $CLONE_PATH/atom/packages.txt
 
 # Linking dotfiles
 echo "> Linking dotfiles to $HOME..."
-cd $CLONE_PATH && make install
+cd $CLONE_PATH && script/setup
 
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."
