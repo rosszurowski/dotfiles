@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # Dumps atom packages to a packages.txt file
-apm list --installed --bare > $DOTFILES/atom/atom.symlink/packages.txt
+apm list --installed --bare > $DOTFILES/atom/packages.txt
