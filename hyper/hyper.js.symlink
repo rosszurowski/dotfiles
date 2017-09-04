@@ -18,7 +18,7 @@ module.exports = {
 
     padding: '12px 14px',
 
-    shell: '/usr/local/bin/bash',
+    shell: '/bin/zsh',
     shellArgs: ['--login'],
 
     bell: false,
