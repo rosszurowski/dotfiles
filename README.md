@@ -4,13 +4,17 @@ Preferences and config for my dev environment. A bunch of zsh, Git, and OS X scr
 
 ## Installation
 
+```bash
+curl https://raw.githubusercontent.com/rosszurowski/dotfiles/master/bootstrap.sh | bash
+```
+
 To be updated...
 
 ## Terminal
 
-![Base16 Ocean Theme](https://cloud.githubusercontent.com/assets/303731/7348055/29549e72-ecbc-11e4-9fe2-ee416a92ea48.gif)
+![Terminal theme](https://user-images.githubusercontent.com/303731/30013218-1e176d84-90fa-11e7-985a-95328d015bee.png)
 
-In order to setup the terminal as usual, you'll want to download and install [Input Mono Narrow](http://input.fontbureau.com/build/?customize&fontSelection=whole&a=0&g=0&i=serif&l=serif&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do), with the specific set of configurations in that link.
+The above scripts will automatically configure [iTerm](https://www.iterm2.com/) with the [Nord theme](https://github.com/arcticicestudio/nord-iterm2) and the [Input Mono Narrow](http://input.fontbureau.com/build/?customize&fontSelection=whole&a=0&g=0&i=serif&l=serif&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do) typeface.
 
 ## Sensible OS X Defaults
 
