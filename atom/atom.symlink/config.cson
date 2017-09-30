@@ -25,7 +25,7 @@
       "one-dark-ui"
       "nord-atom-syntax"
     ]
-    titleBar: "hidden"
+    titleBar: "custom"
   editor:
     backUpBeforeSaving: true
     fontFamily: "SF Mono"
@@ -47,8 +47,7 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
-    panelHeight: 159
-    showPanel: true
+    panelHeight: 98
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
@@ -71,6 +70,7 @@
     useEslint: true
   "status-bar": {}
   tabs:
+    alwaysShowTabBar: false
     usePreviewTabs: true
   "tree-view":
     focusOnReveal: false
