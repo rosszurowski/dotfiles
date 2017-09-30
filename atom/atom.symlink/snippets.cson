@@ -95,6 +95,12 @@
 
 '.source.js':
 
+	'Import':
+		'prefix': 'im'
+		'body': """
+			import ${0} from '${1}';
+		"""
+
 	'If':
 		'prefix': 'if'
 		'body': """
