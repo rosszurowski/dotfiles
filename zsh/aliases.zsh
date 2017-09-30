@@ -43,3 +43,14 @@ alias hist='history'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload!=". ~/.zshrc"
+
+# mkdir and cd in one command
+mkcd () {
+  if [ $# -eq 0 ]; then
+    echo "Usage: mkcd \033[2m[directory]\033[0m"
+  elif [ -d $1 ]; then
+    echo "\033[31mError:\033[0m Directory \`$1\` already exists"
+  else
+    mkdir "$1" && cd "$1"
+  fi
+}
