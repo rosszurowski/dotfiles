@@ -1,6 +1,8 @@
 
 fnKeys=('^[OP' '^[OQ' '^[OR' '^[OS' '^[[15~' '^[[17~' '^[[18~' '^[[19~' '^[[20~' '^[[21~' '^[[23~' '^[[24~')
 touchBarState=''
+npmScripts=()
+lastPackageJsonPath=''
 
 git_current_branch () {
   local ref
@@ -22,8 +24,12 @@ pecho () {
   fi
 }
 
+tbecho () {
+  pecho "\033]1337;$*\a"
+}
+
 function _clearTouchbar () {
-  pecho "\033]1337;PopKeyLabels\a"
+  tbecho "PopKeyLabels"
 }
 
 function _unbindTouchbar () {
@@ -39,8 +45,8 @@ function _displayDefault () {
   touchBarState=''
 
   # current dir
-  pecho "\033]1337;SetKeyLabel=F1=$(echo $(pwd) | awk -F/ '{print $(NF-1)"/"$(NF)}')\a"
-  bindkey -s '^[OP' 'ls \n'
+  tbecho "SetKeyLabel=F1=$(echo $(pwd) | awk -F/ '{print $(NF)}')"
+  bindkey -s "${fnKeys[1]}" 'ls \n'
 
   # git status
   command git rev-parse --is-inside-work-tree &>/dev/null || return
@@ -49,8 +55,13 @@ function _displayDefault () {
     # Ensure the index is up to date.
     git update-index --really-refresh -q &>/dev/null
 
-    pecho "\033]1337;SetKeyLabel=F2=⎇ $(git_current_branch)\a"
-    bindkey '^[OQ' '_displayGitBranches'
+    tbecho "SetKeyLabel=F2=⎇ $(git_current_branch)"
+    bindkey "${fnKeys[2]}" '_displayGitBranches'
+  fi
+
+  if [[ -f package.json ]]; then
+    tbecho "SetKeyLabel=F3=⌁ npm scripts"
+    bindkey "${fnKeys[3]}" _displayNpmScripts
   fi
 }
 
@@ -64,20 +75,46 @@ function _displayGitBranches () {
   fnKeysIndex=1
   for branch in "$branches[@]"; do
     fnKeysIndex=$((fnKeysIndex + 1))
-    bindkey $fnKeys[$fnKeysIndex] "_displayDefault; git checkout $branch \n"
-    pecho "\033]1337;SetKeyLabel=F$fnKeysIndex=$branch\a"
+    bindkey -s $fnKeys[$fnKeysIndex] "git checkout $branch; _displayDefault \n"
+    tbecho "SetKeyLabel=F$fnKeysIndex=$branch"
   done
 
-  pecho "\033]1337;SetKeyLabel=F1=Cancel\a"
+  tbecho "SetKeyLabel=F1=Cancel"
+  bindkey "${fnKeys[1]}" _displayDefault
+}
+
+function _displayNpmScripts () {
+  # find available npm run scripts only if new directory
+  if [[ $lastPackageJsonPath != $(echo "$(pwd)/package.json") ]]; then
+    lastPackageJsonPath=$(echo "$(pwd)/package.json")
+    npmScripts=($(node -e "console.log(Object.keys($(npm run --json)).filter(name => !name.includes(':')).sort((a, b) => a.localeCompare(b)).filter((name, idx) => idx < 12).join(' '))"))
+  fi
+
+  _clearTouchbar
+  _unbindTouchbar
+
+  touchBarState='npm'
+
+  fnKeysIndex=1
+  for npmScript in "$npmScripts[@]"; do
+    fnKeysIndex=$((fnKeysIndex + 1))
+    bindkey -s $fnKeys[$fnKeysIndex] "_displayDefault; yarn $npmScript \n"
+    tbecho "SetKeyLabel=F$fnKeysIndex=$npmScript"
+  done
+
+  tbecho "SetKeyLabel=F1=Cancel"
   bindkey "${fnKeys[1]}" _displayDefault
 }
 
 zle -N _displayDefault
 zle -N _displayGitBranches
+zle -N _displayNpmScripts
 
 precmd_iterm_touchbar() {
   if [[ $touchBarState == 'git' ]]; then
     _displayGitBranches
+  elif [[ $touchBarState == 'npm' ]]; then
+    _displayNpmScripts
   else
     _displayDefault
   fi
