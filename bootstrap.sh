@@ -32,6 +32,7 @@ binaries=(
   mas
   postgresql
   rename
+  terminal-notifier
   trash
   ssh-copy-id
   wget
