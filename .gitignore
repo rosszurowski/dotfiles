@@ -1,13 +1,8 @@
 
 # Ignore vim files
-vim/vim.symlink/backups
-vim/vim.symlink/bundle
-vim/vim.symlink/tmp
-vim/vim.symlink/sessions
-vim/vim.symlink/spell
-vim/vim.symlink/view
-vim/vim.symlink/**/*.swp
-vim/vim.symlink/.netrwhist
+vim/nvim/.netrwhist
+vim/nvim/plugged/*
+!vim/nvim/plugged/.gitkeep
 
 # Ignore zsh vendor scripts
 zsh/antigen.zsh

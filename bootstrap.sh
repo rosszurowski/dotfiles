@@ -26,9 +26,11 @@ chsh -s /usr/local/bin/zsh
 # Install useful binaries
 binaries=(
   awscli
-  hub
+  fd
+  fzf
   go
   git
+  hub
   mas
   postgresql
   rename
