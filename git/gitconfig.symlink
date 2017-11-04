@@ -27,7 +27,6 @@
 
 [core]
 	excludesfile = ~/.gitignore
-	editor = /usr/bin/vim
 	pager = less -R -F
 	autocrlf = input
 
