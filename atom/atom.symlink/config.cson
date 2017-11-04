@@ -29,7 +29,7 @@
   editor:
     backUpBeforeSaving: true
     fontFamily: "SF Mono"
-    fontSize: 12
+    fontSize: 13
     invisibles: {}
     lineHeight: 1.9
     showIndentGuide: true
@@ -40,6 +40,7 @@
   "language-babel":
     taggedTemplateGrammar: [
       "\"(?<=<style jsx>{)|(?<=<style jsx global>{)\":source.css.styled"
+      "html:text.html.basic"
     ]
   linter: {}
   "linter-flow":
@@ -47,7 +48,7 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
-    panelHeight: 98
+    panelHeight: 192.5
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
@@ -61,13 +62,16 @@
   "one-light-ui": {}
   "opened-files": {}
   "prettier-atom":
-    formatOnSaveOptions: {}
+    formatOnSaveOptions:
+      isDisabledIfNotInPackageJson: true
+      showInStatusBar: true
     prettierOptions:
       jsxBracketSameLine: true
+      printWidth: 100
       singleQuote: true
       trailingComma: "all"
     silenceErrors: true
-    useEslint: true
+    useEditorConfig: false
   "status-bar": {}
   tabs:
     alwaysShowTabBar: false
