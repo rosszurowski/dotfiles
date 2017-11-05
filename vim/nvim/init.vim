@@ -12,7 +12,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
-Plug 'sbdchd/neoformat'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 " Markdown
 Plug 'godlygeek/tabular'
@@ -59,6 +59,16 @@ set splitright
 set ttimeoutlen=0
 set shell=/usr/local/bin/zsh
 
+" Flow
+let g:flow#enable = 0
+let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+if matchstr(local_flow, "^\/\\w") == ''
+  let local_flow= getcwd() . "/" . local_flow
+endif
+if executable(local_flow)
+  let g:flow#flowpath = local_flow
+endif
+
 " Keybindings
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
@@ -72,6 +82,7 @@ colorscheme nord
 
 " vim-airline/vim-airline
 set laststatus=2
+let g:airline_extensions = ['branch']
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 0
 let g:airline_section_z = '%l:%L'
