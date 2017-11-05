@@ -38,15 +38,25 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 set nocompatible
+set autoindent
+set smartindent
+set smarttab
 set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set list listchars=tab:\ \ ,trail:· " Display tabs and trailing spaces visuall
 set shell=/usr/local/bin/zsh
 set visualbell
 set noerrorbells
 set number
 set noincsearch
 set nowrap
+set linebreak
 set noshowmode
 set hlsearch
+set splitright
+set splitbelow
 " performance: don't highlight beyond 400 columns
 set synmaxcol=400
 " style: show the 81th line
@@ -54,6 +64,12 @@ set colorcolumn=81
 set wildignore+=node_modules
 set splitright
 set ttimeoutlen=0
+" Disable swap files
+set noswapfile
+set nobackup
+set nowritebackup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Appearance
 let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
@@ -65,6 +81,15 @@ colorscheme nord
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
+" Disable arrow keys
+map  <down>  <nop>
+imap <left>  <nop>
+imap <right> <nop>
+imap <up>    <nop>
+map  <down>  <nop>
+map  <left>  <nop>
+map  <right> <nop>
+map  <up>    <nop>
 
 " justinmk/vim-dirvish
 let loaded_netrwPlugin = 1
