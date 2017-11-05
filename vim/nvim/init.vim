@@ -14,10 +14,6 @@ Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
-" Markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-
 " Completion
 Plug 'ervandew/supertab'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for': ['javascript', 'javascript.jsx'] }
@@ -43,6 +39,7 @@ call plug#end()
 
 set nocompatible
 set shiftwidth=2
+set shell=/usr/local/bin/zsh
 set visualbell
 set noerrorbells
 set number
@@ -57,7 +54,24 @@ set colorcolumn=81
 set wildignore+=node_modules
 set splitright
 set ttimeoutlen=0
-set shell=/usr/local/bin/zsh
+
+" Appearance
+let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
+set termguicolors
+set background=dark
+colorscheme nord
+
+" Keybindings
+nnoremap <C-k> :tabnext<CR>
+nnoremap <C-j> :tabprevious<CR>
+nnoremap <C-p> :FZF<CR>
+
+" justinmk/vim-dirvish
+let loaded_netrwPlugin = 1
+augroup my_dirvish_events
+  autocmd FileType dirvish sort r /[^\/]$/
+augroup END
+command! E Dirvish
 
 " Flow
 let g:flow#enable = 0
@@ -68,17 +82,6 @@ endif
 if executable(local_flow)
   let g:flow#flowpath = local_flow
 endif
-
-" Keybindings
-nnoremap <C-k> :tabnext<CR>
-nnoremap <C-j> :tabprevious<CR>
-nnoremap <C-p> :FZF<CR>
-
-" Appearance
-let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
-set termguicolors
-set background=dark
-colorscheme nord
 
 " vim-airline/vim-airline
 set laststatus=2
@@ -94,6 +97,10 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = '⎇'
+
+" airblade/vim-gitgutter
+set signcolumn=yes
+let g:gitgutter_eager = 0
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
