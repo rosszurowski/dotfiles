@@ -59,7 +59,6 @@ modules=(
   serve
   svgo
   webpack
-  xo
 )
 
 echo "> Installing useful node modules..."
@@ -76,7 +75,7 @@ apps=(
   dropbox
   firefox
   google-chrome
-  iterm2-beta
+  iterm2
   imageoptim
   kap
   notational-velocity
