@@ -133,7 +133,7 @@ mkdir -p $CLONE_PATH
 git clone https://github.com/rosszurowski/dotfiles $CLONE_PATH
 
 echo "> Install Atom packages..."
-apm install --packages-file $CLONE_PATH/atom/packages.txt
+script/atom
 
 # Linking dotfiles
 echo "> Linking dotfiles to $HOME..."
