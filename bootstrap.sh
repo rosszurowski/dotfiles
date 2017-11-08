@@ -91,7 +91,6 @@ apps=(
 
 masapps=(
   904280696 # Things
-  975937182 # Fantastical
   775737590 # iA Writer
   692867256 # Simplenote
   409183694 # Keynote
