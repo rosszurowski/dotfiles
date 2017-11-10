@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+journal_path="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/journal"
+timestamp=`date "+%Y-%m-%d-%s"`
+file_path="$journal_path/$timestamp.md"
+
+echo "Creating entry for $timestamp..."
+touch "$file_path"
+open -a "iA Writer" "$file_path"
