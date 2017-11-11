@@ -10,6 +10,8 @@
       ".source.gfm"
     ]
   autoprefixer: {}
+  "bracket-matcher":
+    highlightMatchingLineNumber: true
   "color-picker":
     preferredFormat: "HEX"
   core:
@@ -48,7 +50,7 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
-    panelHeight: 192.5
+    panelHeight: 98
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
