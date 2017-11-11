@@ -32,13 +32,13 @@ binaries=(
   git
   hub
   mas
+  neovim
   postgresql
   rename
   terminal-notifier
   trash
   ssh-copy-id
   wget
-  yarn
 )
 
 echo "> Installing useful binaries..."
@@ -59,6 +59,7 @@ modules=(
   serve
   svgo
   webpack
+  yarn
 )
 
 echo "> Installing useful node modules..."
@@ -74,11 +75,12 @@ apps=(
   atom
   dropbox
   firefox
+  firefoxnightly
   google-chrome
   iterm2
   imageoptim
   kap
-  notational-velocity
+  oryoki
   robofont
   slack
   spotify
