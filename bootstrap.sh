@@ -73,7 +73,6 @@ brew install caskroom/cask/brew-cask
 apps=(
   1password
   atom
-  dropbox
   firefox
   firefoxnightly
   google-chrome
