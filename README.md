@@ -29,14 +29,13 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 Once [the AWS CLI is set up](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html), restore the font library from the latest backup.
 
 ```bash
-curl $(aws s3 presign s3://rosszurowski-backup/fonts.zip) > fonts.zip
-unzip fonts.zip
+script/fonts-download
 ```
 
-You can then click on the font files to install them, or automatically install them with:
+To make a new backup, run
 
 ```bash
-mv ./Fonts/* ~/Library/Fonts/
+script/fonts-upload
 ```
 
 ## See also

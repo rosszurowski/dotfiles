@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Packages all font files and backs them up to S3
+
+set -e
+
+fonts_path="$HOME/Library/Fonts"
+
+archive_name="fonts-`date +%s`.zip"
+archive_path="`mktemp -d`/$archive_name"
+
+echo "Compressing $fonts_path..."
+zip -qjr "$archive_path" "$fonts_path"
+echo "Uploading $archive_path..."
+aws s3 cp "$archive_path" "s3://rosszurowski-backup/assets/$archive_name"
+echo "Cleaning up..."
+rm "$archive_path"
+echo "Done!"

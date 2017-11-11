@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+archive_path="s3://rosszurowski-backup/assets"
+archive_latest=$(aws s3 ls "$archive_path/" | grep 'fonts-*' | awk {'print $4'} | sort | tail -n 1)
+archive_download_path="$HOME/Downloads/"
+
+echo "  Downloading $archive_latest..."
+
+aws s3 cp "$archive_path/$archive_latest" "$archive_download_path"
+
+echo ""
+echo "  Font archive saved to $archive_download_path/$archive_latest"
+echo "  You can then click on the font files to install,"
+echo "  or automatically install them with:"
+echo ""
+echo "  mv ./Fonts/* ~/Library/Fonts/"
+echo ""
