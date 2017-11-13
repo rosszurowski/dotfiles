@@ -46,7 +46,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
-set list listchars=tab:\ \ ,trail:· " Display tabs and trailing spaces visuall
+set list listchars=tab:\ \ ,trail:· " Display tabs and trailing spaces visually
 set shell=/usr/local/bin/zsh
 set visualbell
 set noerrorbells
@@ -73,7 +73,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Appearance
-let $PATH .= ':node_modules/.bin/:/Users/tmcw/.cargo/bin/'
+let $PATH .= ':node_modules/.bin/'
 set termguicolors
 set background=dark
 colorscheme nord
