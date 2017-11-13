@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'justinmk/vim-dirvish'
+Plug 'ervandew/supertab'
 
 " Git
 Plug 'tpope/vim-rhubarb'
@@ -81,6 +82,11 @@ colorscheme nord
 nnoremap <C-k> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-p> :FZF<CR>
+" Easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 " Disable arrow keys
 map  <down>  <nop>
 imap <left>  <nop>
