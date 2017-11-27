@@ -37,6 +37,7 @@ binaries=(
   rename
   terminal-notifier
   trash
+  shellcheck
   ssh-copy-id
   wget
 )

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # Use: Put something this in your .tmux.conf file
 # set -g status-right: '#(wifi-signal-strength)'
@@ -14,7 +14,6 @@ then
 fi
 
 strength=`echo $current | cut -d";" -f1-1 | cut -d" " -f2-`
-state=`echo $current | cut -d";" -f2-2 | cut -d" " -f2-`
 bandwidth=`echo $current | cut -d";" -f3-3 | cut -d" " -f2-`
 name=`echo $current | cut -d";" -f4-4 | cut -d" " -f2-`
 

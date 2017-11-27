@@ -16,6 +16,7 @@ language-viml@1.1.6
 linter@2.2.0
 linter-eslint@8.4.0
 linter-flow@5.6.1
+linter-shellcheck@1.4.6
 linter-ui-default@1.6.10
 nord-atom-syntax@0.9.1
 prettier-atom@0.41.0
