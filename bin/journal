@@ -1,9 +1,43 @@
 #!/usr/bin/env bash
 
 journal_path="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/journal"
-timestamp=`date "+%Y-%m-%d-%s"`
-file_path="$journal_path/$timestamp.md"
+journal_editor="iA Writer"
 
-echo "Creating entry for $timestamp..."
-touch "$file_path"
-open -a "iA Writer" "$file_path"
+__journal_open () {
+  open "$journal_path"
+}
+
+__journal_path () {
+  echo "$journal_path"
+}
+
+__journal_new () {
+  timestamp=`date "+%Y-%m-%d-%s"`
+  file_path="$journal_path/$timestamp.md"
+
+  echo "Creating entry for $timestamp..."
+  touch "$file_path"
+  open -a "$journal_editor" "$file_path"
+}
+
+__journal_help () {
+  echo -e ""
+  echo -e "  Usage: journal \e[2m[cmd]\e[0m"
+  echo -e ""
+  echo "  Commands:"
+  echo ""
+  echo "    open    Open journal folder in Finder"
+  echo "    new     Create a new journal entry"
+  echo ""
+}
+
+# assert arguments
+[ $# -ne 1 ] && __journal_help && exit 1
+
+# switch arguments
+case $1 in
+  o|open) __journal_open;;
+  n|new) __journal_new;;
+  -p|--path) __journal_path;;
+  -h|--help) __journal_help;;
+esac

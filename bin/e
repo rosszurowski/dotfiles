@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#
+# Quick wrapper around editor
+#
+
+EDITOR="atom"
+
+if [ $# -eq 0 ]; then
+  $EDITOR "$PWD"
+  exit 0
+fi
+
+$EDITOR "$1"

@@ -34,9 +34,6 @@ alias caffeine="caffeinate -i"
 alias show="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
 
-# Alias atom as e (for editor)
-alias e='atom'
-
 # Auto-corrections
 alias h='history'
 alias hist='history'

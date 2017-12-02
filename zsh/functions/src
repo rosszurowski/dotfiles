@@ -1,18 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 
 test -z "$SRC"
 if [ "$?" -eq 0 ]; then
-  printf 'SRC env var was not set, exiting\n'
+  echo "\$SRC env var was not set, exiting\n"
   exit 1
 fi
 
 if [ $# -eq 0 ]; then
-  cd "$SRC"
+  cd "$SRC" || exit
   return;
 fi
 
 srcdir="$SRC/$1"
 
 if [ -d "$srcdir" ]; then
-  cd "$srcdir"
+  cd "$srcdir" || exit
 fi
