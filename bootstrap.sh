@@ -74,6 +74,7 @@ brew install caskroom/cask/brew-cask
 apps=(
   1password
   atom
+  beaker-browser
   firefox
   firefoxnightly
   google-chrome
