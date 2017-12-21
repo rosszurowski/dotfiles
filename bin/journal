@@ -7,6 +7,14 @@ __journal_open () {
   open "$journal_path"
 }
 
+__journal_last () {
+  file_path=$(find "$journal_path" -type f -name "*.md" | sort | tail -n 1)
+  file_name=$(basename "$file_path")
+
+  echo "Opening entry for $file_name..."
+  open -a "$journal_editor" "$file_path"
+}
+
 __journal_path () {
   echo "$journal_path"
 }
@@ -27,6 +35,7 @@ __journal_help () {
   echo "  Commands:"
   echo ""
   echo "    open    Open journal folder in Finder"
+  echo "    last    Edit the most recent journal entry"
   echo "    new     Create a new journal entry"
   echo ""
 }
@@ -37,6 +46,7 @@ __journal_help () {
 # switch arguments
 case $1 in
   o|open) __journal_open;;
+  l|last) __journal_last;;
   n|new) __journal_new;;
   -p|--path) __journal_path;;
   -h|--help) __journal_help;;
