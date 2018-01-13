@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 test -z "$SRC"
 if [ "$?" -eq 0 ]; then
-  echo "\$SRC env var was not set, exiting\n"
+  echo -e "\033[31mERROR:\033[0m \$SRC env var was not set, exiting..."
   exit 1
 fi
 
@@ -15,4 +15,7 @@ srcdir="$SRC/$1"
 
 if [ -d "$srcdir" ]; then
   cd "$srcdir" || exit
+else
+  echo -e "\033[31mERROR:\033[0m No directory $1"
+  exit 1
 fi
