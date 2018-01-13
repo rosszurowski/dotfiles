@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+WIRELESS_INTERFACE=$(networksetup -listnetworkserviceorder | grep "Hardware Port: Wi-Fi" | sed -e 's/(Hardware Port: Wi-Fi, Device: \(.*\))/\1/')
+
+__wifi_on () {
+  echo -e "> Turning \033[33m$WIRELESS_INTERFACE\e[0m on..."
+  networksetup -setairportpower $WIRELESS_INTERFACE on
+}
+
+__wifi_off () {
+  echo -e "> Turning \033[33m$WIRELESS_INTERFACE\e[0m off..."
+  networksetup -setairportpower $WIRELESS_INTERFACE off
+}
+
+__wifi_help () {
+  echo -e "
+  Usage: wifi \e[2m[cmd]\e[0m
+
+  Commands:
+
+    on               Turn wireless interface on
+    off              Turn wireless interface off
+"
+}
+
+# assert arguments
+[ $# -ne 1 ] && __wifi_help && exit 1
+
+# switch arguments
+case $1 in
+  on) __wifi_on;;
+  off) __wifi_off;;
+  -h|--help) __wifi_help;;
+esac
