@@ -50,7 +50,7 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
-    panelHeight: 98
+    panelHeight: 72
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
@@ -65,11 +65,11 @@
   "opened-files": {}
   "prettier-atom":
     formatOnSaveOptions:
+      enabled: true
       isDisabledIfNotInPackageJson: true
       showInStatusBar: true
     prettierOptions:
       jsxBracketSameLine: true
-      printWidth: 100
       singleQuote: true
       trailingComma: "all"
     silenceErrors: true
