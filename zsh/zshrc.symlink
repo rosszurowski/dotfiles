@@ -26,7 +26,9 @@ export ZSH=$DOTFILES/zsh
 PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
 
 # source every .zsh file in this repo
-for config_file ($DOTFILES/**/*.zsh) source $config_file
+for config_file in $DOTFILES/**/*.zsh; do
+  source $config_file
+done
 
 ###########################
 #  Plugins

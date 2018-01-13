@@ -11,18 +11,19 @@ fail () {
 
 link_files () {
   ln -s "$1" "$2"
-  echo "linked $1 to $2"
+  echo "> Linked $1 to $2"
 }
 
 install_dotfiles () {
-  echo 'installing dotfiles'
+  echo '> Installing dotfiles...'
+
+  symlinks=$(find "$DOTFILES_ROOT" -maxdepth 2 -name \*.symlink)
 
   overwrite_all=false
   backup_all=false
   skip_all=false
 
-  for source in $(find "$DOTFILES_ROOT" -maxdepth 2 -name \*.symlink)
-  do
+  for source in $symlinks; do
     dest="$HOME/.$(basename ${source%.*})"
 
     if [ -f "$dest" ] || [ -d "$dest" ]
@@ -34,9 +35,10 @@ install_dotfiles () {
 
       if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
       then
-        echo "File already exists: $(basename "$source"),"
-        echo "what do you want to do?"
-        echo "[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        echo "> File already exists: $(basename "$source"),"
+        echo "> What do you want to do?"
+        echo ""
+        echo "  [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -50,33 +52,27 @@ install_dotfiles () {
         esac
       fi
 
-      if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]
-      then
+      if [ "$overwrite" == "true" ] || [ "$overwrite_all" == "true" ]; then
         rm -rf "$dest"
-        echo "removed $dest"
+        echo "> Removed $dest"
       fi
 
-      if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]
-      then
+      if [ "$backup" == "true" ] || [ "$backup_all" == "true" ]; then
         mv "$dest" "$dest"\.backup
-        echo "moved $dest to $dest.backup"
+        echo "> Moved $dest to $dest.backup"
       fi
 
-      if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]
-      then
+      if [ "$skip" == "false" ] && [ "$skip_all" == "false" ]; then
         link_files "$source" "$dest"
       else
-        echo "skipped $source"
+        echo "> Skipping $source..."
       fi
-
     else
       link_files "$source" "$dest"
     fi
-
   done
 }
 
 install_dotfiles
-
-echo ''
-echo '  All installed!'
+echo ""
+echo "> Done!"
