@@ -1,0 +1,1 @@
+echo $(uuidgen | tr '[:upper:]' '[:lower:]')
