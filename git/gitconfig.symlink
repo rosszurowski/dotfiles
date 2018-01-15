@@ -27,7 +27,7 @@
 
 [core]
 	excludesfile = ~/.gitignore
-	pager = less -R -F
+	pager = diff-so-fancy | less -RFX
 	autocrlf = input
 
 [apply]
@@ -59,3 +59,11 @@
 
 [status]
 	showUntrackedFiles = all
+
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

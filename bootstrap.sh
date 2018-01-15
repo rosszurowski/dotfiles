@@ -56,6 +56,7 @@ npm config set init-version "0.0.1"
 
 # Install useful node modules
 modules=(
+  diff-so-fancy
   psi
   serve
   svgo
