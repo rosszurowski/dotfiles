@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 WIRELESS_INTERFACE=$(networksetup -listnetworkserviceorder | grep "Hardware Port: Wi-Fi" | sed -e 's/(Hardware Port: Wi-Fi, Device: \(.*\))/\1/')
+LAUNCH_AGENT_PLIST="/Users/rosszurowski/Library/LaunchAgents/com.rosszurowski.wifi-disabler.plist"
 
 __wifi_on () {
   echo -e "> Turning \033[33m$WIRELESS_INTERFACE\e[0m on..."
@@ -12,6 +13,16 @@ __wifi_off () {
   networksetup -setairportpower $WIRELESS_INTERFACE off
 }
 
+__wifi_disable_agent_start () {
+  launchctl load -w "$LAUNCH_AGENT_PLIST"
+  echo -e "> Disabling \033[33m$WIRELESS_INTERFACE\e[0m every 30 minutes"
+}
+
+__wifi_disable_agent_stop () {
+  launchctl unload -w "$LAUNCH_AGENT_PLIST"
+  echo -e "> No longer disabling \033[33m$WIRELESS_INTERFACE\e[0m every 30 minutes"
+}
+
 __wifi_help () {
   echo -e "
   Usage: wifi \e[2m[cmd]\e[0m
@@ -20,6 +31,8 @@ __wifi_help () {
 
     on               Turn wireless interface on
     off              Turn wireless interface off
+    disable-start    Start timer to turn off wifi every 30 minutes
+    disable-stop     Stop timer for turning off wifi
 "
 }
 
@@ -30,5 +43,7 @@ __wifi_help () {
 case $1 in
   on) __wifi_on;;
   off) __wifi_off;;
+  disable-start) __wifi_disable_agent_start;;
+  disable-stop) __wifi_disable_agent_stop;;
   -h|--help) __wifi_help;;
 esac
