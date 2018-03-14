@@ -45,18 +45,19 @@
       "html:text.html.basic"
     ]
   linter: {}
+  "linter-eslint": {}
   "linter-flow":
     executablePath: "./node_modules/.bin/flow"
   "linter-ui-default":
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
-    panelHeight: 72
+    panelHeight: 192.5
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
   "nord-atom-syntax":
     accessibility:
-      commentContrast: 10
+      commentContrast: 20
   "nord-atom-ui":
     darkerFormFocusEffect: true
   "one-dark-ui":
@@ -76,7 +77,6 @@
     useEditorConfig: false
   "status-bar": {}
   tabs:
-    alwaysShowTabBar: false
     usePreviewTabs: true
   "tree-view":
     focusOnReveal: false
