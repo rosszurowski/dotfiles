@@ -72,6 +72,9 @@
 	'Font Family: San Francisco':
 		'prefix': '@san-francisco'
 		'body': '-apple-system, BlinkMacSystemFont'
+	'Font Stack: System':
+		'prefix': '@system'
+		'body': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
 	'Ease: Exponential Out':
 		'prefix': '@ease:expo-out'
 		'body': """
@@ -291,32 +294,32 @@
 
 '.source.jsx':
 	'React: Import':
-		'prefix': '@ri'
+		'prefix': '@r:import'
 		'body': """
-			import React from 'react'
+			import React from 'react';
 		"""
 
 	'React: Vanilla':
-		'prefix': '@vanilla'
+		'prefix': '@r:vanilla'
 		'body': """
-			import React, { Component } from 'react'
+			import React, { Component } from 'react';
 
 			export default class ${1:Element} extends Component {
 				render () {
 					return (
 						<${2:div} />
-					)
+					);
 				}
 			}
 		"""
 
 	'React: Function':
-		'prefix': '@rfn'
+		'prefix': '@r:fn'
 		'body': """
 			function ${1} (props) {
 				return (
 					<${2:div} />
-				)
+				);
 			}
 		"""
 
@@ -327,7 +330,7 @@
 				render () {
 					return (
 						<${2:div} />
-					)
+					);
 				}
 			}
 		"""
