@@ -24,7 +24,7 @@ __journal_new () {
   file_path="$journal_path/$timestamp.md"
 
   echo "Creating entry for $timestamp..."
-  touch "$file_path"
+  touch "$file_path" &> /dev/null
   open -a "$journal_editor" "$file_path"
 }
 
