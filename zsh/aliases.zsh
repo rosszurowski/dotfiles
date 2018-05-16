@@ -19,7 +19,7 @@ alias internal-ip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
 alias ip-list="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # flush dns cache
-alias flush="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias flush-dns="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
