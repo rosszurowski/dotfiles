@@ -20,7 +20,7 @@ __journal_path () {
 }
 
 __journal_new () {
-  timestamp=`date "+%Y-%m-%d-%s"`
+  timestamp=`date "+%F-%s"`
   file_path="$journal_path/$timestamp.md"
 
   echo "Creating entry for $timestamp..."
