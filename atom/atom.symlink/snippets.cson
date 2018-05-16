@@ -97,13 +97,6 @@
 	    'body': '@import \'$0\';'
 
 '.source.js':
-
-	'Import':
-		'prefix': 'im'
-		'body': """
-			import ${0} from '${1}';
-		"""
-
 	'If':
 		'prefix': 'if'
 		'body': """
@@ -185,6 +178,10 @@
 		'body': """
 			import ${1} from '${2}';
 		"""
+
+	'Flow':
+		'prefix': '@flow'
+		'body': '// @flow'
 
 	'Template: Node Main Script':
 		'prefix': '@main'
@@ -294,44 +291,38 @@
 
 '.source.jsx':
 	'React: Import':
-		'prefix': '@r:import'
+		'prefix': '@ri'
 		'body': """
 			import React from 'react';
 		"""
 
-	'React: Vanilla':
-		'prefix': '@r:vanilla'
+	'React: Class':
+		'prefix': '@rc'
 		'body': """
-			import React, { Component } from 'react';
-
-			export default class ${1:Element} extends Component {
+			class ${1:ComponentName} extends Component {
 				render () {
 					return (
 						<${2:div} />
 					);
 				}
 			}
+		"""
+
+	'React: Arrow Function':
+		'prefix': '@ra'
+		'body': """
+			const ${1:ComponentName} = (props) => (
+				<${2:div} />
+			);
 		"""
 
 	'React: Function':
-		'prefix': '@r:fn'
+		'prefix': '@rf'
 		'body': """
-			function ${1} (props) {
+			function ${1:ComponentName} (props) {
 				return (
 					<${2:div} />
 				);
-			}
-		"""
-
-	'React: Component':
-		'prefix': '@r:class'
-		'body': """
-			export default class ${1:Element} extends Component {
-				render () {
-					return (
-						<${2:div} />
-					);
-				}
 			}
 		"""
 
