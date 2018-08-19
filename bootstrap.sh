@@ -46,10 +46,9 @@ echo "> Installing useful binaries..."
 brew install "${binaries[@]}"
 
 # Install node and iojs
-echo "> Installing node and iojs..."
-brew install node
-npm install -g n
-n latest
+echo "> Installing node..."
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+nvm install node
 # Some npm defaults
 npm config set init-license "MIT"
 npm config set init-version "0.0.1"
@@ -62,6 +61,7 @@ modules=(
   svgo
   webpack
   yarn
+  vmd
 )
 
 echo "> Installing useful node modules..."
