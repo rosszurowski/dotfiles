@@ -2,6 +2,7 @@ storage/
 compile-cache/
 blob-store/
 packages/
+recovery/
 .npm/
 .apm/
 .node-gyp/
