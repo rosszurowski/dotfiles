@@ -296,6 +296,12 @@
 			import React from 'react';
 		"""
 
+	'React: Import Component':
+		'prefix': '@ric'
+		'body': """
+			import React, { Component } from 'react';
+		"""
+
 	'React: Class':
 		'prefix': '@rc'
 		'body': """
@@ -309,21 +315,11 @@
 		"""
 
 	'React: Arrow Function':
-		'prefix': '@ra'
+		'prefix': '@rf'
 		'body': """
 			const ${1:ComponentName} = (props) => (
 				<${2:div} />
 			);
-		"""
-
-	'React: Function':
-		'prefix': '@rf'
-		'body': """
-			function ${1:ComponentName} (props) {
-				return (
-					<${2:div} />
-				);
-			}
 		"""
 
 '.source.makefile':

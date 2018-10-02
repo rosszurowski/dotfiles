@@ -1,4 +1,6 @@
 "*":
+  "atom-ide-ui":
+    use: {}
   "atom-package-deps":
     ignored: [
       "linter-ui-default"
@@ -16,10 +18,10 @@
     preferredFormat: "HEX"
   core:
     disabledPackages: [
-      "metrics"
       "bookmarks"
       "background-tips"
       "styleguide"
+      "language-todo"
     ]
     projectHome: "/User/rosszurowski/Sites/"
     telemetryConsent: "limited"
@@ -39,6 +41,9 @@
     softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
+  "flow-ide": {}
+  "ide-flowtype":
+    tryFlowBin: true
   "language-babel":
     taggedTemplateGrammar: [
       "\"(?<=<style jsx>{)|(?<=<style jsx global>{)\":source.css.styled"
@@ -51,7 +56,7 @@
   "linter-ui-default":
     decorateOnTreeView: "None"
     hidePanelWhenEmpty: true
-    panelHeight: 192.5
+    panelHeight: 190.5
     statusBarRepresents: "Current File"
   "markdown-preview":
     useGitHubStyle: true
@@ -77,8 +82,10 @@
     useEditorConfig: false
   "status-bar": {}
   tabs:
+    alwaysShowTabBar: false
     usePreviewTabs: true
   "tree-view":
+    alwaysOpenExisting: true
     focusOnReveal: false
     hideIgnoredNames: true
   welcome:
