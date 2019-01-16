@@ -1,31 +1,29 @@
 #!/usr/bin/env bash
 
-journal_path="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/journal"
-journal_editor="iA Writer"
+set -e
+
+journal_library_path="/journal"
+journal_folder_path="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents$journal_library_path"
 
 __journal_open () {
   open "$journal_path"
 }
 
 __journal_last () {
-  file_path=$(find "$journal_path" -type f -name "*.md" | sort | tail -n 1)
-  file_name=$(basename "$file_path")
+  last_file_path=$(find "$journal_folder_path" -type f -name "*.md" | sort | tail -n 1)
+  last_file_name=$(basename "$last_file_path")
+  library_path="$journal_library_path/$last_file_name"
 
-  echo "Opening entry for $file_name..."
-  open -a "$journal_editor" "$file_path"
-}
-
-__journal_path () {
-  echo "$journal_path"
+  echo "Opening entry for $last_file_name..."
+  open "iawriter://open?path=$library_path&edit=true"
 }
 
 __journal_new () {
-  timestamp=`date "+%F-%s"`
-  file_path="$journal_path/$timestamp.md"
+  timestamp=$(date "+%F-%s")
+  library_path="$journal_library_path/$timestamp.md"
 
   echo "Creating entry for $timestamp..."
-  touch "$file_path" &> /dev/null
-  open -a "$journal_editor" "$file_path"
+  open "iawriter://new?path=$library_path&edit=true"
 }
 
 __journal_help () {
@@ -48,6 +46,5 @@ case $1 in
   o|open) __journal_open;;
   l|last) __journal_last;;
   n|new) __journal_new;;
-  -p|--path) __journal_path;;
   -h|--help) __journal_help;;
 esac
