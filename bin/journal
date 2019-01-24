@@ -6,7 +6,7 @@ journal_library_path="/journal"
 journal_folder_path="$HOME/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents$journal_library_path"
 
 __journal_open () {
-  open "$journal_path"
+  open "$journal_folder_path"
 }
 
 __journal_last () {

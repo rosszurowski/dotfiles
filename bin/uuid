@@ -1,1 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
 echo $(uuidgen | tr '[:upper:]' '[:lower:]')

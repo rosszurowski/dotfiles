@@ -1,8 +1,72 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-if [ $# -eq 0 ]; then
-  echo "Usage: dns \033[2m[domain name]\033[0m"
+# Allows for quickly changing DNS servers from the command-line. Useful for when
+# working from a public space; WiFi networks sometimes block non-whitelisted DNS
+# servers.
+#
+# Usage:
+#
+# dns reset
+# dns cloudflare
+#
+
+set -e
+
+CLOUDFLARE_DNS_SERVER=(
+  "1.1.1.1"
+  "1.0.0.1"
+  "2606:4700:4700::1111"
+  "2606:4700:4700::1001"
+)
+
+GOOGLE_DNS_SERVER=(
+  "8.8.8.8"
+  "8.8.4.4"
+)
+
+__dns_server_cloudflare () {
+  networksetup -setdnsservers Wi-Fi empty
+  networksetup -setdnsservers Wi-Fi "${CLOUDFLARE_DNS_SERVER[@]}"
+  killall -HUP mDNSResponder
+}
+
+__dns_server_google () {
+  networksetup -setdnsservers Wi-Fi empty
+  networksetup -setdnsservers Wi-Fi "${GOOGLE_DNS_SERVER[@]}"
+  killall -HUP mDNSResponder
+}
+
+__dns_server_reset () {
+  networksetup -setdnsservers Wi-Fi empty
+  killall -HUP mDNSResponder
+}
+
+
+__dns_server_help () {
+  echo -e ""
+  echo -e "  Usage: dns \e[2m[cmd]\e[0m"
+  echo -e ""
+  echo "  Commands:"
+  echo ""
+  echo "    cloudflare    Set DNS to Cloudflare's 1.1.1.1 service"
+  echo "    google        Set DNS to Google's 8.8.8.8 service"
+  echo "    reset         Reset DNS to network defaults"
+  echo ""
+}
+
+# assert arguments
+[ $# -ne 1 ] && __dns_server_help && exit 1
+
+# assert root
+if [[ $EUID -ne 0 ]]; then
+  echo -e "\033[31mError:\033[0m Must be run as root" 1>&2
   exit 1
 fi
 
-dig +nocmd "$1" any +multiline +noall +answer
+# switch arguments
+case $1 in
+  reset) __dns_server_reset;;
+  cf|cloudflare) __dns_server_cloudflare;;
+  g|google) __dns_server_google;;
+  -h|--help) __dns_server_help;;
+esac
