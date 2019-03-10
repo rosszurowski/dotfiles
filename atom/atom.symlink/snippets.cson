@@ -39,8 +39,8 @@
 		'body': """
 			# Ignore npm/yarn scraps
 			node_modules/
+			package-lock.json
 			npm-debug.log
-			yarn.lock
 			yarn-debug.log
 			yarn-error.log
 		"""
@@ -57,9 +57,10 @@
 		'body': """
 			@font-face {
 			  font-family: '${1}';
-			  src: url('${2}.woff') format('woff'),
-			       url('${2}.ttf') format('truetype'),
-						 url('${2}.svg#font') format('svg');
+				font-weight: 400;
+				font-style: normal;
+			  src: url('${2}.woff2') format('woff2'),
+				     url('${2}.woff') format('woff');
 			}
 		"""
 	'Comment':
@@ -180,7 +181,7 @@
 		"""
 
 	'Flow':
-		'prefix': '@flow'
+		'prefix': 'flow'
 		'body': '// @flow'
 
 	'Template: Node Main Script':
