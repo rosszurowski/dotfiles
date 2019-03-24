@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+ICON_URL="https://rosszurowski-assets.s3.amazonaws.com/dotfiles/terminal.app.icns"
+ICON_DESTINATION="/Applications/iTerm.app/Contents/Resources/AppIcon.icns"
+
+# Update iTerm's icon to use app icns icon
+echo "> Downloading terminal.app.icns to iTerm..."
+wget $ICON_URL -O $ICON_DESTINATION
+
+echo "> Opening window to update icon..."
+
+osascript -e '
+set aFile to (POSIX file "/Applications/iTerm.app") as alias
+tell application "Finder" to open information window of aFile
+' && open "$(dirname $ICON_DESTINATION)"
+
+echo "> Done! Copy the icon to the info window"
