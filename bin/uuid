@@ -2,4 +2,4 @@
 
 set -e
 
-echo $(uuidgen | tr '[:upper:]' '[:lower:]')
+echo "$(uuidgen | tr '[:upper:]' '[:lower:]')"
