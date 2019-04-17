@@ -10,7 +10,7 @@ __journal_open () {
 }
 
 __journal_last () {
-  last_file_path=$(find "$journal_folder_path" -type f -name "*.md" | sort | tail -n 1)
+  last_file_path=$(find "$journal_folder_path" -type f -name "*.md" ! -iname "_template.md" | sort | tail -n 1)
   last_file_name=$(basename "$last_file_path")
   library_path="$journal_library_path/$last_file_name"
 
@@ -21,9 +21,16 @@ __journal_last () {
 __journal_new () {
   timestamp=$(date "+%F-%s")
   library_path="$journal_library_path/$timestamp.md"
+  template_path="$journal_folder_path/_template.md"
 
-  echo "Creating entry for $timestamp..."
-  open "iawriter://new?path=$library_path&edit=true"
+  if [ -f "$template_path" ]; then
+    template=`cat "$template_path"`
+    echo "Creating entry for $timestamp (from template)..."
+    open "iawriter://new?path=$library_path&edit=true&text=$template"
+  else
+    echo "Creating entry for $timestamp..."
+    open "iawriter://new?path=$library_path&edit=true"
+  fi
 }
 
 __journal_help () {
