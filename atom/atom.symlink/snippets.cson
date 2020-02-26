@@ -16,16 +16,12 @@
 			<html lang="en">
 			<head>
 				<title>${1:Untitled}</title>
-				<meta charset="utf-8"/>
-				<meta name="description" content="" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+				<meta charset="utf-8">
+				<meta name="description" content="">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
 				<link rel="shortcut icon" type="image/ico" href="favicon.png" />
 				<link rel="stylesheet" media="screen, projection" href="css/styles.css" />
-
-				<!--[if lt IE 9]>
-					<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-				<![endif]-->
 			</head>
 			<body>
 				${0}
@@ -321,6 +317,15 @@
 			const ${1:ComponentName} = (props) => (
 				<${2:div} />
 			);
+		"""
+
+'.source.ts':
+	'Documentation Comment':
+		'prefix': '@comment'
+		'body': """
+/**
+ * ${0}
+ */
 		"""
 
 '.source.makefile':

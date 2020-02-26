@@ -22,17 +22,20 @@
       "background-tips"
       "styleguide"
       "language-todo"
+      "spell-check"
+      "editorconfig"
+      "linter-eslint"
     ]
     projectHome: "/User/rosszurowski/Sites/"
     telemetryConsent: "limited"
     themes: [
-      "one-dark-ui"
-      "nord-atom-syntax"
+      "one-light-ui"
+      "github-atom-light-syntax"
     ]
     titleBar: "custom"
   editor:
     backUpBeforeSaving: true
-    fontFamily: "SF Mono"
+    fontFamily: "SFMono-Regular"
     fontSize: 13
     invisibles: {}
     lineHeight: 1.9
@@ -42,6 +45,9 @@
   "exception-reporting":
     userId: "85e0c956-2bc8-b754-ca23-9f79d39a340b"
   "flow-ide": {}
+  "fuzzy-finder":
+    scoringSystem: "fast"
+    useRipGrep: true
   "ide-flowtype":
     tryFlowBin: true
   "language-babel":
@@ -67,11 +73,13 @@
     darkerFormFocusEffect: true
   "one-dark-ui":
     fontSize: 13
-  "one-light-ui": {}
+    stickyHeaders: true
+  "one-light-ui":
+    fontSize: 13
+    stickyHeaders: true
   "opened-files": {}
   "prettier-atom":
     formatOnSaveOptions:
-      enabled: true
       isDisabledIfNotInPackageJson: true
       showInStatusBar: true
     prettierOptions:
