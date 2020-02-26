@@ -22,8 +22,7 @@ export TERM=screen-256color
 export SRC=$HOME/Sites
 export DOTFILES=$SRC/dotfiles
 export ZSH=$DOTFILES/zsh
-
-PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
+export PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
 
 # source every .zsh file in this repo
 for config_file in $DOTFILES/**/*.zsh; do
@@ -44,6 +43,7 @@ antigen bundle tarruda/zsh-autosuggestions
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
+# shellcheck source=zsh/completion.sh
 source $ZSH/completion.zsh
 
 ###############################################################################
@@ -62,12 +62,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# configure rvm
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# configure chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 # configure yarn bins
 export PATH="$HOME/.yarn/bin:$PATH"
 
+# configure go paths
+export GOPATH="${HOME}/Sites/go"
+# if this ever breaks run "$ brew prefix golang" and add /libexec after
+export GOROOT="/usr/local/opt/go/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
 # configure travis gem
 [ -f /Users/rosszurowski/.travis/travis.sh ] && source /Users/rosszurowski/.travis/travis.sh
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/Users/rosszurowski/.netlify/helper/path.zsh.inc' ]; then source '/Users/rosszurowski/.netlify/helper/path.zsh.inc'; fi
