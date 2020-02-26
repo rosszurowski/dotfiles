@@ -1,6 +1,6 @@
 # Dotfiles
 
-Preferences and config for my dev environment. A bunch of zsh, Git, and OS X scripts and utilities that I'm used to.
+Preferences and config for my dev environment. A bunch of zsh, Git, and OS X scripts and utilities that I'm used to. Most interesting to others might be my [folder of utility scripts](#personal-utilities).
 
 ## Installation
 
@@ -8,15 +8,7 @@ Preferences and config for my dev environment. A bunch of zsh, Git, and OS X scr
 curl https://raw.githubusercontent.com/rosszurowski/dotfiles/master/bootstrap.sh | bash
 ```
 
-To be updated...
-
-## Terminal
-
-![Terminal theme](https://user-images.githubusercontent.com/303731/30013218-1e176d84-90fa-11e7-985a-95328d015bee.png)
-
-The above scripts will automatically configure [iTerm](https://www.iterm2.com/) with the [Nord theme](https://github.com/arcticicestudio/nord-iterm2) and the [Input Mono Narrow](http://input.fontbureau.com/build/?customize&fontSelection=whole&a=0&g=0&i=serif&l=serif&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do) typeface.
-
-## Sensible Mac OS Defaults
+### Sensible Mac OS Defaults
 
 When setting up a new Mac, you may want to set some sensible OS defaults:
 
@@ -24,7 +16,7 @@ When setting up a new Mac, you may want to set some sensible OS defaults:
 script/setup-mac
 ```
 
-## Installing font library
+### Installing font library
 
 Once [the AWS CLI is set up](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html), restore the font library from the latest backup.
 
@@ -37,6 +29,19 @@ To make a new backup, run
 ```bash
 script/fonts-upload
 ```
+
+## Personal Utilities
+
+The `bin/` folder has a number of handy personal bash commands I use regularly.
+
+* `dns` allows quickly changing DNS servers from [Google DNS](https://developers.google.com/speed/public-dns/) to [Cloudflare DNS](https://cloudflare-dns.com) to network defaults. Handy for resetting DNS on public Wi-Fi networks that block custom DNS.
+* `e` quickly opens my editor in the current directory or specified path.
+* `encode` encodes video for the web using `ffmpeg`
+* `journal` is my journaling utility, which creates date-timestamped files in [iA Writer](http://www.ia.net/writer).
+* `uuid` gives me a UUID. Pairs well with `pbcopy` while programming.
+* `wifi` is a utility to periodically disable Wi-Fi access so my computer is an "offline-by-default" machine. I find this helps me keep more focused while I work.
+* `wifi-password` is a utility I took from somewhere to quickly get the password of the current Wi-Fi network. Easier than opening up Keychain Access.
+* `wifi-signal-strength` is a way to triage your current network's bandwidth from the command line. Also taken from somewhere else.
 
 ## See also
 

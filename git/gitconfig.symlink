@@ -29,6 +29,7 @@
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less -RFX
 	autocrlf = input
+	editor = atom --wait
 
 [apply]
 	whitespace = nowarn
