@@ -1,4 +1,2 @@
 #!/bin/sh
-mkdir -p zsh/bundle
-curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh \
-  > zsh/antigen.zsh
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
