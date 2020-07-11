@@ -73,13 +73,17 @@ brew tap caskroom/cask
 
 # Install applications
 masapps=(
-  904280696 # Things
-  775737590 # iA Writer
-  692867256 # Simplenote
-  409183694 # Keynote
-  409203825 # Numbers
-  409201541 # Pages
-  880001334 # Reeder
+  904280696  # Things
+  775737590  # iA Writer
+  692867256  # Simplenote
+  409183694  # Keynote
+  409203825  # Numbers
+  409201541  # Pages
+  880001334  # Reeder
+  824183456  # Affinity Photo
+  824171161  # Affinity Designer
+  1475387142 # Tailscale
+  1320666476 # Wipr
 )
 
 echo "> Install App Store applications..."
@@ -88,16 +92,18 @@ mas install "${masapps[@]}"
 
 apps=(
   1password
-  atom
+  audio-hijack
   beaker-browser
+  figma
   firefox
-  firefoxnightly
   google-chrome
   iterm2
   imageoptim
   kap
   oryoki
+  postico
   robofont
+  signal
   slack
   spotify
   sketch
