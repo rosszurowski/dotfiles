@@ -13,3 +13,6 @@ Thumbs.db
 
 # Ignore local python virtual environments
 venv/
+
+# Ignore VS Code files
+.vscode

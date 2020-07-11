@@ -104,6 +104,7 @@ apps=(
   transmission
   transmit
   unrarx
+  visual-studio-code
   vlc
 )
 
@@ -138,9 +139,6 @@ git clone https://github.com/rosszurowski/dotfiles $CLONE_PATH
 # Linking dotfiles
 echo "> Linking dotfiles to $HOME..."
 cd $CLONE_PATH && script/zsh && script/setup
-
-echo "> Install Atom packages..."
-apm install --packages-file atom/packages.txt
 
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."

@@ -29,7 +29,7 @@
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less -RFX
 	autocrlf = input
-	editor = atom --wait
+	editor = code --wait
 
 [apply]
 	whitespace = nowarn
@@ -46,9 +46,15 @@
 [help]
 	autocorrect = 1
 
+[pull]
+  rebase = true
+
 [push]
 	default = simple
 	followTags = true
+
+[rebase]
+	autoStash = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

@@ -4,7 +4,7 @@
 # Quick wrapper around editor
 #
 
-EDITOR="atom"
+EDITOR="code"
 
 if [ $# -eq 0 ]; then
   $EDITOR "$PWD"
