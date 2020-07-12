@@ -26,11 +26,15 @@ chsh -s /usr/local/bin/zsh
 # Install useful binaries
 binaries=(
   awscli
+  deno
+  entr
   fd
   fzf
-  go
+  gh
   git
+  go
   hub
+  jq
   mas
   neovim
   postgresql
@@ -39,7 +43,9 @@ binaries=(
   trash
   shellcheck
   ssh-copy-id
+  upx
   wget
+  youtube-dl
 )
 
 echo "> Installing useful binaries..."
