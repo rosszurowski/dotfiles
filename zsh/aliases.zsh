@@ -14,7 +14,7 @@ alias sla="ls -lhA"
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # ip addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias public-ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias internal-ip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
 alias ip-list="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 

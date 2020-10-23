@@ -26,6 +26,7 @@
 	ui = true
 
 [core]
+	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less -RFX
 	autocrlf = input
@@ -67,6 +68,7 @@
 
 [status]
 	showUntrackedFiles = all
+	submoduleSummary = true
 
 [color "diff"]
 	meta = yellow
@@ -75,3 +77,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[init]
+	defaultBranch = main
