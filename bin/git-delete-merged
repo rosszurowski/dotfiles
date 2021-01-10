@@ -1,0 +1,149 @@
+#!/usr/bin/env node
+
+/**
+ * This script deletes branches that have been merged into the `main` branch of
+ * a git repository. This script takes into account not just merged branches,
+ * but also squashed and rebased ones too.
+ *
+ * This script will list branches and confirm before deleting any data. After
+ * confirmation, it will hard delete with `git branch -D`.
+ *
+ * For a simple form of this script that doesn't account for squashed branches,
+ * you can run:
+ *
+ *   git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -D
+ *
+ * This script was adapted from this repo, updated to the latest version of Node.
+ * https://github.com/not-an-aardvark/git-delete-squashed
+ */
+
+"use strict";
+
+const childProcess = require("child_process");
+const readline = require("readline");
+
+let defaultBranch = "main";
+
+/**
+ * Calls `git` with the given arguments from the CWD
+ * @param {string[]} args A list of arguments
+ * @returns {Promise<string>} The output from `git`
+ */
+async function git(args) {
+  return new Promise((resolve, reject) => {
+    const child = childProcess.spawn("git", args);
+
+    let stdout = "";
+    let stderr = "";
+
+    child.stdout.on("data", (data) => (stdout += data));
+    child.stderr.on("data", (data) => (stderr += data));
+
+    child.on("close", (exitCode) =>
+      exitCode ? reject(stderr) : resolve(stdout)
+    );
+  }).then((stdout) => stdout.replace(/\n$/, ""));
+}
+
+/**
+ * Reads a y/n response from stdin.
+ * @param {string} question The message to display on the prompt
+ * @param {boolean} defaultValue The default value when the response is empty.
+ * @returns {Promise<boolean>} Response from stdin.
+ */
+async function prompt(question, defaultValue) {
+  const yes = ["yes", "y"];
+  const no = ["no", "n", "q", "quit", "e", "exit"];
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve, reject) => {
+    rl.question(question + " ", async (answer) => {
+      rl.close();
+      const cleaned = answer.trim().toLowerCase();
+      if (cleaned === "" && defaultValue !== undefined) {
+        resolve(defaultValue);
+        return;
+      }
+      if (yes.includes(cleaned)) {
+        resolve(true);
+        return;
+      }
+      if (no.includes(cleaned)) {
+        resolve(false);
+        return;
+      }
+      const result = await prompt(question, defaultValue);
+      resolve(result);
+    });
+  });
+}
+
+async function main() {
+  const branchListOutput = await git([
+    "for-each-ref",
+    "refs/heads/",
+    "--format=%(refname:short)",
+  ]);
+  const branchNames = branchListOutput.split("\n");
+  if (!branchNames.includes(defaultBranch)) {
+    // No branch matching `defaultBranch`? Try to guess from the repo.
+    const originHead = await git(["symbolic-ref", "refs/remotes/origin/HEAD"]);
+    const possible = originHead.replace("refs/remotes/origin/", "");
+    if (!branchNames.includes(possible)) {
+      throw `fatal: no branch named '${defaultBranch}' or '${possible}' found in this repo`;
+    }
+    defaultBranch = possible;
+  }
+
+  let filteredBranchNames = [];
+  for (let branchName of branchNames) {
+    const ancestorHash = await git(["merge-base", defaultBranch, branchName]);
+    const treeId = await git(["rev-parse", `${branchName}^{tree}`]);
+    const danglingCommitId = await git([
+      "commit-tree",
+      treeId,
+      "-p",
+      ancestorHash,
+      "-m",
+      `Temp commit for ${branchName}`,
+    ]);
+    const output = await git(["cherry", defaultBranch, danglingCommitId]);
+    if (!output.startsWith("-")) {
+      continue;
+    }
+    filteredBranchNames.push(branchName);
+  }
+
+  const count = filteredBranchNames.length;
+  const plural = `branch${count === 1 ? "" : "es"}`;
+
+  if (count < 1) {
+    console.log(`No stale branches merged into ${defaultBranch}`);
+    return;
+  }
+
+  console.log(`${count} ${plural} merged into ${defaultBranch}:`);
+  console.log(filteredBranchNames.map((name) => "  " + name).join("\n"));
+  const remove = await prompt(`Delete ${count} ${plural}? [y/N]`, false);
+  if (!remove) {
+    return;
+  }
+
+  await git(["checkout", defaultBranch]);
+  console.log(`Switched to branch '${defaultBranch}'`);
+
+  for (let branchName of filteredBranchNames) {
+    const output = await git(["branch", "-D", branchName]);
+    console.log(output);
+  }
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.error(err.cause || err);
+    process.exit(1);
+  });
