@@ -34,17 +34,18 @@ script/fonts-upload
 
 The `bin/` folder has a number of handy personal bash commands I use regularly.
 
-* `dns` allows quickly changing DNS servers from [Google DNS](https://developers.google.com/speed/public-dns/) to [Cloudflare DNS](https://cloudflare-dns.com) to network defaults. Handy for resetting DNS on public Wi-Fi networks that block custom DNS.
-* `e` quickly opens my editor in the current directory or specified path.
-* `encode` encodes video for the web using `ffmpeg`
-* `journal` is my journaling utility, which creates date-timestamped files in [iA Writer](http://www.ia.net/writer).
-* `uuid` gives me a UUID. Pairs well with `pbcopy` while programming.
-* `wifi` is a utility to periodically disable Wi-Fi access so my computer is an "offline-by-default" machine. I find this helps me keep more focused while I work.
-* `wifi-password` is a utility I took from somewhere to quickly get the password of the current Wi-Fi network. Easier than opening up Keychain Access.
-* `wifi-signal-strength` is a way to triage your current network's bandwidth from the command line. Also taken from somewhere else.
+- `dns` allows quickly changing DNS servers from [Google DNS](https://developers.google.com/speed/public-dns/) to [Cloudflare DNS](https://cloudflare-dns.com) to network defaults. Handy for resetting DNS on public Wi-Fi networks that block custom DNS.
+- `e` quickly opens my editor in the current directory or specified path.
+- `encode` encodes video for the web using `ffmpeg`
+- `git-delete-merged` cleans up local branches that have been merged on the remote. Helpful when you're collaborating with others have reviewing code.
+- `journal` is my journaling utility, which creates date-timestamped files in [iA Writer](http://www.ia.net/writer).
+- `uuid` gives me a UUID. Pairs well with `pbcopy` while programming.
+- `wifi` is a utility to periodically disable Wi-Fi access so my computer is an "offline-by-default" machine. I find this helps me keep more focused while I work.
+- `wifi-password` is a utility I took from somewhere to quickly get the password of the current Wi-Fi network. Easier than opening up Keychain Access.
+- `wifi-signal-strength` is a way to triage your current network's bandwidth from the command line. Also taken from somewhere else.
 
 ## See also
 
-* [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
-* [yyx990803/dotfiles](https://github.com/yyx990803/dotfiles)
-* [yoshuawuyts/dotfiles](https://github.com/yoshuawuyts/dotfiles)
+- [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
+- [yyx990803/dotfiles](https://github.com/yyx990803/dotfiles)
+- [yoshuawuyts/dotfiles](https://github.com/yoshuawuyts/dotfiles)
