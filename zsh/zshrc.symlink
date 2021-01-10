@@ -60,6 +60,10 @@ if ! zgen saved; then
   zgen save
 fi
 
+# Disable zsh autoupdate, update with `omz update` instead
+DISABLE_AUTO_UPDATE=true
+DISABLE_UPDATE_PROMPT=true
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
