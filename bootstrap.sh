@@ -26,14 +26,13 @@ chsh -s /usr/local/bin/zsh
 # Install useful binaries
 binaries=(
   awscli
-  deno
   entr
   fd
   fzf
   gh
   git
   go
-  hub
+  hey
   jq
   mas
   neovim
@@ -99,14 +98,12 @@ mas install "${masapps[@]}"
 apps=(
   1password
   audio-hijack
-  beaker-browser
   figma
   firefox
   google-chrome
   iterm2
   imageoptim
   kap
-  oryoki
   postico
   robofont
   signal
