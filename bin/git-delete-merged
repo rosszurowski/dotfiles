@@ -99,22 +99,33 @@ async function main() {
   }
 
   let filteredBranchNames = [];
-  for (let branchName of branchNames) {
-    const ancestorHash = await git(["merge-base", defaultBranch, branchName]);
-    const treeId = await git(["rev-parse", `${branchName}^{tree}`]);
-    const danglingCommitId = await git([
-      "commit-tree",
-      treeId,
-      "-p",
-      ancestorHash,
-      "-m",
-      `Temp commit for ${branchName}`,
-    ]);
-    const output = await git(["cherry", defaultBranch, danglingCommitId]);
+  for (let br of branchNames) {
+    let output;
+    try {
+      const ancestorHash = await git(["merge-base", defaultBranch, br]);
+      const treeId = await git(["rev-parse", `${br}^{tree}`]);
+      const danglingCommitId = await git([
+        "commit-tree",
+        treeId,
+        "-p",
+        ancestorHash,
+        "-m",
+        `Temp commit for ${br}`,
+      ]);
+      output = await git(["cherry", defaultBranch, danglingCommitId]);
+    } catch(err) {
+      // Branches like those using git-subtrac don't handle merge-detection well,
+      // and fail with an empty error. We skip those.
+      if (err) {
+        throw err
+      }
+      console.log(`Skipping '${br}'`)
+      continue
+    }
     if (!output.startsWith("-")) {
       continue;
     }
-    filteredBranchNames.push(branchName);
+    filteredBranchNames.push(br);
   }
 
   const count = filteredBranchNames.length;
