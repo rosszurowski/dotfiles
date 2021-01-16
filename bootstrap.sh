@@ -50,13 +50,14 @@ binaries=(
 echo "> Installing useful binaries..."
 brew install "${binaries[@]}"
 
-# Install node and iojs
+# Install node via volta
 echo "> Installing node..."
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-nvm install node
+curl https://get.volta.sh | bash
+volta install node
+volta install yarn
 # Some npm defaults
-npm config set init-license "MIT"
-npm config set init-version "0.0.1"
+yarn config set init-license "MIT"
+yarn config set init-version "0.0.1"
 
 # Install useful node modules
 modules=(
@@ -65,12 +66,11 @@ modules=(
   serve
   svgo
   webpack
-  yarn
   vmd
 )
 
 echo "> Installing useful node modules..."
-npm install -g "${modules[@]}"
+yarn global add "${modules[@]}"
 
 # Install brew cask
 echo "> Installing brew cask..."
@@ -100,7 +100,6 @@ apps=(
   audio-hijack
   figma
   firefox
-  google-chrome
   iterm2
   imageoptim
   kap
