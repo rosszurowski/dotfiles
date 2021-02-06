@@ -25,14 +25,19 @@ chsh -s /usr/local/bin/zsh
 
 # Install useful binaries
 binaries=(
-  awscli
+  deno
+  ducaale/ht-rs/ht-rs
   entr
   fd
   fzf
   gh
   git
   go
+  goreleaser/tap/goreleaser
+  heroku/brew/heroku
   hey
+  ht
+  hugo
   jq
   mas
   neovim
@@ -42,9 +47,11 @@ binaries=(
   trash
   shellcheck
   ssh-copy-id
+  stripe/stripe-cli/stripe
   upx
   wget
   youtube-dl
+  zola
 )
 
 echo "> Installing useful binaries..."
@@ -71,10 +78,6 @@ modules=(
 
 echo "> Installing useful node modules..."
 yarn global add "${modules[@]}"
-
-# Install brew cask
-echo "> Installing brew cask..."
-brew tap caskroom/cask
 
 # Install applications
 masapps=(
@@ -117,7 +120,7 @@ apps=(
 )
 
 echo "> Installing applications..."
-brew cask install --appdir="/Applications" "${apps[@]}"
+brew install --cask --appdir="/Applications" "${apps[@]}"
 
 # Install quicklook plugins
 qlplugins=(
@@ -127,13 +130,10 @@ qlplugins=(
 )
 
 echo "> Installing QuickLook plugins..."
-brew cask install "${qlplugins[@]}"
+brew install --cask "${qlplugins[@]}"
 
 qlmanage -r
 qlmanage -r cache
-
-echo "> Installing services..."
-brew tap homebrew/services
 
 echo "> Installing font library..."
 script/fonts-download
