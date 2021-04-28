@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# pr-checkout lists all open PRs on a Github repo, and allows
+# checking out and pulling the latest commits for that PR.
+# Helpful for code review.
+# Inspired by https://seb.jambor.dev/posts/improving-shell-workflows-with-fzf/#deleting-branches
+
+pr_number=$(gh api 'repos/:owner/:repo/pulls' |
+  jq -r '.[] | "#\(.number) - \(.title)"' |
+  fzf | sed -E 's/^#([0-9]+).*/\1/')
+
+if [ -n "$pr_number" ]; then
+  gh pr checkout "$pr_number"
+fi

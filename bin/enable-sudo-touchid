@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Modifies macOS's /etc/pam.d/sudo file to allow using
+# TouchID to authenticate sudo commands.
+#
+#
+
+set -e
+
+sudo sed -i -e '1s;^;auth       sufficient     pam_tid.so\n;' /etc/pam.d/sudo
