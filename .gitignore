@@ -6,3 +6,6 @@ vim/nvim/plugged/*
 
 # Ignore zsh vendor scripts
 zsh/antigen.zsh
+
+# Ignore some raycast scripts
+raycast-scripts/_*
