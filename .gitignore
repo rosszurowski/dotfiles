@@ -1,3 +1,5 @@
+# Ignore secrets file
+.secrets.zsh
 
 # Ignore vim files
 vim/nvim/.netrwhist

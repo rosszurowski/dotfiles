@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-username="rosszurowski"
 export NAME="Ross Zurowski"
 export EMAIL="ross@rosszurowski.com"
 
@@ -28,6 +27,7 @@ export PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
 source "$ZSH/config.zsh"
 source "$ZSH/aliases.zsh"
 source "$ZSH/plugin.title.zsh"
+[ -f "$ZSH/.secrets.zsh" ] && source "$ZSH/.secrets.zsh"
 
 ###########################
 #  Plugins
@@ -37,7 +37,6 @@ source "$ZSH/plugin.title.zsh"
 source "${HOME}/.zgen/zgen.sh"
 
 if ! zgen saved; then
-
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/aws
@@ -55,14 +54,13 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-completions
   zgen load zsh-users/zsh-history-substring-search
   zgen load tarruda/zsh-autosuggestions
-  zgen load unixorn/autoupdate-zgen
 
   zgen save
 fi
 
 # Disable zsh autoupdate, update with `omz update` instead
-DISABLE_AUTO_UPDATE=true
-DISABLE_UPDATE_PROMPT=true
+export DISABLE_AUTO_UPDATE="true"
+export DISABLE_UPDATE_PROMPT="true"
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
