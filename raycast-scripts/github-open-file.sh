@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Open Commit History
+# @raycast.title Open File on GitHub
 # @raycast.mode silent
 
 # Optional parameters:
@@ -20,7 +20,7 @@
 # Set the branch to open on GitHub.
 BRANCH="main"
 # Set the page to open for the file. Available values: commits, blob, blame
-PAGE="commits"
+PAGE="blob"
 # Enable to get verbose output.
 DEBUG=false
 
@@ -74,7 +74,7 @@ if [[ -d $FILEPATH || -f $FILEPATH ]]; then
     BASE=$(git config --get remote.origin.url | sed s/\\.git// | sed 's/:/\//' | sed 's/.*github.com/https:\/\/github.com/')
     URL="$BASE/$PAGE/$BRANCH/$RELATIVE_FILEPATH"
 
-    open $URL
+    open "$URL"
   else
     echo "Not a Git repostiory"
     exit 1

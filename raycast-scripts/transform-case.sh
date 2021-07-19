@@ -4,7 +4,7 @@
 # @raycast.schemaVersion 1
 # @raycast.title Transform Case
 # @raycast.mode compact
-# @raycast.packageName Developer Utils
+# @raycast.packageName Developer Utilities
 
 # Optional parameters:
 # @raycast.icon 🔠
