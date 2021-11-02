@@ -20,6 +20,13 @@ alias ip-list="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{
 alias headers="curl -I -s -X GET"
 alias flush-dns="sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 
+# tailscale utils
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias dev-tailscaled="go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts.sock --state=/tmp/ts/ts.state"
+alias dev-tailscale="go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts.sock"
+alias dev-alt-tailscaled="go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts2.sock --state=/tmp/ts/ts2.state"
+alias dev-alt-tailscale="go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts2.sock"
+
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 # Usage: `command-one && command-two && notify`
