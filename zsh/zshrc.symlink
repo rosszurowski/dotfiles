@@ -66,6 +66,10 @@ export DISABLE_UPDATE_PROMPT="true"
 autoload -U compinit
 compinit
 
+if [ -x "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
 ###############################################################################
 # Default programs
 ###############################################################################

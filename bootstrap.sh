@@ -26,7 +26,6 @@ chsh -s /usr/local/bin/zsh
 # Install useful binaries
 binaries=(
   deno
-  ducaale/ht-rs/ht-rs
   entr
   fd
   fzf
@@ -36,7 +35,6 @@ binaries=(
   goreleaser/tap/goreleaser
   heroku/brew/heroku
   hey
-  ht
   hugo
   jq
   mas
@@ -50,8 +48,10 @@ binaries=(
   stripe/stripe-cli/stripe
   upx
   wget
+  xh
   youtube-dl
   zola
+  zoxide
 )
 
 echo "> Installing useful binaries..."
@@ -72,7 +72,6 @@ modules=(
   psi
   serve
   svgo
-  webpack
   vmd
 )
 
@@ -100,12 +99,14 @@ mas install "${masapps[@]}"
 
 apps=(
   1password
+  arq
   audio-hijack
+  cleanshot
+  daisydisk
   figma
   firefox
   iterm2
   imageoptim
-  kap
   postico
   robofont
   signal
@@ -114,7 +115,6 @@ apps=(
   sketch
   transmission
   transmit
-  unrarx
   visual-studio-code
   vlc
 )
