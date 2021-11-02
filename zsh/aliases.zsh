@@ -1,8 +1,6 @@
-# navigation shortcuts
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
+
+alias ..="echo \"use 'cd ..' instead\""
+alias ...="echo \"use 'cd ...' instead\""
 
 # `ls` improvements
 alias ls="ls -CF"
