@@ -2,11 +2,10 @@
 
 set -e
 
-APP_NAME="iTerm.app"
+APP_NAME="Obsidian.app"
 APP_PATH="/Applications/$APP_NAME"
-ICON_NAME="AppIcon.icns"
-ICON_URL="https://rosszurowski-assets.s3.amazonaws.com/dotfiles/terminal.app.icns"
-ICON_DESTINATION="$APP_PATH/Contents/Resources/$ICON_NAME"
+ICON_URL="https://rosszurowski-assets.s3.amazonaws.com/dotfiles/obsidian.app.icns"
+ICON_DESTINATION="$APP_PATH/Contents/Resources/Obsidian.icns"
 
 echo "> Backing up old icon..."
 cp "$ICON_DESTINATION" "$ICON_DESTINATION.bak"
