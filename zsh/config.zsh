@@ -47,6 +47,7 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
+bindkey '^[^?' backward-kill-word
 
 # configure zsh-notify
 zstyle ':notify:*' error-title "Error"
