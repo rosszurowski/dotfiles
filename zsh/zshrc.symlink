@@ -90,3 +90,5 @@ export GOPATH="${HOME}/Sites/go"
 # if this ever breaks run "$ brew prefix golang" and add /libexec after
 export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
