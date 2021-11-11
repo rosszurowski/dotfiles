@@ -6,7 +6,7 @@
 	<string>com.rosszurowski.wifi-disabler</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/rosszurowski/Sites/dotfiles/bin/wifi</string>
+		<string>/Users/rosszurowski/Developer/dotfiles/bin/wifi</string>
 		<string>off</string>
 	</array>
 	<key>StartInterval</key>

@@ -2,13 +2,31 @@
 export NAME="Ross Zurowski"
 export EMAIL="ross@rosszurowski.com"
 
-# if this ever breaks run "$ brew prefix <toolname>"
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
-export PATH="$PATH:$HOME/Sites/dotfiles/bin"
+# paths
+export SRC="$HOME/Developer"
+export DOTFILES=$SRC/dotfiles
+export ZSH=$DOTFILES/zsh
+export PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
 
-# man pages
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-export MANPATH="/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH"
+# if this breaks, run `brew --prefix` and use that value
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_BIN="$HOMEBREW_PREFIX/bin"
+
+# if this ever breaks run "$ brew prefix <toolname>"
+export PATH="$PATH:$HOMEBREW_BIN:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
+export PATH="$PATH:$DOTFILES/bin"
+
+# configure go paths
+export GOPATH="$SRC/go"
+export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
+export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
+
+# configure volta for managing node/yarn/npm
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$PATH:$VOLTA_HOME/bin"
+
+# configure postgres binaries from postgres.app
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
 # start zle
 zmodload zsh/zle
@@ -17,11 +35,9 @@ zmodload zsh/zle
 export LC_ALL="en_US.UTF-8"
 export TERM=screen-256color
 
-# shortcuts
-export SRC=$HOME/Sites
-export DOTFILES=$SRC/dotfiles
-export ZSH=$DOTFILES/zsh
-export PROMPT="%F{8}${PROMPT_SYMBOL:-$}%f "
+# gpg tty, needed to sign git commits
+# shellcheck disable=SC2155
+export GPG_TTY="$(tty)"
 
 # source every .zsh file in this repo
 source "$ZSH/config.zsh"
@@ -34,7 +50,7 @@ source "$ZSH/plugin.title.zsh"
 ###########################
 
 # shellcheck source=/Users/rosszurowski/.zgen/zgen.sh
-source "${HOME}/.zgen/zgen.sh"
+source "$HOME/.zgen/zgen.zsh"
 
 if ! zgen saved; then
   zgen oh-my-zsh
@@ -80,15 +96,3 @@ if [ -x "$(command -v nvim)" ]; then
 else
   export EDITOR="vim"
 fi
-
-# configure volta for managing node/yarn/npm
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
-# configure go paths
-export GOPATH="${HOME}/Sites/go"
-# if this ever breaks run "$ brew prefix golang" and add /libexec after
-export GOROOT="/usr/local/opt/go/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

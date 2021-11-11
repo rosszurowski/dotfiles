@@ -15,11 +15,11 @@
 # @raycast.authorURL https://github.com/rosszurowski
 
 # Documentation:
-# @raycast.description Open a ~/Sites directory in VS Code
+# @raycast.description Open a ~/Developer directory in VS Code
 
-path="$HOME/Sites/${1}"
+path="$SRC/${1}"
 # shellcheck disable=SC2088
-human_path="~/Sites/${1}"
+human_path="~/Developer/${1}"
 
 if [ ! -d "$path" ]; then
   echo "No directory at $human_path"
