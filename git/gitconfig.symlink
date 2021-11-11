@@ -1,7 +1,10 @@
 [user]
 	name = Ross Zurowski
 	email = ross@rosszurowski.com
-	signingkey = 13C0941A
+	signingkey = C84F376F45501290
+
+[commit]
+	gpgsign = true
 
 [alias]
 	count	= !git shortlog -sn
@@ -63,9 +66,6 @@
 	required = true
 	process = git-lfs filter-process
 
-[commit]
-	gpgsign = true
-
 [status]
 	showUntrackedFiles = all
 	submoduleSummary = true
@@ -77,5 +77,6 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
 [init]
 	defaultBranch = main
