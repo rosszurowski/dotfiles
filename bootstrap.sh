@@ -2,26 +2,28 @@
 
 # Check for Homebrew,
 # Install if we don't have it
-if test ! $(which brew); then
+if test ! "$(which brew)"; then
   echo "> Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-if test ! $(which brew); then
+if test ! "$(which brew)"; then
   echo ""
   echo "> Homebrew install failed! Try again manually by running"
-  echo "> ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+  echo "> /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
   echo ""
 fi
 
 # Update homebrew recipes
 brew update
 
+HOMEBREW_PATH="$(brew --prefix)/bin"
+
 # Install and use latest zsh
 echo "> Changing shell to latest zsh version..."
 brew install zsh
-echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells > /dev/null
-chsh -s /usr/local/bin/zsh
+echo "$HOMEBREW_PATH/zsh" | sudo tee -a /etc/shells > /dev/null
+chsh -s "$HOMEBREW_PATH/zsh"
 
 # Install useful binaries
 binaries=(
@@ -33,19 +35,16 @@ binaries=(
   git
   go
   goreleaser/tap/goreleaser
-  heroku/brew/heroku
   hey
   hugo
   jq
   mas
   neovim
-  postgresql
   rename
   terminal-notifier
   trash
   shellcheck
   ssh-copy-id
-  stripe/stripe-cli/stripe
   upx
   wget
   xh
@@ -72,7 +71,6 @@ modules=(
   psi
   serve
   svgo
-  vmd
 )
 
 echo "> Installing useful node modules..."
@@ -82,15 +80,11 @@ yarn global add "${modules[@]}"
 masapps=(
   904280696  # Things
   775737590  # iA Writer
-  692867256  # Simplenote
   409183694  # Keynote
   409203825  # Numbers
   409201541  # Pages
-  880001334  # Reeder
   824183456  # Affinity Photo
   824171161  # Affinity Designer
-  1475387142 # Tailscale
-  1320666476 # Wipr
 )
 
 echo "> Install App Store applications..."
@@ -107,8 +101,8 @@ apps=(
   firefox
   iterm2
   imageoptim
-  postico
-  robofont
+  mimestream
+  raycast
   signal
   slack
   spotify
@@ -122,33 +116,22 @@ apps=(
 echo "> Installing applications..."
 brew install --cask --appdir="/Applications" "${apps[@]}"
 
-# Install quicklook plugins
-qlplugins=(
-  qlcolorcode
-  qlmarkdown
-  qlstephen
-)
-
-echo "> Installing QuickLook plugins..."
-brew install --cask "${qlplugins[@]}"
-
-qlmanage -r
-qlmanage -r cache
-
 echo "> Installing font library..."
 script/fonts-download
 
+# Set up GPG keys
+script/setup-gpg
+
 # Clone this repo into ./dotfiles
-read -p "Choose where to clone the dotfiles repo: " -i "$HOME/Sites/dotfiles" -e CLONE_PATH
+read -r -p "Choose where to clone the dotfiles repo: " -i "$HOME/Developer/dotfiles" -e CLONE_PATH
 echo "> Cloning into dotfiles repo..."
-mkdir -p $CLONE_PATH
-git clone https://github.com/rosszurowski/dotfiles $CLONE_PATH
+mkdir -p "$CLONE_PATH"
+git clone https://github.com/rosszurowski/dotfiles "$CLONE_PATH"
 
 # Linking dotfiles
 echo "> Linking dotfiles to $HOME..."
-cd $CLONE_PATH && script/zsh && script/setup
+cd "$CLONE_PATH" && script/zsh && script/setup
 
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."
 brew cleanup
-brew cask cleanup
