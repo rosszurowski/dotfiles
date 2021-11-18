@@ -64,7 +64,7 @@ if ! zgen saved; then
   if [ "$(uname -a | grep -ci Darwin)" = 1 ]; then
     # Load macOS-specific plugins
     zgen oh-my-zsh plugins/brew
-    zgen oh-my-zsh plugins/osx
+    zgen oh-my-zsh plugins/macos
   fi
 
   zgen load zsh-users/zsh-completions
