@@ -13,7 +13,7 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_BIN="$HOMEBREW_PREFIX/bin"
 
 # if this ever breaks run "$ brew prefix <toolname>"
-export PATH="$PATH:$HOMEBREW_BIN:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
+export PATH="$HOMEBREW_BIN:$PATH"
 export PATH="$PATH:$DOTFILES/bin"
 
 # configure go paths
