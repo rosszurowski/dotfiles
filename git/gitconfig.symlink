@@ -1,10 +1,16 @@
 [user]
 	name = Ross Zurowski
 	email = ross@rosszurowski.com
-	signingkey = C84F376F45501290
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWrVwZYoNNe6g5Afp3qeCWF6XGZMZ5Uoxby7dq6B9fx
 
 [commit]
 	gpgsign = true
+
+[gpg]
+	format = "ssh"
+
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
 
 [alias]
 	count	= !git shortlog -sn
