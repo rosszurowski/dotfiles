@@ -38,6 +38,9 @@
 [apply]
 	whitespace = nowarn
 
+[merge]
+	conflictStyle = "zdiff3"
+
 [mergetool]
 	keepBackup = false
 
