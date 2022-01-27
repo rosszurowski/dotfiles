@@ -11,3 +11,6 @@ zsh/antigen.zsh
 
 # Ignore some raycast scripts
 raycast-scripts/_*
+
+# Ignore key files
+keys/*

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+
+KEYDIR="$DOTFILES/keys"
+
+__key_get () {
+  [ ! -f "$KEYDIR/$2" ] && echo "Key '$2' not found" && exit 1
+  cat "$KEYDIR/$2"
+}
+
+__key_set () {
+  echo "$2" > "$KEYDIR/$1"
+}
+
+__key_ls () {
+  ls "$KEYDIR"
+}
+
+__key_help () {
+  echo -e "
+  Usage: key [cmd] [id]
+
+  Commands:
+
+    get     Fetch a key value
+    set     Set a key value
+    ls      List available keys
+"
+}
+
+# assert arguments
+[ $# -eq 0 ] && __key_help && exit 1
+
+# switch arguments
+case $1 in
+  get) __key_get "$@";;
+  set) __key_set "$@";;
+  ls) __key_ls "$@";;
+  -h|--help) __key_help;;
+esac
