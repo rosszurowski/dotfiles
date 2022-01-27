@@ -39,7 +39,7 @@ install_dotfiles () {
         echo "> What do you want to do?"
         echo ""
         echo "  [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -n 1 action
+        read -rn 1 action
 
         case "$action" in
           o ) overwrite=true;;
@@ -71,6 +71,8 @@ install_dotfiles () {
       link_files "$source" "$dest"
     fi
   done
+
+  link_files "$DOTFILES_ROOT/fish" "$HOME/.config/fish/"
 }
 
 install_dotfiles
