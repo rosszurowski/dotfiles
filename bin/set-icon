@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Sets an application or folder icon on macOS, handling the various
+# ways that the icon can be specified and clearing caches.
+
+set -e
+
+if [ $# -eq 0 ]; then
+  echo -e "Usage: set-icon \033[2m[file path] [icon path]\033[0m"
+  exit 1
+fi
+
+if [ $EUID -ne 0 ]; then
+    echo "Not running as root, re-run with sudo:"
+    echo ""
+    echo "sudo set-icon"
+    echo ""
+    exit
+fi
+
+SCRIPT_DIR="$(dirname "$0")"
+FILE_PATH="$1"
+ICON_PATH="$2"
+
+"$SCRIPT_DIR/set-icon-bin" "$FILE_PATH" "$ICON_PATH"
+touch "$FILE_PATH"
+killall Dock && killall Finder
