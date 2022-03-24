@@ -53,6 +53,9 @@ if status --is-interactive
   alias dev-alt-tailscaled "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts2.sock --state=/tmp/ts/ts2.state"
   alias dev-alt-tailscale "go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts2.sock"
 
+  # Add tool aliases
+  alias fly "flyctl"
+
   # macOS aliases
   alias update "sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup"
   alias caffeine "caffeinate -i"
