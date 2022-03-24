@@ -12,5 +12,6 @@ wget -q $ICON_URL -O "$ICON_DESTINATION"
 
 echo "> Replacing icon..."
 sudo set-icon "$APP_PATH" "$ICON_DESTINATION"
+trash "$ICON_PATH"
 echo ""
 echo "> Done!"

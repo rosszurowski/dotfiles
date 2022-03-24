@@ -11,5 +11,6 @@ echo "> Downloading $(basename $ICON_URL)..."
 wget -q $ICON_URL -O "$ICON_DESTINATION"
 
 sudo set-icon "$APP_PATH" "$ICON_DESTINATION"
+trash "$ICON_PATH"
 echo ""
 echo "> Done!"
