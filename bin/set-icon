@@ -2,6 +2,8 @@
 
 # Sets an application or folder icon on macOS, handling the various
 # ways that the icon can be specified and clearing caches.
+# Uses the underlying `set-icon` command from this repo:
+# https://github.com/TextsHQ/set-icon
 
 set -e
 

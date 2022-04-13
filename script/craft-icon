@@ -3,15 +3,9 @@
 set -e
 
 APP_PATH="/Applications/Craft.app"
-ICON_URL="https://rosszurowski-assets.s3.amazonaws.com/dotfiles/craft.app.icns"
-ICON_DESTINATION="$HOME/Downloads/$(basename $ICON_URL)"
-
-# Update iTerm's icon to use app icns icon
-echo "> Downloading $(basename $ICON_URL)..."
-wget -q $ICON_URL -O "$ICON_DESTINATION"
+ICON_PATH="$DOTFILES/icns/craft.app.icns"
 
 echo "> Replacing icon..."
-sudo set-icon "$APP_PATH" "$ICON_DESTINATION"
-trash "$ICON_PATH"
+sudo set-icon "$APP_PATH" "$ICON_PATH"
 echo ""
 echo "> Done!"
