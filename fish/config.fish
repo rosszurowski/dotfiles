@@ -55,6 +55,7 @@ if status --is-interactive
 
   # Add tool aliases
   alias fly "flyctl"
+  alias youtube-dl "yt-dlp"
 
   # macOS aliases
   alias update "sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup"

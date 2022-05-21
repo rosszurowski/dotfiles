@@ -29,13 +29,11 @@ chsh -s "$HOMEBREW_PATH/zsh"
 binaries=(
   deno
   entr
-  fd
   fzf
   gh
   git
   go
   goreleaser/tap/goreleaser
-  hey
   hugo
   jq
   mas
@@ -48,9 +46,8 @@ binaries=(
   upx
   wget
   xh
-  youtube-dl
+  yt-dlp/taps/yt-dlp
   zola
-  zoxide
 )
 
 echo "> Installing useful binaries..."
@@ -67,8 +64,6 @@ yarn config set init-version "0.0.1"
 
 # Install useful node modules
 modules=(
-  diff-so-fancy
-  psi
   serve
   svgo
 )
