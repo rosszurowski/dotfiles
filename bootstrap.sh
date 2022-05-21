@@ -32,6 +32,7 @@ binaries=(
   fzf
   gh
   git
+  git-delta
   go
   goreleaser/tap/goreleaser
   hugo

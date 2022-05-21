@@ -31,9 +31,21 @@
 [core]
 	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
-	pager = diff-so-fancy | less -RFX
+	pager = delta
 	autocrlf = input
 	editor = code --wait
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	syntax-theme = Nord
+	hunk-header-style = file line-number syntax
+	navigate = true # use n and N to move between diff sections
+	light = false
+
+[diff]
+	colorMoved = default
 
 [apply]
 	whitespace = nowarn
