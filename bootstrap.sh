@@ -115,6 +115,9 @@ brew install --cask --appdir="/Applications" "${apps[@]}"
 echo "> Installing font library..."
 script/fonts-download
 
+echo "> Setting up Raycast (key in 1Password)"
+open ./raycast/settings.rayconfig
+
 # Set up GPG keys
 script/setup-gpg
 
