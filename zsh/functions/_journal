@@ -1,6 +1,0 @@
-#compdef _journal journal
-
-_journal () {
-  compadd open
-  compadd new
-}

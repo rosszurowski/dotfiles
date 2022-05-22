@@ -1,13 +1,7 @@
-# Ignore secrets file
-.secrets.zsh
-
 # Ignore vim files
 vim/nvim/.netrwhist
 vim/nvim/plugged/*
 !vim/nvim/plugged/.gitkeep
-
-# Ignore zsh vendor scripts
-zsh/antigen.zsh
 
 # Ignore some raycast scripts
 raycast-scripts/_*

@@ -19,11 +19,11 @@ brew update
 
 HOMEBREW_PATH="$(brew --prefix)/bin"
 
-# Install and use latest zsh
-echo "> Changing shell to latest zsh version..."
-brew install zsh
-echo "$HOMEBREW_PATH/zsh" | sudo tee -a /etc/shells > /dev/null
-chsh -s "$HOMEBREW_PATH/zsh"
+# Install and use latest fish
+echo "> Changing shell to latest fish version..."
+brew install fish
+echo "$HOMEBREW_PATH/fish" | sudo tee -a /etc/shells > /dev/null
+chsh -s "$HOMEBREW_PATH/fish"
 
 # Install useful binaries
 binaries=(
