@@ -67,6 +67,7 @@ if status --is-interactive
   abbr -a -g gti git
   abbr -a -g sl ls
   abbr -a -g g git
+  abbr -a -g gt git
 end
 
 # The next line updates PATH for Netlify's Git Credential Helper.
