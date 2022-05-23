@@ -89,6 +89,7 @@ mas install "${masapps[@]}"
 
 apps=(
   1password
+  1password/tap/1password-cli
   arq
   audio-hijack
   cleanshot
@@ -115,7 +116,10 @@ brew install --cask --appdir="/Applications" "${apps[@]}"
 echo "> Installing font library..."
 script/fonts-download
 
-echo "> Setting up Raycast (key in 1Password)"
+echo "> Setting up Raycast..."
+echo "> Fetching password from 1Password..."
+pw=$(op read "op://z4w6n6rguudu6xchl37at3pshe/pe4irhzmd7qxlq7fgp7v6ihlvu/password")
+echo "> Password: $pw"
 open ./raycast/settings.rayconfig
 
 # Set up GPG keys
@@ -129,7 +133,7 @@ git clone https://github.com/rosszurowski/dotfiles "$CLONE_PATH"
 
 # Linking dotfiles
 echo "> Linking dotfiles to $HOME..."
-cd "$CLONE_PATH" && script/zsh && script/setup
+cd "$CLONE_PATH" && script/setup
 
 # Remove outdated versions from the cellar
 echo "> Cleaning up..."

@@ -1,12 +1,30 @@
 #!/usr/bin/env bash
+#
+# key loads secrets from a keyfile or from a 1Password vault and returns them
+# for use. This helper is intended for storing keys used in shell scripts for
+# easy recall.
+#
+#   key get gh-token
+#   key set gh-token "val"
+#
+# This script supports the 1Password CLI. Keys which begin with `op://` will
+# be retrieved from 1Password rather than reading straight from the filesystem.
 
 set -e
 
 KEYDIR="$DOTFILES/keys"
 
 __key_get () {
-  [ ! -f "$KEYDIR/$2" ] && echo "Key '$2' not found" && exit 1
-  cat "$KEYDIR/$2"
+  [ ! -f "$KEYDIR/$2" ] && echo "> Key '$2' not found" && exit 1
+  k=$(cat "$KEYDIR/$2")
+  if [[ $k == op://* ]]; then
+    if [ -x "$(command -v op)" ]; then
+      k=$(op read "$k")
+    else
+      echo "> 1Password CLI not found. Install it and try again."
+    fi
+  fi
+  echo "$k"
 }
 
 __key_set () {

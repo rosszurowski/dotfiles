@@ -2,9 +2,3 @@
 vim/nvim/.netrwhist
 vim/nvim/plugged/*
 !vim/nvim/plugged/.gitkeep
-
-# Ignore some raycast scripts
-raycast-scripts/_*
-
-# Ignore key files
-keys/*
