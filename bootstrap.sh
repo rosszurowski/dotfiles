@@ -76,12 +76,15 @@ yarn global add "${modules[@]}"
 # Install applications
 masapps=(
   904280696  # Things
+  1487937127 # Craft
   775737590  # iA Writer
   409183694  # Keynote
   409203825  # Numbers
   409201541  # Pages
+  1289583905 # Pixelmator Pro
   824183456  # Affinity Photo
   824171161  # Affinity Designer
+  1475387142 # Tailscale
 )
 
 echo "> Install App Store applications..."
@@ -100,6 +103,7 @@ apps=(
   iterm2
   imageoptim
   mimestream
+  notion
   raycast
   signal
   slack
