@@ -47,7 +47,8 @@ binaries=(
   upx
   wget
   xh
-  yt-dlp/taps/yt-dlp
+  yt-dlp/taps/yt-dlp   # youtube-dl replacement
+  zig                  # used for cross-compiling some Go binaries
   zola
 )
 
