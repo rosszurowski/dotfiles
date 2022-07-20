@@ -54,7 +54,6 @@ if status --is-interactive
   alias dev-alt-tailscale "go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts2.sock"
 
   # Add tool aliases
-  alias fly "flyctl"
   alias youtube-dl "yt-dlp"
 
   # macOS aliases
