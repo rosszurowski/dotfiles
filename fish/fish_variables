@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export BUN_INSTALL:/Users/rosszurowski/\x2ebun
 SETUVAR __fish_initialized:3100
 SETUVAR fish_color_autosuggestion:4c566a
 SETUVAR fish_color_cancel:4c566a

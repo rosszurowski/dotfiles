@@ -71,3 +71,8 @@ end
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 test -f '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc' && source '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc'
+
+# Bun
+set -Ux BUN_INSTALL "/Users/rosszurowski/.bun"
+set -px --path PATH "/Users/rosszurowski/.bun/bin"
+
