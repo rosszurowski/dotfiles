@@ -9,9 +9,9 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-if [ ! -f $1 ]; then
+if [ ! -f "$1" ]; then
   echo "\033[31mError:\033[0m Could not find file \`$1\`"
   exit 1
 fi
 
-cat $1 | openssl base64 | tr -d '\n'
+openssl base64 -in "$1" | tr -d '\n'
