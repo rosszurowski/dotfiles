@@ -67,6 +67,9 @@ if status --is-interactive
   abbr -a -g sl ls
   abbr -a -g g git
   abbr -a -g gt git
+
+  # Configure paths for Tailscale development
+  set -x PATH "./tool" $PATH
 end
 
 # The next line updates PATH for Netlify's Git Credential Helper.
