@@ -38,6 +38,12 @@
 [interactive]
 	diffFilter = delta --color-only
 
+# This block is here to fix an issue introduced in Git 2.37.0 where
+# `git add -p` fails when using a diffFilter. More details here:
+# https://github.com/dandavison/delta/issues/1114
+[add.interactive]
+	useBuiltin = false
+
 [delta]
 	syntax-theme = Nord
 	hunk-header-style = file line-number syntax
@@ -100,8 +106,8 @@
 [include]
   path = /Users/rosszurowski/Library/Preferences/netlify/helper/git-config
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
