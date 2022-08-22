@@ -36,7 +36,7 @@ binaries=(
   go
   goreleaser/tap/goreleaser
   hugo
-  jq
+  gojq                 # jq replacement
   mas
   neovim
   rename
