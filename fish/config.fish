@@ -65,9 +65,10 @@ if status --is-interactive
 
   # Add abbreviations for common typos
   abbr -a -g gti git
-  abbr -a -g sl ls
+  abbr -a -g giit git
   abbr -a -g g git
   abbr -a -g gt git
+  abbr -a -g sl ls
 
   # Configure paths for Tailscale development
   set -x PATH "./tool" $PATH
