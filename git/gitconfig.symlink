@@ -1,7 +1,7 @@
 [user]
 	name = Ross Zurowski
 	email = ross@rosszurowski.com
-	signingkey = C84F376F45501290
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIWrVwZYoNNe6g5Afp3qeCWF6XGZMZ5Uoxby7dq6B9fx
 
 [commit]
 	gpgsign = true
@@ -111,3 +111,6 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[gpg]
+	format = ssh
