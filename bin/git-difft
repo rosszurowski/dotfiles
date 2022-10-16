@@ -1,0 +1,3 @@
+#!/bin/sh
+# Use `difft` to view a syntactic diff of changes.
+GIT_EXTERNAL_DIFF=difft git diff "$@"
