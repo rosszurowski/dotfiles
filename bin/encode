@@ -5,7 +5,7 @@
 #
 
 if [ $# -eq 0 ]; then
-  echo "Usage: encode \033[2m[input] [output]\033[0m"
+  printf "Usage: encode \033[2m[input] [output]\033[0m\n"
   exit 1
 fi
 
@@ -17,7 +17,7 @@ case "$OUTPUT_EXTENSION" in
   mp4)  CODEC="libx264" ;;
   webm) CODEC="libvpx" ;;
   ogv)  CODEC="libtheora" ;;
-  *) echo "\033[31mError:\033[0m mp4, webm, and ogv are the only supported outputs."; exit 1 ;;
+  *) printf "\033[31mError:\033[0m mp4, webm, and ogv are the only supported outputs.\n"; exit 1 ;;
 esac
 
 ffmpeg -i "$1" -c:v "$CODEC" -b:v 5M "$2"
