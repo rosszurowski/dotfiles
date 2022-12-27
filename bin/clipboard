@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+#
+# clipboard is a wrapper about pbpaste and pbcopy which automatically handles
+# whether you're copying or pasting. Pipe data to it to copy, and use without
+# a pipe to paste. For example:
+#
+#     echo "hello" | clipboard
+#     clipboard > file.txt
+#     echo $(clipboard)
+
+if [ -t 0 ]; then
+  pbpaste
+else
+  pbcopy
+fi
