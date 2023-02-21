@@ -19,12 +19,23 @@ set -x PATH $PATH "$DOTFILES/bin"
 
 # Configure paths for Go
 set -x GOPATH "$SRC/go"
-set -x GOROOT "$HOMEBREW_PREFIX/opt/go/libexec"
 set -x PATH $PATH "$GOPATH/bin" "$GOROOT/bin"
 
 # Configure paths for Volta (npm/node/yarn)
 set -x VOLTA_HOME "$HOME/.volta"
 set -x PATH $PATH "$VOLTA_HOME/bin"
+
+# Configure paths for Bun
+set -Ux BUN_INSTALL "/Users/rosszurowski/.bun"
+set -px --path PATH "/Users/rosszurowski/.bun/bin"
+
+# Configure paths for pnpm
+set -gx PNPM_HOME "/Users/rosszurowski/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+
+# Hide Homebrew hints
+set -x HOMEBREW_NO_ENV_HINTS 1
+set -x HOMEBREW_NO_GOOGLE_ANALYTICS 1
 
 # Configure paths for Postgres.app
 set -x PATH $PATH "/Applications/Postgres.app/Contents/Versions/latest/bin"
@@ -77,8 +88,3 @@ end
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 test -f '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc' && source '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc'
-
-# Bun
-set -Ux BUN_INSTALL "/Users/rosszurowski/.bun"
-set -px --path PATH "/Users/rosszurowski/.bun/bin"
-
