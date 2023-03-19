@@ -12,4 +12,4 @@
 # Documentation:
 # @raycast.description Set your keyboard input method to Korean.
 
-./misc/switch-ime --name Korean --method com.apple.inputmethod.Korean.HNCRomaja
+./misc/switch-ime --name Korean --method "com.apple.inputmethod.Korean.2SetKorean"

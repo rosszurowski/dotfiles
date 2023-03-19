@@ -2,49 +2,70 @@ import Carbon
 
 // This script switches macOS between different input methods (IMEs). It's
 // written in Swift and pre-compiled for speed purposes. Because Raycast
-// compiles Swift scripts on the fly, and this script it slow to build, I
+// compiles Swift scripts on the fly, and this script is slow to build, I
 // precompile it.
 //
 // Compile new versions with this command:
 //
-//   swiftc ./raycast-scripts/misc/switch-ime.swift -o ./raycast-scripts/misc/switch-ime
+//   swiftc ./raycast/scripts/misc/switch-ime.swift -o ./raycast/scripts/misc/switch-ime
 //
+// Use it like this:
+//
+//   switch-ime list
+//   switch-ime --name "Japanese" --method com.apple.inputmethod.Kotoeri.Japanese
 
 var name: String = ""
 var inputMethod: String = ""
 
+var cmd: String = "switch"
 var prevArg: String = ""
 for arg in CommandLine.arguments {
   switch prevArg {
-    case "name":
-      prevArg = ""
-      name = arg
-      continue
-    case "method":
-      prevArg = ""
-      inputMethod = arg
-      continue
-    default:
-      break
+  case "name":
+    prevArg = ""
+    name = arg
+    continue
+  case "method":
+    prevArg = ""
+    inputMethod = arg
+    continue
+  default:
+    break
   }
   switch arg {
-    case "--name", "-n":
-      prevArg = "name"
-      continue
-    case "--method", "-m":
-      prevArg = "method"
-      continue
-    default:
-      break
+  case "--name", "-n":
+    prevArg = "name"
+    continue
+  case "--method", "-m":
+    prevArg = "method"
+    continue
+  case "switch":
+    cmd = "switch"
+    continue
+  case "list":
+    cmd = "list"
+    break
+  default:
+    break
   }
 }
 
-if CommandLine.arguments.count == 0 || name == "" || inputMethod == "" {
+if CommandLine.arguments.count == 0 || (cmd == "switch" && (name == "" || inputMethod == "")) {
   print("Usage: switch-ime --name [name] --method [ime]")
   exit(1)
 }
 
 let sources = listRawInputSources()
+
+if cmd == "list" {
+  print("")
+  print("Available input methods:")
+  for source in sources {
+    print("  \(extractName(of: source)) (\(extractRawIdentifier(of: source)))")
+  }
+  print("")
+  exit(0)
+}
 
 if let source = sources.first(
   where: { extractRawIdentifier(of: $0) == inputMethod }
@@ -60,7 +81,8 @@ if let source = sources.first(
 }
 
 func listRawInputSources() -> [TISInputSource] {
-  let list =  TISCreateInputSourceList(nil, false)
+  let list =
+    TISCreateInputSourceList(nil, false)
     .takeRetainedValue()
     as! [TISInputSource]
 
@@ -80,7 +102,8 @@ func extractRawIdentifier(of rawInputSource: TISInputSource) -> String {
 
 func isSelectable(_ rawInputSource: TISInputSource) -> Bool {
   return Unmanaged<NSNumber>
-    .fromOpaque(TISGetInputSourceProperty(
+    .fromOpaque(
+      TISGetInputSourceProperty(
         rawInputSource,
         kTISPropertyInputSourceIsSelectCapable)
     )
