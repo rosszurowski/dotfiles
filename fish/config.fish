@@ -88,3 +88,5 @@ end
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 test -f '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc' && source '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc'
+
+source /Users/rosszurowski/.config/op/plugins.sh
