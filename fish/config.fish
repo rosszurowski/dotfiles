@@ -59,7 +59,7 @@ if status --is-interactive
 
   # Tailscale development aliases
   alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-  alias dev-tailscaled "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts.sock --state=/tmp/ts/ts.state"
+  alias dev-tailscaled "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts.sock --statedir=/tmp/ts"
   alias dev-tailscale "go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts.sock"
   alias dev-alt-tailscaled "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts2.sock --state=/tmp/ts/ts2.state"
   alias dev-alt-tailscale "go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts2.sock"
