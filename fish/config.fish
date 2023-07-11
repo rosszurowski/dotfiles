@@ -35,7 +35,6 @@ set -gx PATH "$PNPM_HOME" $PATH
 
 # Hide Homebrew hints
 set -x HOMEBREW_NO_ENV_HINTS 1
-set -x HOMEBREW_NO_GOOGLE_ANALYTICS 1
 
 # Configure paths for Postgres.app
 set -x PATH $PATH "/Applications/Postgres.app/Contents/Versions/latest/bin"
