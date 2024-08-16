@@ -18,6 +18,7 @@ import (
 var (
 	defaultBranch = flag.String("base", "", `Base branch name (if "", use default from remote)`)
 	remoteName    = flag.String("remote", "origin", "Remote repository name")
+	confirm       = flag.Bool("dry-run", false, "Confirm before deleting branches")
 	verbose       = flag.Bool("verbose", false, "Verbose output")
 )
 
@@ -28,10 +29,7 @@ func init() {
 Delete local branches that have been merged into the 'main' branch of a remote
 git repository, handling squash and rebase merges too.
 
-This tool lists branches and confirms before deleting any data. After
-confirmation, branches are hard deleted with 'git branch -D'.
-
-This tool only works inside a Git repository.
+If you'd like to list branches before deleting, pass the --dry-run flag.
 
 Options:
 `, filepath.Base(os.Args[0]))
@@ -75,20 +73,26 @@ func main() {
 	if count == 1 {
 		noun = "branch"
 	}
-	printf("%d %s merged into %s:\n", count, noun, baseBranch)
-	printf("  %s\n", strings.Join(merged, "\n  "))
-	if ok := prompt(fmt.Sprintf("Delete %d %s?", count, noun), false); !ok {
-		os.Exit(0)
-		return
+	if *confirm {
+		printf("%d %s merged into %s:\n", count, noun, baseBranch)
+		printf("  %s\n", strings.Join(merged, "\n  "))
+		if ok := prompt(fmt.Sprintf("Delete %d %s?", count, noun), false); !ok {
+			os.Exit(0)
+			return
+		}
 	}
 	// Checkout the default branch and delete the branches.
 	if _, err := git("checkout", baseBranch); err != nil {
 		fatalf("Error checking out %q: %v\n", baseBranch, err)
 	}
+	printf("Deleting %d %s merged into %s:\n", count, noun, baseBranch)
 	for _, br := range merged {
-		if _, err := git("branch", "-D", br); err != nil {
+		_, err := git("branch", "-D", br)
+		if err != nil {
 			printf("Error deleting %q: %v\n", br, err)
+			continue
 		}
+		printf("  %s\n", br)
 	}
 }
 

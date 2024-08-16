@@ -18,6 +18,7 @@
 	showfiles = show --oneline --name-only
 	df = diff --oneline --name-only
 	optimize = gc --aggressive --prune=now
+	recent = !git branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\" | head -10
 	ignore = !git update-index --assume-unchanged
 	unignore = !git update-index --no-assume-unchanged
 	ignored = !git ls-files -v | grep ^[a-z]
@@ -46,7 +47,13 @@
 	light = false
 
 [diff]
+	algorithm = histogram
 	colorMoved = default
+	context = 10
+
+[diff "lockb"]
+	textconv = bun
+	binary = true
 
 [apply]
 	whitespace = nowarn
@@ -71,6 +78,7 @@
 	followTags = true
 
 [rebase]
+	autoSquash = true
 	autoStash = true
 	updateRefs = true
 
@@ -95,9 +103,6 @@
 [init]
 	defaultBranch = main
 
-# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
-[include]
-  path = /Users/rosszurowski/Library/Preferences/netlify/helper/git-config
 [credential "https://github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
