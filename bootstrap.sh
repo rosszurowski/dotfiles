@@ -38,6 +38,7 @@ binaries=(
   hugo
   gojq                 # jq replacement
   mas
+  mise                 # runtime version manager
   neovim
   rename
   terminal-notifier
@@ -55,23 +56,15 @@ binaries=(
 echo "> Installing useful binaries..."
 brew install "${binaries[@]}"
 
-# Install node via volta
+# Activate mise
+"$HOME/.local/bin/mise" activate fish | source
+
+# Install node via mise
 echo "> Installing node..."
-curl https://get.volta.sh | bash
-volta install node
-volta install yarn
-# Some npm defaults
-yarn config set init-license "MIT"
-yarn config set init-version "0.0.1"
+mise install node@latest
 
-# Install useful node modules
-modules=(
-  serve
-  svgo
-)
-
-echo "> Installing useful node modules..."
-yarn global add "${modules[@]}"
+echo "> Installing bun..."
+mise install bun@latest
 
 # Install applications
 masapps=(
@@ -126,9 +119,6 @@ echo "> Fetching password from 1Password..."
 pw=$(op read "op://z4w6n6rguudu6xchl37at3pshe/pe4irhzmd7qxlq7fgp7v6ihlvu/password")
 echo "> Password: $pw"
 open ./raycast/settings.rayconfig
-
-# Set up GPG keys
-script/setup-gpg
 
 # Clone this repo into ./dotfiles
 read -r -p "Choose where to clone the dotfiles repo: " -i "$HOME/Developer/dotfiles" -e CLONE_PATH

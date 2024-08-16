@@ -21,9 +21,11 @@ set -x PATH $PATH "$DOTFILES/bin"
 set -x GOPATH "$SRC/go"
 set -x PATH $PATH "$GOPATH/bin" "$GOROOT/bin"
 
-# Configure paths for Volta (npm/node/yarn)
-set -x VOLTA_HOME "$HOME/.volta"
-set -x PATH $PATH "$VOLTA_HOME/bin"
+# Load mise to manage runtime versions
+$HOME/.local/bin/mise activate fish | source
+
+# Load 1password CLI plugins
+source /Users/rosszurowski/.config/op/plugins.sh
 
 # Configure paths for Bun
 set -Ux BUN_INSTALL "/Users/rosszurowski/.bun"
@@ -60,8 +62,9 @@ if status --is-interactive
   alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
   alias dev-tailscaled "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts.sock --statedir=/tmp/ts"
   alias dev-tailscale "go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts.sock"
-  alias dev-alt-tailscaled "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts/ts2.sock --state=/tmp/ts/ts2.state"
-  alias dev-alt-tailscale "go run tailscale.com/cmd/tailscale --socket=/tmp/ts/ts2.sock"
+  alias dev-tailscaled-alt "go run tailscale.com/cmd/tailscaled --tun=userspace-networking --socket=/tmp/ts2/ts.sock --statedir=/tmp/ts2/"
+  alias dev-tailscale-alt "go run tailscale.com/cmd/tailscale --socket=/tmp/ts2/ts.sock"
+  alias dev-reset-tailnet-lock "trash /tmp/ts && trash ~/Library/Group\ Containers/W5364U7YZB.group.io.tailscale.ipn.macos/tka-profiles && trash ~/Library/Group\ Containers/W5364U7YZB.group.io.tailscale.ipn.macos/sameuserproof-*"
 
   # Add tool aliases
   alias youtube-dl "yt-dlp"
@@ -81,11 +84,10 @@ if status --is-interactive
   abbr -a -g gitst git st
   abbr -a -g sl ls
 
+  # Add abbreviations for command line tools
+  abbr -a -g loc tokei
+  abbr -a -g sloc tokei
+
   # Configure paths for Tailscale development
   set -x PATH "./tool" $PATH
 end
-
-# The next line updates PATH for Netlify's Git Credential Helper.
-test -f '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc' && source '/Users/rosszurowski/Library/Preferences/netlify/helper/path.fish.inc'
-
-source /Users/rosszurowski/.config/op/plugins.sh
