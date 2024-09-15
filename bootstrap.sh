@@ -97,6 +97,7 @@ apps=(
   imageoptim
   mimestream
   notion
+  notunes
   raycast
   signal
   slack
