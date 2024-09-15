@@ -36,6 +36,8 @@
 	pager = delta
 	autocrlf = input
 	editor = code --wait
+	compression = 0
+	compression = 9
 
 [interactive]
 	diffFilter = delta --color-only
@@ -115,3 +117,5 @@
 
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[http]
+	postBuffer = 524288000
